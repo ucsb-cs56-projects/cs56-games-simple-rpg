@@ -1,9 +1,11 @@
 cs56-games-simple-rpg
 =====================
 
-This first version of the game is a CLI version.
+The first version of the game is a CLI version, with a non-functional GUI implementation.
 
-features for this version:
+![](http://i.imgur.com/rll8hnf.png)
+
+Features for the CLI version:
 -ability to move
 -basic turn-based battle
 -random encounters
@@ -33,6 +35,3 @@ Enemy LV: 1 HP: 20/20 MP 15/15
 Options:
 1. Attack
 2. Run Away
-
-------
-All output for the CLI version will be along these lines where the information is displayed then the options are listed.

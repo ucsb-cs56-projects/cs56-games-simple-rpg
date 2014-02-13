@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--build.xml for com.teamshadowstudios.simpleRPG
+	by Alvin Tan 5/15/2012-->
+<project basedir="." default="build" name="SimpleRPG">
+	<property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.6"/>
+	<property name="source" value="1.6"/>
+	<property name="ticketnum" value="0000738"/>
+	<property name="webRoot" value="${env.HOME}/public_html/cs56/S12/issues/${ticketnum}" />
+	<property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56/S12/issues/${ticketnum}" />
+	<property name="javadocDest" value="${webRoot}/javadoc" />
+	<property name="javadocURL" value="${webBaseURL}/javadoc" />
+	<property name="CLI" value="com.teamshadowstudios.simpleRPG.SimpleCLI"/>
+	<property name="main" value="com.teamshadowstudios.simpleRPG.SimpleRPG"/>
+	<path id="Simple RPG.classpath">
+		<pathelement location="bin"/>
+		<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" />
+	</path>
+	<target name="init" description="move files from src to bin. (excluding *.java)">
+		<mkdir dir="bin"/>
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean" description="removes files and cleans directory">
+		<delete dir="bin" quiet="true" />
+		<delete dir="javadoc" quiet="true" />
+		<delete dir="download" quiet="true" />
+		<delete dir="temp" quiet="true" />
+		<delete dir="dist" quiet="true" />
+	</target>
+	<target depends="init" name="build" description="builds project">
+		<echo message="${ant.project.name}: ${ant.file}"/>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" includeantruntime="false">
+			<src path="src"/>
+			<classpath refid="Simple RPG.classpath"/>
+		</javac>
+	</target>
+	<target depends="build" name="runcli" description="Starts command line implementation">
+		<!--<java classname="${CLI}" failonerror="true" fork="yes">
+			<classpath refid="Simple RPG.classpath"/>
+		</java>-->
+		<echo>Use: java -cp bin com.teamshadowstudios.simpleRPG.SimpleCLI</echo>
+	</target>
+	<target depends="build" name="run" description="Starts Game">
+		<java classname="${main}" failonerror="true" fork="yes">
+			<classpath refid="Simple RPG.classpath"/>
+		</java>
+	</target>
+	<target depends="build" name="javadoc" description="creates Javadoc">
+		<delete dir="javadoc" quiet="true" />
+		<javadoc  destdir="javadoc" author="true" version="true" use="true" >
+			<fileset dir="src" includes="**/*.java"/>
+			<classpath>
+				<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+			</classpath>
+		</javadoc>
+		<!-- delete the old javadoc -->
+		<delete quiet="true" dir="${javadocDest}" />
+		<!-- copy new javadoc -->
+		<copy todir="${javadocDest}" >
+			<fileset dir="javadoc"/>
+		</copy>
+		<chmod dir="${javadocDest}" perm="755"  type="dir" includes="**" />
+		<chmod dir="${javadocDest}" perm="755"  type="file" includes="**/*" />
+		<echo>Javadoc deployed to ${javadocURL}</echo>
+	</target>
+	<target depends="build" name="test" description="runs jUnit Tests">
+
+		<junit haltonerror="no" haltonfailure="no">
+			<classpath>
+				<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+				<pathelement location="bin"/>
+			</classpath>
+
+			<batchtest fork="yes">
+				<fileset dir="src">
+					<!-- this will pick up every class with a name ending in Test -->
+					<include name="**/*Test.java"/>
+				</fileset>
+			</batchtest>
+			<formatter type="plain" usefile="false" />
+		</junit>
+	</target>
+	<target depends="build" name="jar" description="makes JAR file">
+		<mkdir dir="dist" />
+		<jar destfile="dist/${ant.project.name}.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="${main}"/>
+			</manifest>
+		</jar>
+	</target>
+	<target depends="jar,javadoc,download" name="publish" description="publishes everything">
+		<mkdir dir="${webRoot}" />
+		<delete dir="${webRoot}/browse" />
+		<mkdir dir="${webRoot}/browse" />
+		<delete dir="${webRoot}/download" />
+		<mkdir dir="${webRoot}/download" />
+		<copy file="html/index.html" todir="${webRoot}"/>
+		<copy todir="${webRoot}/download" >
+			<fileset dir="download"/>
+			<fileset dir="dist" />
+		</copy>
+		<copy file="build.xml" todir="${webRoot}/browse"/>
+		<copy todir="${webRoot}/browse/src" >
+			<fileset dir="src"/>
+		</copy>
+		<chmod dir="${webRoot}"                                         
+			  perm="755" type="both" includes="**/*"/>
+		<echo>Project published to ${webBaseURL}</echo>
+	</target>
+	<target name="download" description="makes downloadable files">
+		<!-- delete everything under the "temp" and "download" subdirectories -->
+		<delete quiet="true">
+			<fileset dir="temp" includes="**/*" />
+			<fileset dir="download" includes="**/*" />
+		</delete>
+		<!-- create the directories we'll need to stage the zip file and tarballs -->
+		<mkdir dir="download" />
+		<mkdir dir="temp" />
+		<mkdir dir="temp/${ant.project.name}" />
+		<!-- copy everything from the current directory that we want to put in the zip file/tarball into the
+	          temp subdirectory.   Exclude things we do NOT want to include in the tarball/zip file -->
+		<copy todir="temp/${ant.project.name}">
+			<fileset dir="." excludes="build/**, javadoc/**, **/*~, temp/**, dist/**, download/**" />
+		</copy>
+		<!-- create the tar file from the temp directory -->
+		<tar destfile="temp/${ant.project.name}.tar"                                         
+		       basedir="temp"                                                             
+		       includes="${ant.project.name}/**"                                               
+		   />
+		<!-- compress the tar file into a tarball (using "gzip") -->
+		<gzip zipfile="download/${ant.project.name}.tgz"                                      
+		        src="temp/${ant.project.name}.tar" />
+		<!-- create a zip file -->
+		<zip destfile="download/${ant.project.name}.zip"                                      
+		       basedir="temp"                                                             
+		       includes="${ant.project.name}/**"                                               
+		  />
+		<!-- Now we have the tarball and zip file in the download 
+		          subdirectory, so we are finished with the temp directory -->
+		<delete quiet="true">
+			<fileset dir="temp" includes="**/*"/>
+		</delete>
+	</target>
+</project>

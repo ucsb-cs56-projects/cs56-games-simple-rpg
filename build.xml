@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!--build.xml for com.teamshadowstudios.simpleRPG
+<!--build.xml for edu.ucsb.cs56.projects.games.simple_rpg
 	by Alvin Tan 5/15/2012-->
 <project basedir="." default="build" name="SimpleRPG">
 	<property environment="env"/>
@@ -11,8 +11,8 @@
 	<property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56/S12/issues/${ticketnum}" />
 	<property name="javadocDest" value="${webRoot}/javadoc" />
 	<property name="javadocURL" value="${webBaseURL}/javadoc" />
-	<property name="CLI" value="com.teamshadowstudios.simpleRPG.SimpleCLI"/>
-	<property name="main" value="com.teamshadowstudios.simpleRPG.SimpleRPG"/>
+	<property name="CLI" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleCLI"/>
+	<property name="main" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleRPG"/>
 	<path id="Simple RPG.classpath">
 		<pathelement location="bin"/>
 		<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" />
@@ -43,7 +43,7 @@
 		<!--<java classname="${CLI}" failonerror="true" fork="yes">
 			<classpath refid="Simple RPG.classpath"/>
 		</java>-->
-		<echo>Use: java -cp bin com.teamshadowstudios.simpleRPG.SimpleCLI</echo>
+		<echo>Use: java -cp bin edu.ucsb.cs56.projects.games.simple_rpg.SimpleCLI</echo>
 	</target>
 	<target depends="build" name="run" description="Starts Game">
 		<java classname="${main}" failonerror="true" fork="yes">

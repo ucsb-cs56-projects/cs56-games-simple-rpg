@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!--build.xml for edu.ucsb.cs56.projects.games.simple_rpg
-	original author: Alvin Tan S12
-	updated by George Chen for github W14-->
+<!--build.xml for com.teamshadowstudios.simpleRPG
+	by Alvin Tan 5/15/2012-->
 <project basedir="." default="build" name="SimpleRPG">
 	<property environment="env"/>
 	<property name="debuglevel" value="source,lines,vars"/>
 	<property name="target" value="1.6"/>
 	<property name="source" value="1.6"/>
 	<property name="ticketnum" value="0000738"/>
-	<property name="webRoot" value="${env.HOME}/public_html/cs56/cs56-games-simple-rpg" />
-	<property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56/cs56-games-simple-rpg" />
+	<property name="webRoot" value="${env.HOME}/public_html/cs56/S12/issues/${ticketnum}" />
+	<property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56/S12/issues/${ticketnum}" />
 	<property name="javadocDest" value="${webRoot}/javadoc" />
 	<property name="javadocURL" value="${webBaseURL}/javadoc" />
 	<property name="CLI" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleCLI"/>
 	<property name="main" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleRPG"/>
 	<path id="Simple RPG.classpath">
 		<pathelement location="bin"/>
-		<pathelement location="/lib/junit-4.8.2.jar" />
+		<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" />
 	</path>
 	<target name="init" description="move files from src to bin. (excluding *.java)">
 		<mkdir dir="bin"/>
@@ -56,7 +55,7 @@
 		<javadoc  destdir="javadoc" author="true" version="true" use="true" >
 			<fileset dir="src" includes="**/*.java"/>
 			<classpath>
-				<pathelement location="/lib/junit-4.8.2.jar"/>
+				<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
 			</classpath>
 		</javadoc>
 		<!-- delete the old javadoc -->
@@ -73,7 +72,7 @@
 
 		<junit haltonerror="no" haltonfailure="no">
 			<classpath>
-				<pathelement location="/lib/junit-4.8.2.jar"/>
+				<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
 				<pathelement location="bin"/>
 			</classpath>
 

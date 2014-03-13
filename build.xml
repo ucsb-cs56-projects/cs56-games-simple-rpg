@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--build.xml for com.teamshadowstudios.simpleRPG
-	by Alvin Tan 5/15/2012-->
+	original author: Alvin Tan 5/15/2012
+	updated by George Chen W14-->
 <project basedir="." default="build" name="SimpleRPG">
 	<property environment="env"/>
 	<property name="debuglevel" value="source,lines,vars"/>

@@ -5,6 +5,12 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 
 ![](http://i.imgur.com/rll8hnf.png)
 
+project history
+===============
+```
+ W14 | bronhuston 5pm | barasuishou | A simple rpg game
+```
+
 Features for the CLI version:
 -ability to move
 -basic turn-based battle

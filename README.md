@@ -8,7 +8,7 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 project history
 ===============
 ```
- W14 | bronhuston 5pm | barasuishou | A simple rpg game
+ W14 | bronhuston 5pm | barasuishou | A simple rpg game 
 ```
 
 Features for the CLI version:

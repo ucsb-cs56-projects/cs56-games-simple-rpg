@@ -1,4 +1,6 @@
 cs56-games-simple-rpg
+(W15) TBD: It looks like a promising game; the code base looks navigatable but trying to run it produces a really strange window that seems to randomly place blue colored squares on the main green square regardless of what key is pressed and can only be escaped from. It looks fairly extensible but has a bad bug currently and Im having difficulties running it(Paz Zait-Givon)
+
 =====================
 
 The first version of the game is a CLI version, with a non-functional GUI implementation.
@@ -8,6 +10,9 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 project history
 ===============
 ```
+
+YES | bronhuston | barasuishou | A simple rpg game
+— Edit
  W14 | bronhuston 5pm | barasuishou | A simple rpg game 
 ```
 

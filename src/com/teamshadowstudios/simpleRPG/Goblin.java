@@ -41,6 +41,7 @@ public class Goblin extends Enemy {
 
 	/* (non-Javadoc)
 	 * @see com.teamshadowstudios.simpleRPG.Enemy#attack(com.teamshadowstudios.simpleRPG.MainCharacter)
+	 * method to make a Goblin attack the MainCharacter
 	 */
 	@Override
 	public int attack(MainCharacter mc) {
@@ -65,6 +66,7 @@ public class Goblin extends Enemy {
 
 	/* (non-Javadoc)
 	 * @see com.teamshadowstudios.simpleRPG.Enemy#giveReward()
+	 * Checks if the Goblin is dead and returns the reward if it's dead
 	 */
 	@Override
 	public Reward giveReward() {

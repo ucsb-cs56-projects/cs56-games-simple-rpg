@@ -40,7 +40,12 @@ public class Goblin extends Enemy {
 	}
 
 	/* (non-Javadoc)
+<<<<<<< HEAD:src/edu/ucsb/cs56/projects/games/simple_rpg/Goblin.java
 	 * @see edu.ucsb.cs56.projects.games.simple_rpg.Enemy#attack(edu.ucsb.cs56.projects.games.simple_rpg.MainCharacter)
+=======
+	 * @see com.teamshadowstudios.simpleRPG.Enemy#attack(com.teamshadowstudios.simpleRPG.MainCharacter)
+	 * method to make a Goblin attack the MainCharacter
+>>>>>>> 0226a4c671e41716902772bbc2985153ed9ee82d:src/com/teamshadowstudios/simpleRPG/Goblin.java
 	 */
 	@Override
 	public int attack(MainCharacter mc) {
@@ -64,7 +69,12 @@ public class Goblin extends Enemy {
 	}
 
 	/* (non-Javadoc)
+<<<<<<< HEAD:src/edu/ucsb/cs56/projects/games/simple_rpg/Goblin.java
 	 * @see edu.ucsb.cs56.projects.games.simple_rpg.Enemy#giveReward()
+=======
+	 * @see com.teamshadowstudios.simpleRPG.Enemy#giveReward()
+	 * Checks if the Goblin is dead and returns the reward if it's dead
+>>>>>>> 0226a4c671e41716902772bbc2985153ed9ee82d:src/com/teamshadowstudios/simpleRPG/Goblin.java
 	 */
 	@Override
 	public Reward giveReward() {

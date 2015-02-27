@@ -8,6 +8,8 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
  *
  */
 public class TextBox {
+	// Prints the default options for the Main Character 
+	// When not in a battle or an interaction
 	public void printDefaultOptions(){
 		System.out.println("1: Move Left");
 		System.out.println("2: Move Right");
@@ -16,11 +18,17 @@ public class TextBox {
 		System.out.println("5: Quit Game");
 		System.out.println("***End Output***");
 	}
+	
+	// Prints the commands the Main Character
+	// can choose from when in a Battle
 	public void printBattleOptions(){
 		System.out.println("1: Attack");
 		System.out.println("2: Run Away");
 		System.out.println("***End Output***");
 	}
+	
+	// Prints out Main Character stats
+	// level; HP, MP, XP; Gold; Location
 	public void printMCStatus(MainCharacter mc){
 		System.out.println("~~~Info~~~");
 		System.out.println("MainCharacter LV: "+mc.getLvl());
@@ -30,18 +38,25 @@ public class TextBox {
 		System.out.println("Current Location: ("+mc.getX()+","+mc.getY()+")");
 		System.out.println();
 	}
+	
+	// Prints out the Enemy's stats
+	// Name; level; HP; MP
 	public void printEStatus(Enemy e){
 		System.out.println(e.getName()+" LV: "+e.getLvl());
 		System.out.println("HP: "+e.getHp()+"/"+e.getMaxHP()+" MP: "+e.getMp()+"/"
 							+e.getMaxMP());
 		System.out.println();
 	}
+	
+	// Prints the amount of Gold/Exp you gain
 	public void printReward(Enemy e){
 		System.out.println("You gained "+e.giveReward().getXp()+" XP!");
 		System.out.println("You got "+e.giveReward().getGold()+" gold!");
 		System.out.println("~~~End Results~~~");
 		System.out.println();
 	}
+	
+	// Prints options for stats allocation (LVL UP)
 	public void printStatOptions(){
 		System.out.println("1: Add 1 Agility");
 		System.out.println("2: Add 1 Inteligence");

@@ -12,14 +12,12 @@ import java.io.*;
  * 
  */
 public class CLI {
-
-	private int[][] map = { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }, };
+	
+	private int[][] map = { { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0 }}; //deleted a random comma at the end of the parentheses
 	private double encounterChance = .30;
 	private MainCharacter mc;
-	private CLIOutput tb;
-	private BufferedReader is = new BufferedReader(new InputStreamReader(
-			System.in));
+	private CLIOutput tb; //added a semicolon at the end of the line
+	private BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
 
 	/**
 	 * Method for Starting the Game
@@ -27,9 +25,12 @@ public class CLI {
 	 */
 	public void start() {
 		load();
-		String s;
+		String s; //used to get the user's input
+		//start the game by allocating stat points to the main char
 		allocateStats();
+		//print out the stats
 		tb.printMCStatus(mc);
+		//give the first option to the player
 		tb.printDefaultOptions();
 		try {
 			s = is.readLine();
@@ -38,7 +39,7 @@ public class CLI {
 				case 1:
 					if (mc.moveLeft(map)) {
 						if (Math.random() <= encounterChance) {
-							if (!battleState()) {
+							if (!battleState()) { //looks sketchy - what determines if we enter the battlestate?
 								return;
 							}
 							break;
@@ -86,8 +87,7 @@ public class CLI {
 				case 5:
 					return;
 				default:
-					System.out
-							.println("***This is NOT an option! Try again.***");
+					System.out.println("***This is NOT an option! Try again.***");
 					break;
 				}
 				if (mc.levelUp()) {
@@ -102,7 +102,7 @@ public class CLI {
 					s = is.readLine();
 				}
 			}
-		} catch (IOException e) {
+		} catch (IOException e) {    //NOT SURE HERE
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -137,7 +137,10 @@ public class CLI {
 				if (mc.getAgi() > en.getAgi()) {
 					switch (Integer.parseInt(s)) {
 					case 1:
-						if (!en.isDead()) {
+						if (!mc.isDead()) { //used to check if the enemyn is not dead first
+											//that is already done below
+											//for consistency with case 2, I changed the if statement
+											//to check if the mc is not dead first
 							temp = mc.attack(en);
 							if (temp == -1) {
 								System.out.println("You missed!");
@@ -153,6 +156,7 @@ public class CLI {
 							tb.printReward(en);
 							return true;
 						}
+						//WHY IS IT CHECKING IF THE ENEMY IS DEAD TWICE???(see above)
 						if (!en.isDead()) {
 							temp = en.attack(mc);
 							if (temp == -1) {
@@ -169,6 +173,7 @@ public class CLI {
 						}
 						break;
 					case 2:
+						//Running away should be handled differently - randomly?
 						System.out.println("You managed to get away!");
 						return true;
 					default:
@@ -231,6 +236,7 @@ public class CLI {
 	 * 
 	 * @return a random Enemy
 	 */
+	 //should add more enemies
 	public Enemy generateEnemy() {
 		switch ((int) (Math.random() * 2)) {
 		case 1:

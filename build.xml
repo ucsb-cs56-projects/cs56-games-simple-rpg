@@ -40,10 +40,10 @@
 		</javac>
 	</target>
 	<target depends="build" name="runcli" description="Starts command line implementation">
-		<!--<java classname="${CLI}" failonerror="true" fork="yes">
+		<java classname="${CLI}" failonerror="true" fork="yes">
 			<classpath refid="Simple RPG.classpath"/>
-		</java>-->
-		<echo>Use: java -cp bin com.teamshadowstudios.simpleRPG.SimpleCLI</echo>
+		</java>
+		<echo>Use: java -cp edu.ucsb.cs56.projects.games.simple_rpg.SimpleCLI</echo>
 	</target>
 	<target depends="build" name="run" description="Starts Game">
 		<java classname="${main}" failonerror="true" fork="yes">

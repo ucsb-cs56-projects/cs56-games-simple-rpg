@@ -30,13 +30,13 @@ public class Game {
 		//initialize the first map to all grass
 		for(int i=0;i<30;i++){
 			Tile[] temp = {new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
-							new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
-							new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
-							new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
-							new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
-							new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
-							new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
-							new Tile(), new Tile(), new Tile(), new Tile(), new Tile()};
+				       new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
+					new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
+					new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
+					new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
+					new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
+					new Tile(), new Tile(), new Tile(), new Tile(), new Tile(), 
+					new Tile(), new Tile(), new Tile(), new Tile(), new Tile() };
 			map[0][i] = temp;
 		}
 		//start on the first map

@@ -169,7 +169,7 @@ public class CLI {
                                 return false;
                             }
                             break;
-                        case 2:
+                        case 2:	 
                             //Running away should be handled differently - randomly?
                             System.out.println("You managed to get away!");
                             return true;

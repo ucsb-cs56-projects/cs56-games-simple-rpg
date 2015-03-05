@@ -15,6 +15,7 @@ public class MainCharacter {
     private int statPoints;
     private int minDMG, maxDMG;
     private int gold;
+    private Weapon[] wp;
 
     /**
      * Default Constructor. Creates a lvl 1 Main Character

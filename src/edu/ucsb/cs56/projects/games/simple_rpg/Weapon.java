@@ -15,6 +15,7 @@ public class Weapon {
 	private int weapon;
 	private int price;
 	private String weaponName;
+	private int strBonus;
 	
 	/**
  	 * No-arg constructor for Weapon object.
@@ -22,21 +23,23 @@ public class Weapon {
 	public Weapon() {
 		this.weapon = 0;
 		this.weaponName = this.getWeaponName();
+		this.price = 0;
+		this.strBonus = 0;
 	}
 
 	/**
  	 * Constructor for Weapon object by integer weapon code. 
  	 */	 	
 	public Weapon(int weapon) {
-		try {
-			if (weapon > -1 && weapon < 5) {
-				this.weapon = weapon;
-				this.weaponName = this.getWeaponName();
-				this.price = this.getPrice();
-			} else {
-		} catch (IllegalArgumentException ex) {
-			ex.printStackTrace();
-		}	
+		// This constructor only takes weapon codes for Weapons 1-4.
+		if (weapon > 0 && weapon < 5) {
+			this.weapon = weapon;
+			this.weaponName = this.getWeaponName();
+			this.price = this.getPrice();
+			this.strBonus = weapon;
+		} else {
+			throw new IllegalArgumentException("Integer parameter is not a valid weapon code.");
+		}
 	}	
 
 	/**
@@ -47,6 +50,10 @@ public class Weapon {
 		return this.weapon;
 	}
 
+	/**
+ 	 * Gets the price of the Weapon object.
+ 	 * @return Price of weapon
+	 */
 	public int getPrice() {
 		switch(this.weapon) {
 			case 1 :
@@ -62,6 +69,10 @@ public class Weapon {
 		return 0;	
 	}	
 	
+	/**
+ 	 * Gets the name of the Weapon as a String.
+ 	 * @return Name of weapon
+ 	 */  
 	public String getWeaponName() {
 		switch(this.weapon) {
 			case 0 :
@@ -77,5 +88,8 @@ public class Weapon {
 		}
 		return "NULL";		
 	}
-		
+	
+	public int getStrBonus() {
+		return this.strBonus;
+	}
 }

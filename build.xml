@@ -11,8 +11,8 @@
 	<property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56/S12/issues/${ticketnum}" />
 	<property name="javadocDest" value="${webRoot}/javadoc" />
 	<property name="javadocURL" value="${webBaseURL}/javadoc" />
-	<property name="CLI" value="com.teamshadowstudios.simpleRPG.SimpleCLI"/>
-	<property name="main" value="com.teamshadowstudios.simpleRPG.SimpleRPG"/>
+	<property name="CLI" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleCLI"/>
+	<property name="main" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleRPG"/>
 	<path id="Simple RPG.classpath">
 		<pathelement location="bin"/>
 		<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" />
@@ -108,7 +108,7 @@
 		<copy todir="${webRoot}/browse/src" >
 			<fileset dir="src"/>
 		</copy>
-		<chmod dir="${webRoot}"                                         
+		<chmod dir="${webRoot}"
 			  perm="755" type="both" includes="**/*"/>
 		<echo>Project published to ${webBaseURL}</echo>
 	</target>
@@ -128,19 +128,19 @@
 			<fileset dir="." excludes="build/**, javadoc/**, **/*~, temp/**, dist/**, download/**" />
 		</copy>
 		<!-- create the tar file from the temp directory -->
-		<tar destfile="temp/${ant.project.name}.tar"                                         
-		       basedir="temp"                                                             
-		       includes="${ant.project.name}/**"                                               
+		<tar destfile="temp/${ant.project.name}.tar"
+		       basedir="temp"
+		       includes="${ant.project.name}/**"
 		   />
 		<!-- compress the tar file into a tarball (using "gzip") -->
-		<gzip zipfile="download/${ant.project.name}.tgz"                                      
+		<gzip zipfile="download/${ant.project.name}.tgz"
 		        src="temp/${ant.project.name}.tar" />
 		<!-- create a zip file -->
-		<zip destfile="download/${ant.project.name}.zip"                                      
-		       basedir="temp"                                                             
-		       includes="${ant.project.name}/**"                                               
+		<zip destfile="download/${ant.project.name}.zip"
+		       basedir="temp"
+		       includes="${ant.project.name}/**"
 		  />
-		<!-- Now we have the tarball and zip file in the download 
+		<!-- Now we have the tarball and zip file in the download
 		          subdirectory, so we are finished with the temp directory -->
 		<delete quiet="true">
 			<fileset dir="temp" includes="**/*"/>

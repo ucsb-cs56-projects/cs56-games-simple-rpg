@@ -24,20 +24,31 @@ public class Game {
         //We have a game and a display, now we need the backend
         mc = new MainCharacter();
         //each map should take one window worth of space
-        //with 20x20 tiles and a 800x600 resolution
+        //with 20x20 tiles and a 800x800 resolution
         //therefore we have 40 horizontal tiles and 30 vertical
+		//there is also an 800x200 grey status bar
         //There is currently only 1 map
-        map = new Tile[1][30][40];
+        map = new Tile[4][30][40];
         //initialize the first map to all grass
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 40; j++) {
-                map[0][i][j] = new Tile();
+                map[1][i][j] = new Tile(1);
             }
         }
+		for (int i = 10; i < 20; i++) {
+			for (int j = 0; j < 40; j++) {
+				map[1][i][j] = new Tile();
+			}
+		}
+		for (int i = 20; i < 30; i++) {
+			for (int j = 0; j < 40; j++) {
+				map[1][i][j] = new Tile(1);
+			}
+		}
         //start on the first map
-        currentMap = 0;
+        currentMap = 1;
     }
-
+	 	 
     /**
      * @return the current map
      */

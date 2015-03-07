@@ -3,6 +3,8 @@
  */
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
+import java.awt.geom.Area;
+
 /**
  * Represents the Player/MainCharacter
  *
@@ -15,7 +17,8 @@ public class MainCharacter {
     private int statPoints;
     private int minDMG, maxDMG;
     private int gold;
-    private Weapon[] wp;
+    private Weapon[] wpns;
+    private Weapon currentWpn;
 
     /**
      * Default Constructor. Creates a lvl 1 Main Character
@@ -41,105 +44,105 @@ public class MainCharacter {
     }
 
     /**
-     * @return the hp
+     * @return main character's hp
      */
     public int getHp() {
         return hp;
     }
 
     /**
-     * @return the mp
+     * @return main character's mp
      */
     public int getMp() {
         return mp;
     }
 
     /**
-     * @return the xp
+     * @return main character's xp
      */
     public int getXp() {
         return xp;
     }
 
     /**
-     * @return the lvl
+     * @return main character's lvl
      */
     public int getLvl() {
         return lvl;
     }
 
     /**
-     * @return the x
+     * @return main character's x position
      */
     public int getX() {
         return x;
     }
 
     /**
-     * @return the y
+     * @return main character's y position
      */
     public int getY() {
         return y;
     }
 
     /**
-     * @return the maxHP
+     * @return main character's max HP
      */
     public int getMaxHP() {
         return maxHP;
     }
 
     /**
-     * @return the maxMP
+     * @return main character's max MP
      */
     public int getMaxMP() {
         return maxMP;
     }
 
     /**
-     * @return the needXP
+     * @return how much XP the main character needs to level up
      */
     public int getNeedXP() {
         return needXP;
     }
 
     /**
-     * @return the agi
+     * @return main character's agility
      */
     public int getAgi() {
         return agi;
     }
 
     /**
-     * @return the str
+     * @return main character's strength
      */
     public int getStr() {
         return str;
     }
 
     /**
-     * @return the sta
+     * @return main character's stamina
      */
     public int getSta() {
         return sta;
     }
 
     /**
-     * @return the intel
+     * @return main character's intelligence
      */
     public int getIntel() {
         return intel;
     }
 
     /**
-     * @return the gold
+     * @return how much gold the main character has
      */
     public int getGold() {
         return gold;
     }
 
     /**
-     * @return the statPoints
+     * @return main character's available stat points
      */
     public int getStatPoints() {
         return statPoints;
@@ -190,7 +193,7 @@ public class MainCharacter {
     }
 
     /**
-     * checks if MainCharacter is Dead (ie. has no hp left).
+     * checks if MainCharacter is dead (i.e. has no hp left).
      *
      * @return true if dead and false if not dead
      */

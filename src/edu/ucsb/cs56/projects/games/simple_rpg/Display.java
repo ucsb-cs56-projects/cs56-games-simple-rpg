@@ -56,6 +56,8 @@ public class Display extends JPanel {
                 }
             }
         }
+	g2.setColor(Color.GRAY);
+	g2.fillRect(0, 600, 800, 200);
         g2.setColor(Color.RED);
         g2.fill3DRect(30, 620, 150 * (gm.mc.getHp()/gm.mc.getMaxHP()), 20, true);
         g2.setColor(Color.BLUE);

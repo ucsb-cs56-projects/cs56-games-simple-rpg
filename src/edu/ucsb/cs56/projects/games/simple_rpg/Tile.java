@@ -17,12 +17,23 @@ public class Tile {
      */
     public Tile() {
         /*Tile Type:
-		 * 0-grass
-		 * 1-water
+		 * 0-grass (green)
+		 * 1-water (blue)
+		 * 2-main character tile (yellow)
+		 * 3-goblin tile (red)
 		 */
-        tileType = (int)(Math.random() * 2) + 1;
+	tileType = 0;
     }
 
+	public Tile(int tileType) {
+		if (tileType >= 0 && tileType <= 3) {
+			this.tileType = tileType;
+		} else {
+			throw new IllegalArgumentException("Tile type parameter is not a legitimate tileType.");
+		}
+	}
+	
+	
     /**
      * @return the type of tile
      */

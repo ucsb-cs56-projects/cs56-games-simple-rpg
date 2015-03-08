@@ -84,6 +84,22 @@ public class MainCharacter {
     public int getY() {
         return y;
     }
+	
+	/**
+ 	 * @param x sets the character's x position
+ 	 */ 
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	/**
+	 * @param y sets the character's y position
+	 */	
+	
+	public void setY(int y) {
+		this.y = y;
+	}
 
     /**
      * @return main character's max HP

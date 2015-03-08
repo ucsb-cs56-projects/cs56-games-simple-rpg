@@ -19,7 +19,9 @@ import javax.swing.JPanel;
  */
 public class Display extends JPanel {
 
-    Game gm;
+	Game gm;
+	int dx = 0;
+	int dy = 0;
 
     /**
      * Default Constructor. Adds a KeyListener.
@@ -73,8 +75,10 @@ public class Display extends JPanel {
         g2.drawString("EXP", 10, 700);
 	g2.drawString("LEVEL " + gm.currentMap, 10, 750);
         g2.setColor(g2Color);
-	
-	gp = new GeneralPath();
+	gm.mc.setX(400 + dx);
+	gm.mc.setY(550 + dy);	
+	//Adds a new Area object with all the pieces of the character
+	Ellipse 
 	
     }
 
@@ -88,8 +92,9 @@ public class Display extends JPanel {
             // TODO Auto-generated method stub
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 System.exit(0);
-            } else if (e.getKeyCode() == KeyEvent.VK_UP){
-                    
+            } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+		dy++;
+		repaint();
             }
         }
 

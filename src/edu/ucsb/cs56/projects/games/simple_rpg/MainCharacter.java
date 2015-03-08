@@ -38,8 +38,8 @@ public class MainCharacter {
         mp = (int) ((10 + intel * 1.2) + lvl * 1.3);
         maxHP = (int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
         maxMP = (int) ((10 + intel * 1.2) + lvl * 1.3);
-        minDMG = (int) ((str * 2 + agi * 0.15) + lvl * 0.8);
-        maxDMG = (int) ((str * 2.3 + agi * 0.22) + lvl * 0.8);
+        minDMG = (int) ((str * 2 + agi * 0.15 + intel * 0.17) + lvl * 0.8);
+        maxDMG = (int) ((str * 2.3 + agi * 0.22 + intel * 0.2) + lvl * 0.8);
         needXP = (int) (Math.pow(2, lvl / 3) * 3 + 100);
     }
 
@@ -347,4 +347,5 @@ public class MainCharacter {
         hp -= dmg;
         return dmg;
     }
+
 }

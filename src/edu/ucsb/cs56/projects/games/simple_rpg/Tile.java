@@ -15,15 +15,13 @@ public class Tile {
     /**
      * Default Constructor, makes a basic Tile
      */
-    public Tile() {
-        /*Tile Type:
+	public Tile() {
+        	/*Tile Type:
 		 * 0-grass (green)
 		 * 1-water (blue)
-		 * 2-main character tile (yellow)
-		 * 3-goblin tile (red)
 		 */
-	tileType = 0;
-    }
+		tileType = 0;
+	}
 
 	public Tile(int tileType) {
 		if (tileType >= 0 && tileType <= 3) {
@@ -37,11 +35,11 @@ public class Tile {
     /**
      * @return the type of tile
      */
-    public int getType() {
-        return tileType;
-    }
+	public int getType() {
+        	return tileType;
+    	}
 
-    public void setType(int type) {
-        tileType = type;
-    }
+	public void setType(int type) {
+        	tileType = type;
+    	}
 }

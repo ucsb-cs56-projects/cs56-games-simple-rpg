@@ -3,7 +3,7 @@
  */
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
-
+import java.awt.geom.*;
 /**
  * Represents the game itself.
  * Currently not in use.
@@ -30,21 +30,21 @@ public class Game {
         //There is currently only 1 map
         map = new Tile[4][30][40];
         //initialize the first map to all grass
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 40; j++) {
-                map[1][i][j] = new Tile(1);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 30; j++) {
+                map[1][j][i] = new Tile(1);
             }
         }
-		for (int i = 10; i < 20; i++) {
-			for (int j = 0; j < 40; j++) {
-				map[1][i][j] = new Tile();
-			}
+	for (int i = 8; i < 32; i++) {
+		for (int j = 0; j < 30; j++) {
+			map[1][j][i] = new Tile();
 		}
-		for (int i = 20; i < 30; i++) {
-			for (int j = 0; j < 40; j++) {
-				map[1][i][j] = new Tile(1);
-			}
+	}
+	for (int i = 32; i < 40; i++) {
+		for (int j = 0; j < 30; j++) {
+			map[1][j][i] = new Tile(1);
 		}
+	}
         //start on the first map
         currentMap = 1;
     }

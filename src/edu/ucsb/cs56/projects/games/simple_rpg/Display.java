@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.*;
 
 import javax.swing.JPanel;
 
@@ -36,6 +37,7 @@ public class Display extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+	GeneralPath gp;
         Color g2Color = g2.getColor();
         Tile[][] map = gm.getCurrentMap();
         for (int i = 0; i < 30; i++) {
@@ -58,7 +60,7 @@ public class Display extends JPanel {
         }
 	g2.setColor(Color.GRAY);
 	g2.fillRect(0, 600, 800, 200);
-        g2.setColor(Color.RED);
+	g2.setColor(Color.RED);
         g2.fill3DRect(30, 620, 150 * (gm.mc.getHp()/gm.mc.getMaxHP()), 20, true);
         g2.setColor(Color.BLUE);
         g2.fill3DRect(30, 660, 150 * (gm.mc.getMp()/gm.mc.getMaxMP()), 20, true);
@@ -69,7 +71,11 @@ public class Display extends JPanel {
         g2.drawString("HP", 10, 620);
         g2.drawString("MP", 10, 660);
         g2.drawString("EXP", 10, 700);
+	g2.drawString("LEVEL " + gm.currentMap, 10, 750);
         g2.setColor(g2Color);
+	
+	gp = new GeneralPath();
+	
     }
 
     public class PlayerListener implements KeyListener {
@@ -82,9 +88,8 @@ public class Display extends JPanel {
             // TODO Auto-generated method stub
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 System.exit(0);
-            } else{
-                    Tile[][] map = gm.getCurrentMap();
-                    repaint();
+            } else if (e.getKeyCode() == KeyEvent.VK_UP){
+                    
             }
         }
 

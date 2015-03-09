@@ -134,7 +134,7 @@ public class CLI {
                 if (mc.getAgi() > en.getAgi()) {
                     switch (Integer.parseInt(s)) {
                         case 1:
-                            if (!mc.isDead()) { //used to check if the enemyn is not dead first
+                            if (!mc.isDead()) { //used to check if the enemy is not dead first
                                 //that is already done below
                                 //for consistency with case 2, I changed the if statement
                                 //to check if the mc is not dead first

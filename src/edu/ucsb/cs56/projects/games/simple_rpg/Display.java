@@ -74,11 +74,9 @@ public class Display extends JPanel {
         g2.drawString("MP", 10, 660);
         g2.drawString("EXP", 10, 700);
 	g2.drawString("LEVEL " + gm.currentMap, 10, 750);
-        g2.setColor(g2Color);
+    g2.setColor(g2Color);
 	gm.mc.setX(400 + dx);
-	gm.mc.setY(550 + dy);	
-	//Adds a new Area object with all the pieces of the character
-	Ellipse 
+	gm.mc.setY(550 + dy);	 
 	
     }
 

@@ -11,12 +11,14 @@ import java.awt.*;
 public class MainCharacterFigure implements Shape {
 
 	private GeneralPath gp;
+	public MainCharacter mc;
 	
 	/**
  	 * No-arg constructor for the MainCharacterFigure shape.
   	 */ 	 
 	public MainCharacterFigure() {
 		gp = new GeneralPath();
+		mc = new MainCharacter();
 	}
 	
 	/**
@@ -25,6 +27,7 @@ public class MainCharacterFigure implements Shape {
  	 */
 	public MainCharacterFigure(MainCharacter mc) {
 		gp = new GeneralPath();
+		this.mc = mc;
 		Ellipse2D.Double head = new Ellipse2D.Double(mc.getX() - 5, mc.getY(), 10, 10);
 		Line2D.Double body = new Line2D.Double(mc.getX(), mc.getY() + 10, mc.getX(), mc.getY() + 25);
 		Line2D.Double leftLeg = new Line2D.Double(mc.getX(), mc.getY() + 25, mc.getX() - 5, mc.getY() + 30);
@@ -36,7 +39,7 @@ public class MainCharacterFigure implements Shape {
 		gp.append(leftLeg, false);
 		gp.append(rightLeg, false);
 		gp.append(leftArm, false);
-		gp.append(rightArm, false);  
+		gp.append(rightArm, false);
 	}
 
 	public boolean contains(double x, double y) {

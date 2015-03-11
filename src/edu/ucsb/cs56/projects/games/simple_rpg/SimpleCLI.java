@@ -4,14 +4,14 @@
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
 /**
- * Contains Main() for CLI implementation.
+ * Contains Main() for CLI implementation of the game.
  *
  * @author Alvin Tan
  */
 public class SimpleCLI {
 
     /**
-     * the Main() function
+     * the Main() function 
      *
      * @param args
      */

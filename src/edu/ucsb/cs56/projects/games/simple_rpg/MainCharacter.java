@@ -3,6 +3,7 @@
  */
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
+import java.util.*;
 import java.awt.geom.Area;
 
 /**
@@ -17,7 +18,7 @@ public class MainCharacter {
     private int statPoints;
     private int minDMG, maxDMG;
     private int gold;
-    private Weapon[] wpns;
+    private ArrayList<Weapon> wpns = new ArrayList<Weapon>();
     private Weapon currentWpn;
 
     /**
@@ -41,6 +42,9 @@ public class MainCharacter {
         minDMG = (int) ((str * 2 + agi * 0.15 + intel * 0.17) + lvl * 0.8);
         maxDMG = (int) ((str * 2.3 + agi * 0.22 + intel * 0.2) + lvl * 0.8);
         needXP = (int) (Math.pow(2, lvl / 3) * 3 + 100);
+        Weapon fist = new Weapon();
+        wpns.add(0, fist);
+        currentWpn = wpns.get(0);
     }
 
     /**
@@ -133,7 +137,7 @@ public class MainCharacter {
      * @return main character's strength
      */
     public int getStr() {
-        return str;
+        return str + currentWpn.getStrBonus();
     }
 
     /**

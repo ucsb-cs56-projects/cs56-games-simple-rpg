@@ -40,6 +40,7 @@ public class Display extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 	GeneralPath gp;
+	MainCharacterFigure mcf = new MainCharacterFigure(gm.mc);
         Color g2Color = g2.getColor();
         Tile[][] map = gm.getCurrentMap();
         for (int i = 0; i < 30; i++) {
@@ -74,10 +75,10 @@ public class Display extends JPanel {
         g2.drawString("MP", 10, 660);
         g2.drawString("EXP", 10, 700);
 	g2.drawString("LEVEL " + gm.currentMap, 10, 750);
-    g2.setColor(g2Color);
-	gm.mc.setX(400 + dx);
-	gm.mc.setY(550 + dy);	 
-	
+	g2.setColor(Color.BLACK);
+	mcf.mc.setX(400 + dx);
+	mcf.mc.setY(550 + dy);
+	g2.draw(mcf);
     }
 
     public class PlayerListener implements KeyListener {
@@ -91,7 +92,16 @@ public class Display extends JPanel {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 System.exit(0);
             } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-		dy++;
+		dy -= 4;
+		repaint();
+            } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+		dy += 4;
+		repaint();
+            } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		dx += 4;
+		repaint();
+            } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+		dx -= 4;
 		repaint();
             }
         }

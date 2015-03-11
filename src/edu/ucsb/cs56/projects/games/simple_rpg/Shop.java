@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Shop {
 
-	private ArrayList<Weapon> inventory;
+	public ArrayList<Weapon> inventory;
 	
 	/**
  	 * No-arg constructor for Shop class

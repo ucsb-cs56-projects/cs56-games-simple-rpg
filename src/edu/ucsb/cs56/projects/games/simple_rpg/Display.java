@@ -77,7 +77,7 @@ public class Display extends JPanel {
 	g2.drawString("LEVEL " + gm.currentMap, 10, 750);
 	g2.setColor(Color.BLACK);
 	mcf.mc.setX(400 + dx);
-	mcf.mc.setY(550 + dy);
+	mcf.mc.setY(565 + dy);
 	g2.draw(mcf);
     }
 
@@ -92,16 +92,24 @@ public class Display extends JPanel {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 System.exit(0);
             } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-		dy -= 4;
+		if (dy >= -560) {
+			dy -= 4;
+		}
 		repaint();
             } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-		dy += 4;
+		if (dy <= 0) {
+			dy += 4;
+		}
 		repaint();
             } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-		dx += 4;
+		if (dx <= 230) {
+			dx += 4;
+		}
 		repaint();
             } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-		dx -= 4;
+		if (dx >= -230) {
+			dx -= 4;
+		}
 		repaint();
             }
         }

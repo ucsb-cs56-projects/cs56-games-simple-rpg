@@ -92,4 +92,8 @@ public class Weapon {
 	public int getStrBonus() {
 		return this.strBonus;
 	}
+
+	public String toString() {
+		return this.getWeaponName();
+	}
 }

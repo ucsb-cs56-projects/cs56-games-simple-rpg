@@ -39,21 +39,8 @@ public class SimpleRPG {
 	JButton shop = new JButton("Go to shop");
 	shop.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Shop weaponShop = new Shop();
-			String [] weaponNames = new String[5];
-			weaponNames[0] = "Fists";
-			for (int i = 1; i < weaponShop.inventory.size() + 1; i++) {
-				Weapon temp = weaponShop.inventory.get(i);
-				weaponNames[i] = temp.getWeaponName();
-			}
-			JFrame frame = new JFrame("Shop");
-			frame.setSize(400, 200);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			JComboBox weaponSelect = new JComboBox(weaponNames);
-			JButton buy = new JButton("Buy");
-			frame.add(weaponSelect, BorderLayout.CENTER);
-			frame.add(buy, BorderLayout.CENTER);
-			frame.setVisible(true);
+			ShopDisplay shopWindow = new ShopDisplay();
+			shopWindow.setVisible(true);
 		}
 	});
         // allow it to be focusable so that it can read input

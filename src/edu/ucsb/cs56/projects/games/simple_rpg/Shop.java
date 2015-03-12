@@ -4,13 +4,15 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
 import java.util.*;
 
 /**
+ * Represents the abstract structure for the RPG's shop
+ *
  * @author Vivek Patel
  * @version CS56-W15 03/05, 1.0 
  */
 
 public class Shop {
 
-	public ArrayList<Weapon> inventory;
+	private ArrayList<Weapon> inventory;
 	
 	/**
  	 * No-arg constructor for Shop class
@@ -25,5 +27,12 @@ public class Shop {
 
 	public void buyItem(Weapon wp) {
 		inventory.remove(wp.getWeapon());	
+	}
+	
+	/**
+ 	 * @return The inventory of the shop as an ArrayList
+ 	 */ 
+	public ArrayList<Weapon> getInventory() {
+		return this.inventory;
 	}
 }

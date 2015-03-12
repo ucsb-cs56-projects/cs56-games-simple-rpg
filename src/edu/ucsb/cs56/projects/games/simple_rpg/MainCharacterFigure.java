@@ -4,6 +4,9 @@ import java.awt.geom.*;
 import java.awt.*;
 
 /**
+ * Creates the stick figure on the display that represents the MainCharacter object
+ * used for the game
+ *
  * @author Vivek Patel
  * @version CS56-W15 03/07, 1.0
  */

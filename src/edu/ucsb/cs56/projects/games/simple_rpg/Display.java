@@ -87,6 +87,8 @@ public class Display extends JPanel {
          * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
          */
         @Override
+        
+        //Controls the MainCharacterFigure's movement based on user input from the arrow keys
         public void keyPressed(KeyEvent e) {
             // TODO Auto-generated method stub
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {

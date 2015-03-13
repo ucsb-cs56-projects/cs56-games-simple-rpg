@@ -19,6 +19,8 @@ public class Shop {
  	 * Initializes Shop inventory with all weapons
  	 */ 
 	public Shop() {
+		inventory = new ArrayList<Weapon>();
+		inventory.add(0, null);
 		for (int i = 1; i <= 4; i++) {
 			Weapon wp = new Weapon(i);
 			inventory.add(i, wp);

@@ -94,6 +94,6 @@ public class Weapon {
 	}
 
 	public String toString() {
-		return this.getWeaponName();
+		return this.getWeaponName() + " - " + this.getPrice() + " gold";
 	}
 }

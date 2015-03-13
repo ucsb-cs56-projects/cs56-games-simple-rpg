@@ -1,6 +1,7 @@
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
-import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -36,24 +37,25 @@ public class ShopDisplay extends JFrame {
 		//Sets the LayoutManager of this JFrame to FlowLayout and
 		//sets the JFrame's default close operation
 		this.setLayout(shopLayout);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 
 		//Initializes the weaponSelect instance var to a new JComboBox instance
-		weaponSelect = new JComboBox();
-
-		//Creates an Iterator for the shop inventory and adds the
-		//items in the ArrayList one by one to the JComboBox
-		Iterator i = weaponShop.getInventory().iterator(); 
-		while (i.hasNext()) {
-			weaponSelect.addItem(i.next());
-		}
+		//and fills it with ArrayList of Weapon objects in Shop inventory
+		weaponSelect = new JComboBox(weaponShop.getInventory().toArray());
 
 		//Initializes the buy instance var to a new JButton instance
 		this.buy = new JButton("Buy");
-
+		buy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Weapon temp = (Weapon)weaponSelect.getSelectedItem();
+				weaponShop.buyItem(temp);
+				weaponSelect.updateUI();
+			}
+		});
 		//Adds the JComboBox and the JButton to the JFrame with respect
 		//to the FlowLayout
 		this.add(weaponSelect);
 		this.add(buy);
+		this.setVisible(true);
 	}
 }

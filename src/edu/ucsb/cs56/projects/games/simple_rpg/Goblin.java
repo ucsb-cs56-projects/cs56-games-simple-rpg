@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.teamshadowstudios.simpleRPG;
+package edu.ucsb.cs56.projects.games.simple_rpg;
 
 /**Class to represent a Goblin enemy, inherits Enemy Class
  * @author Alvin Tan

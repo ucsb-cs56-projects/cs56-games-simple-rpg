@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.teamshadowstudios.simpleRPG;
+package edu.ucsb.cs56.projects.games.simple_rpg;
 
 /**Abstract class that every enemy shall inherit from
  * @author Alvin Tan

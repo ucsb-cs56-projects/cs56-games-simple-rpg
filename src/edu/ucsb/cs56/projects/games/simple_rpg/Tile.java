@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.teamshadowstudios.simpleRPG;
+package edu.ucsb.cs56.projects.games.simple_rpg;
 
 /**Class to represent all the tiles the game is made of
  * @author Alvin Tan

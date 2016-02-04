@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.teamshadowstudios.simpleRPG;
+package edu.ucsb.cs56.projects.games.simple_rpg;
 
 /**To represent a "reward" that can be received by the MainCharacter
  * from things like a quest, treasure chest, or defeating enemies.

@@ -16,7 +16,7 @@ Running the Game
     export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-X.Y.jar:$JUNIT_HOME/hamcrest-core-XX.YY.jar"
     ```
   + Now replace all instances of `/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar` in the `build.xml` with `${env.JUNIT_HOME}/junit-X.Y.jar` .
-  + Now you should be able to build and run locally!
+
 ---------------------------------------------------
 
 The first version of the game is a CLI version, with a non-functional GUI implementation.

@@ -31,12 +31,12 @@ public class Weapon {
  	 * Constructor for Weapon object by integer weapon code. 
  	 */	 	
 	public Weapon(int weapon) {
-		// This constructor only takes weapon codes for Weapons 1-4.
+		// This constructor only takes weapon codes for Weapons 1-5.
 		if (weapon > 0 && weapon <= 5) {
 			this.weapon = weapon;
-			this.weaponName = this.getWeaponName();
-			this.price = this.getPrice();
-			this.strBonus = this.getStrBonus();
+			this.weaponName = this.retWeaponName();
+			this.price = this.retPrice();
+			this.strBonus = this.retStrBonus();
 		} else {
 			throw new IllegalArgumentException("Integer parameter is not a valid weapon code.");
 		}
@@ -44,10 +44,10 @@ public class Weapon {
 
 	/**
  	 * Gets the weapon code for the Weapon object.
- 	 * @return Integer code for weapon 
- 	 */
-	public int getWeapon() {
-		return this.weapon;
+ 	 * @return Integer code for weapon
+	 */
+        public int getWeapon() {
+            return this.weapon;
 	}
 
 	/**
@@ -55,6 +55,10 @@ public class Weapon {
  	 * @return Price of weapon
 	 */
 	public int getPrice() {
+	    return this.price;
+	}
+
+        private int retPrice() {
 		switch(this.weapon) {
 			case 1 :
 				return 20;				       
@@ -75,6 +79,10 @@ public class Weapon {
  	 * @return Name of weapon
  	 */  
 	public String getWeaponName() {
+	    return this.weaponName;
+	}
+
+        public String retWeaponName() {
 		switch(this.weapon) {
 			case 0 :
 				return "Fists";
@@ -93,17 +101,22 @@ public class Weapon {
 	}
 	
 	public int getStrBonus() {
+	    return this.strBonus;
+	}
+
+        private int retStrBonus() {
 	    if (weapon == 5)
 		return this.generateStrBonus();
 	    else
 		return weapon;
 	}
 
-    private int generateStrBonus() {
-	return (int)(Math.random() * MAX_STR_BONUS);
-    }
+        private int generateStrBonus() {
+	    return (int)(Math.random() * MAX_STR_BONUS);
+        }
 
 	public String toString() {
-		return this.getWeaponName() + " - " + this.getPrice() + " gold";
+	    return this.getWeaponName() + " - " + this.getPrice() + " gold";
 	}
+
 }

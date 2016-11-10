@@ -35,11 +35,11 @@ public class Potion {
 
 	if (potion > 0 && potion < 5) {
 	    this.potion = potion;
-	    this.potionName = this.getPotionName();
-	    this.price = this.getPrice();
-	    this.hpEffect = this.getHPEffect();
-	    this.mpEffect = this.getMPEffect();
-	    this.xpEffect = this.getXPEffect();
+	    this.potionName = this.retPotionName();
+	    this.price = this.retPrice();
+	    this.hpEffect = this.retHPEffect();
+	    this.mpEffect = this.retMPEffect();
+	    this.xpEffect = this.retXPEffect();
 	} else {
 	    throw new IllegalArgumentException("Integer parameter is not valid potion code.");
 	}
@@ -54,23 +54,30 @@ public class Potion {
     // Gets the price of the potion
     // @return Price of potion
     public int getPrice() {
-	switch(this.potion) {
-	case 1:
-	    return 15;
-	case 2:
-	    return 30;
-	case 3:
-	    return 45;
-	case 4:
-	    return 60;
-	}
+	return this.price;
+    }
 
+    private int retPrice() {
+	switch(this.potion) {
+	     case 1:
+	         return 15;
+	     case 2:
+	         return 30;
+	     case 3:
+	         return 45;
+	     case 4:
+	         return 60;
+	}
 	return 0;
     }
 
     // Gets the name of the potion as a String
     // @return Name of potion
     public String getPotionName(){
+	return this.potionName;
+    }
+
+    private String retPotionName(){ 
 	switch(this.potion) {
 	case 0:
 	    return "Suspicious Potion";
@@ -88,6 +95,10 @@ public class Potion {
     }
 
     public int getHPEffect() {
+	return this.hpEffect;
+    }
+
+    private int retHPEffect() {
 	if (potion == 1)
 	    return MAX_HP_EFFECT;
 	else if (potion == 4)
@@ -97,6 +108,11 @@ public class Potion {
     }
 
     public int getMPEffect() {
+	return this.mpEffect;
+
+    }
+
+    private int retMPEffect() {
 	if (potion == 2)
 	    return MAX_MP_EFFECT;
 	else if (potion == 4)
@@ -106,6 +122,11 @@ public class Potion {
     }
 
     public int getXPEffect() {
+	return this.xpEffect;
+
+    }
+
+    private int retXPEffect() {
 	if (potion == 3)
 	    return MAX_XP_EFFECT;
 	else if (potion == 4)

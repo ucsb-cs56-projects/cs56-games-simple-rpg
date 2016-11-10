@@ -54,6 +54,10 @@ public class Display extends JPanel {
                         g2.setColor(Color.BLUE);
                         g2.fillRect(j * 20, i * 20, 20, 20);
                         break;
+		    case 2:
+		        g2.setColor(Color.LIGHT_GRAY);
+		        g2.fillRect(j * 20, i * 20, 20, 20);
+		        break;
                     default:
                         g2.setColor(Color.GREEN);
                         g2.fillRect(j * 20, i * 20, 20, 20);

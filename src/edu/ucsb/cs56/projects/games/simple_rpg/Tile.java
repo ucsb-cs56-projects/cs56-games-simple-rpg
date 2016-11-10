@@ -19,7 +19,7 @@ public class Tile {
         	/*Tile Type:
 		 * 0-grass (green)
 		 * 1-water (blue)
-		 * 2-rock (gray)
+		 * 2-rock (light gray)
 		 */
 		tileType = 0;
 	}

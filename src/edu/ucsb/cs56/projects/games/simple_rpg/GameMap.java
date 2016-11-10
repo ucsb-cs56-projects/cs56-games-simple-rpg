@@ -1,7 +1,9 @@
 /**
  *
  */
+package edu.ucsb.cs56.projects.games.simple_rpg;
 
+import java.awt.geom.*;
 /**
  * A class used in the implementation of the Game class
  *
@@ -36,7 +38,7 @@ public class GameMap {
     }
 
     // a getter function for our gameMap
-    public Tile[][] getGameMap() {
+    public Tile[][] getOurMap() {
 	return ourMap;
     }
     
@@ -49,11 +51,11 @@ public class GameMap {
 	    }
 	}
 	if (level == 2) {
-	    ourMap.addRock(15, 10, 1);
+	    this.addRock(15, 10, 1);
 	}
 	else if (level == 3) {
-	    ourMap.addRock(12, 9, 2);
-	    ourMap.addRock(24, 18, 1);
+	    this.addRock(12, 9, 2);
+	    this.addRock(24, 18, 1);
 	}
     }
 
@@ -62,8 +64,8 @@ public class GameMap {
 	if ((size <= 3) && (size > 0)) {
 	    for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {
-		    if ((y+j<this.length) && (x+i<this[j].length)) {
-			this[y+j][x+i] = new Tile(2);
+		    if ((y+j<this.ourMap.length) && (x+i<this.ourMap[j].length)) {
+			this.ourMap[y+j][x+i] = new Tile(2);
 		    }
 		}
 	    }

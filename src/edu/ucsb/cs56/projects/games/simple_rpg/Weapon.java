@@ -1,5 +1,3 @@
-
-
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
 import java.awt.Graphics2D;
@@ -12,6 +10,8 @@ import java.awt.geom.Area;
 
 public class Weapon {
 
+    public static final int MAX_STR_BONUS = 5;
+    
 	private int weapon;
 	private int price;
 	private String weaponName;
@@ -32,11 +32,11 @@ public class Weapon {
  	 */	 	
 	public Weapon(int weapon) {
 		// This constructor only takes weapon codes for Weapons 1-4.
-		if (weapon > 0 && weapon < 5) {
+		if (weapon > 0 && weapon <= 5) {
 			this.weapon = weapon;
 			this.weaponName = this.getWeaponName();
 			this.price = this.getPrice();
-			this.strBonus = weapon;
+			this.strBonus = this.getStrBonus();
 		} else {
 			throw new IllegalArgumentException("Integer parameter is not a valid weapon code.");
 		}
@@ -57,14 +57,15 @@ public class Weapon {
 	public int getPrice() {
 		switch(this.weapon) {
 			case 1 :
-				return 20;								
+				return 20;				       
 			case 2:
 				return 40;
 			case 3: 
 				return 50;
 			case 4:
 				return 80;
-
+		        case 5:
+			    return (int)(10 + Math.random() * 100);
 		}
 		return 0;	
 	}	
@@ -85,13 +86,22 @@ public class Weapon {
 				return "Warhammer";
 			case 4 :
 				return "Iron sword";
+		        case 5:
+		                return "Random weapon";
 		}
 		return "NULL";		
 	}
 	
 	public int getStrBonus() {
-		return this.strBonus;
+	    if (weapon == 5)
+		return this.generateStrBonus();
+	    else
+		return weapon;
 	}
+
+    private int generateStrBonus() {
+	return (int)(Math.random() * MAX_STR_BONUS);
+    }
 
 	public String toString() {
 		return this.getWeaponName() + " - " + this.getPrice() + " gold";

@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Represents the abstract structure for the RPG's shop
  *
- * @author Vivek Patel
+ * @author Vivek Patel, Daniel Chojnacki
  * @version CS56-W15 03/05, 1.0 
  */
 
@@ -36,5 +36,14 @@ public class Shop {
  	 */ 
 	public ArrayList<Weapon> getInventory() {
 		return this.inventory;
+	}
+
+        public void buyItem(Weapon wp, MainCharacter mc) {
+	    if ((mc.getGold() >= wp.getPrice()) && inventory.contains(wp)) {
+	        mc.addWeapon(wp);
+	        mc.setGold(mc.getGold() - wp.getPrice());
+		int wpIndex = inventory.indexOf(wp);
+		inventory.remove(wpIndex);
+	    }
 	}
 }

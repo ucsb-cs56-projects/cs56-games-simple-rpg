@@ -58,4 +58,40 @@ public class ShopDisplay extends JFrame {
 		this.add(buy);
 		this.setVisible(true);
 	}
+    
+        public ShopDisplay(final MainCharacter mc) {
+		//Calls the constructor for the JFrame class, which ShopDisplay extends.	
+		super("Shop");
+
+		//Initializes the weaponShop instance var to new Shop instance
+		weaponShop = new Shop();
+		setSize(400, 200);
+
+		//Initializes the shopLayout instance var to a new FlowLayout instance
+		shopLayout = new FlowLayout();
+
+		//Sets the LayoutManager of this JFrame to FlowLayout and
+		//sets the JFrame's default close operation
+		this.setLayout(shopLayout);
+		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+
+		//Initializes the weaponSelect instance var to a new JComboBox instance
+		//and fills it with ArrayList of Weapon objects in Shop inventory
+		weaponSelect = new JComboBox(weaponShop.getInventory().toArray());
+
+		//Initializes the buy instance var to a new JButton instance
+		this.buy = new JButton("Buy");
+		buy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Weapon temp = (Weapon)weaponSelect.getSelectedItem();
+				weaponShop.buyItem(temp, mc);
+				weaponSelect.updateUI();
+			}
+		});
+		//Adds the JComboBox and the JButton to the JFrame with respect
+		//to the FlowLayout
+		this.add(weaponSelect);
+		this.add(buy);
+		this.setVisible(true);
+	}
 }

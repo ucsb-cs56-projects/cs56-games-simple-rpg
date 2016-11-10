@@ -219,4 +219,23 @@ public class MainCharacter extends Entity{
         return dmg;
     }
 
+    public void addWeapon(Weapon wp) {
+	wpns.add(wp);
+    }
+
+    public boolean weaponInInventory(Weapon wp) {
+        return wpns.contains(wp);
+    }
+
+    public boolean removeWeapon(Weapon wp) {
+	int wpIndex = wpns.indexOf(wp);
+	if (wpIndex != -1) {
+	    wpns.remove(wpIndex);
+	    return true;
+	}
+	else {
+	    return false;
+	}
+    }
+
 }

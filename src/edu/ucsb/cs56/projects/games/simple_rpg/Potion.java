@@ -7,91 +7,34 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
    * * * * * * * * * * * * *
 */
 
-public class Potion {
+public class Potion extends Item {
 
     public static final int MAX_HP_EFFECT = 100;
     public static final int MAX_MP_EFFECT = 100;
     public static final int MAX_XP_EFFECT = 100;
     
-    private String potionName;
-    private int potion;
-    private int price;
     private int hpEffect;
     private int mpEffect;
     private int xpEffect;
 
     //no-arg constructor for Potion object
     public Potion() {	
-	this.potionName = this.getPotionName();
-	this.potion = 0;
-	this.price = 0;
+	super();
 	this.hpEffect = 0;
 	this.mpEffect = 0;
 	this.xpEffect = 0;
     }
 
     // Constructor for Potion object by integer potion code
-    public Potion(int potion) {
-
-	if (potion > 0 && potion < 5) {
-	    this.potion = potion;
-	    this.potionName = this.retPotionName();
-	    this.price = this.retPrice();
-	    this.hpEffect = this.retHPEffect();
-	    this.mpEffect = this.retMPEffect();
-	    this.xpEffect = this.retXPEffect();
+    public Potion(int code) {
+	super(code);
+	if (isValidItemCode(code) == true) {
+	    this.hpEffect = retHPEffect();
+	    this.mpEffect = retMPEffect();
+	    this.xpEffect = retXPEffect();
 	} else {
-	    throw new IllegalArgumentException("Integer parameter is not valid potion code.");
+	    throw new IllegalArgumentException("String parameter is not valid potion code.");
 	}
-    }
-
-    // Gets the potion code for the Potion object
-    // @return Integer code for potion
-    public int getPotion() {
-	return this.potion;
-    }
-
-    // Gets the price of the potion
-    // @return Price of potion
-    public int getPrice() {
-	return this.price;
-    }
-
-    private int retPrice() {
-	switch(this.potion) {
-	     case 1:
-	         return 15;
-	     case 2:
-	         return 30;
-	     case 3:
-	         return 45;
-	     case 4:
-	         return 60;
-	}
-	return 0;
-    }
-
-    // Gets the name of the potion as a String
-    // @return Name of potion
-    public String getPotionName(){
-	return this.potionName;
-    }
-
-    private String retPotionName(){ 
-	switch(this.potion) {
-	case 0:
-	    return "Suspicious Potion";
-	case 1:
-	    return "Health Potion";
-	case 2:
-	    return "Manna Potion";
-	case 3:
-	    return "Experience Potion";
-	case 4:
-	    return "Unknown Potion";
-	}
-
-	return "NULL";
     }
 
     public int getHPEffect() {
@@ -99,9 +42,9 @@ public class Potion {
     }
 
     private int retHPEffect() {
-	if (potion == 1)
+	if (this.getCode() == 11)
 	    return MAX_HP_EFFECT;
-	else if (potion == 4)
+	else if (this.getCode() == 14)
 	    return this.generateHPEffect();
 	else
 	    return 0;
@@ -113,9 +56,9 @@ public class Potion {
     }
 
     private int retMPEffect() {
-	if (potion == 2)
+	if (this.getCode() == 12)
 	    return MAX_MP_EFFECT;
-	else if (potion == 4)
+	else if (this.getCode() == 14)
 	    return this.generateMPEffect();
 	else
 	    return 0;
@@ -127,9 +70,9 @@ public class Potion {
     }
 
     private int retXPEffect() {
-	if (potion == 3)
+	if (this.getCode() == 13)
 	    return MAX_XP_EFFECT;
-	else if (potion == 4)
+	else if (this.getCode() == 14)
 	    return this.generateXPEffect();
 	else
 	    return 0;
@@ -148,7 +91,7 @@ public class Potion {
     }
     
     public String toString() {
-	return this.getPotionName() + " - " + this.getPrice() + " gold";
+	return this.getName() + " - " + this.getPrice() + " gold";
     }
 }
 	

@@ -15,7 +15,8 @@ public abstract class Item {
     *    [int code range]      | [itemType]     [ints currently in use]  | [itemType]
     *    ----------------------------------	-------------------------------------
     *    [0, 1, 2, 3, ..., 9]  | [Weapon]	[0, 1, 2, 3, 4, 5]       | [Weapon]
-    *    [10, 11, 12, ..., 19] | [Potion]	[10, 11, 12, 13, 14, 15] | [Potion]
+    *    [10, 11, 12, ..., 19] | [Potion] 	[10, 11, 12, 13, 14, 15] | [Potion]
+    *    [20, 21, 22, ..., 29] | [Spell]        [20, 21, 22, 23, 14, 25] | [Spell]
     */
     private double[] validCodes = {0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15};
     protected String name;
@@ -42,7 +43,7 @@ public abstract class Item {
     /*
     * Getter function for the item code 
     */
-    public double getCode() {
+    public int getCode() {
 	return this.code;
     }
 

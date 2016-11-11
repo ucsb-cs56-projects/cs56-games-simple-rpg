@@ -29,9 +29,9 @@ public class Potion extends Item {
     public Potion(int code) {
 	super(code);
 	if (isValidItemCode(code) == true) {
-	    this.hpEffect = retHPEffect();
-	    this.mpEffect = retMPEffect();
-	    this.xpEffect = retXPEffect();
+	    this.hpEffect = genHPEffect();
+	    this.mpEffect = genMPEffect();
+	    this.xpEffect = genXPEffect();
 	} else {
 	    throw new IllegalArgumentException("String parameter is not valid potion code.");
 	}
@@ -41,11 +41,11 @@ public class Potion extends Item {
 	return this.hpEffect;
     }
 
-    private int retHPEffect() {
+    private int genHPEffect() {
 	if (this.getCode() == 11)
 	    return MAX_HP_EFFECT;
 	else if (this.getCode() == 14)
-	    return this.generateHPEffect();
+	    return this.randHPEffect();
 	else
 	    return 0;
     }
@@ -55,11 +55,11 @@ public class Potion extends Item {
 
     }
 
-    private int retMPEffect() {
+    private int genMPEffect() {
 	if (this.getCode() == 12)
 	    return MAX_MP_EFFECT;
 	else if (this.getCode() == 14)
-	    return this.generateMPEffect();
+	    return this.randMPEffect();
 	else
 	    return 0;
     }
@@ -69,24 +69,24 @@ public class Potion extends Item {
 
     }
 
-    private int retXPEffect() {
+    private int genXPEffect() {
 	if (this.getCode() == 13)
 	    return MAX_XP_EFFECT;
 	else if (this.getCode() == 14)
-	    return this.generateXPEffect();
+	    return this.randXPEffect();
 	else
 	    return 0;
     }
 
-    private int generateHPEffect() {
+    private int randHPEffect() {
 	return (int)(Math.random() * MAX_HP_EFFECT);
     }
 
-    private int generateMPEffect() {
+    private int randMPEffect() {
 	return (int)(Math.random() * MAX_MP_EFFECT);
     }
 
-    private int generateXPEffect() {
+    private int randXPEffect() {
 	return (int)(Math.random() * MAX_XP_EFFECT);
     }
     

@@ -23,7 +23,7 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 
 ![](http://i.imgur.com/rll8hnf.png)
 
-The second version of the game is GUI version. 
+The second version of the game is a GUI version. 
 
 ![](http://i.imgur.com/hG1TpJb.gif)
 

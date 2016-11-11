@@ -15,26 +15,42 @@ public abstract class Item {
     protected String name;
     protected int code, price;
 
+    /*
+    * No-arg constructor
+    */
     public Item() {
 	code = 0;
 	name = "Nothing";
 	price = 0;
     }
-
+    
+    /*
+    * Constructor that takes an integer paramter (code)
+    */
     public Item(int code) {
 	this.code = code;
 	this.name = retName();
 	this.price = retPrice();
     }
-
+	
+    /*
+    * Getter function for the item code 
+    */
     public double getCode() {
 	return this.code;
     }
 
+    /*
+    * Getter function for the item name
+    */
     public String getName() {
 	return this.name;
     }
 
+    /*
+    * Helper function that returns the name of
+    * the item based on the 'code' instance variable
+    */
     private String retName() {
 	switch(this.code) {
 	    case 0:
@@ -65,10 +81,17 @@ public abstract class Item {
 	return "Nothing";
     }
 
+    /*
+    * Getter function for the item price
+    */
     public int getPrice() {
 	return this.price;
     }
-
+    
+    /*
+    * Helper function that returns price of item
+    * based on the 'code' instance variable
+    */
     private int retPrice() {
 	switch(this.code) {
 	    case 1:
@@ -94,7 +117,11 @@ public abstract class Item {
 	}
 	return 0;
     }
-
+    
+    /*
+    * Function that takes an int param and determines if
+    * it is a valid item code, returning a boolean value
+    */
     protected boolean isValidItemCode(int code) {
 	for (int i = 0; i<validCodes.length; i++) {
 	    if(validCodes[i] == code)

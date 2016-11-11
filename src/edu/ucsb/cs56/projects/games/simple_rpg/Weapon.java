@@ -8,8 +8,9 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
 public class Weapon extends Item {
 
     public static final int MAX_STR_BONUS = 5;
+    public static final int MAX_DMG_BONUS = 20;
     
-	private int strBonus;
+	private int strBonus, dmgBonus;
 	
 	/**
  	 * No-arg constructor for Weapon object.
@@ -17,6 +18,7 @@ public class Weapon extends Item {
 	public Weapon() {
 	        super();
 		this.strBonus = 0;
+		this.dmgBonus = 0;
 	}
 
 	/**
@@ -25,7 +27,8 @@ public class Weapon extends Item {
 	public Weapon(int code) {
 	    super(code);
 	    if (isValidItemCode(code) == true) {
-		this.strBonus = retStrBonus();
+		this.strBonus = genStrBonus();
+		this.dmgBonus = genDmgBonus();
 	    } else {
        		throw new IllegalArgumentException("Integer parameter is not a valid weapon code.");
 		}
@@ -35,16 +38,31 @@ public class Weapon extends Item {
 	    return this.strBonus;
 	}
 
-        private int retStrBonus() {
+        private int genStrBonus() {
 	    if (this.getCode() == 5)
-		return this.generateStrBonus();
+		return this.randStrBonus();
 	    else
-		return (int) (this.getCode()*10);
+		return this.getCode();
 	}
-
-        private int generateStrBonus() {
+	
+	public int getDmgBonus() {
+            return this.dmgBonus;	
+	}
+	
+	public int genDmgBonus() {
+	    if (this.getCode() == 5)
+		return randDmgBonus();
+	    else
+		return 0; //temp placeholder. should be read value 
+	}
+	
+        private int randStrBonus() {
 	    return (int)(Math.random() * MAX_STR_BONUS);
         }
+	
+	private int randDmgBonus() {
+	    return (int)(Math.random() * MAX_DMG_BONUS);
+	}
 
 	public String toString() {
 	    return this.getName() + " - " + this.getPrice() + " gold";

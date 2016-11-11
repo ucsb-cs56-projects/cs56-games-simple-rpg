@@ -1,10 +1,7 @@
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
-import java.awt.Graphics2D;
-import java.awt.geom.Area;
-
 /** 
- * @author Vivek Patel
+ * @author Vivek Patel, Nick Perry
  * @version CS56-W15 03/05, 1.0
  */
 

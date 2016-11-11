@@ -11,11 +11,11 @@ public abstract class Item {
 
     public static final int MULTIPLIER = 5;
     /*
-    *          Item Code Allocation 
-    *    [int code range]      | [itemType]
-    *    ----------------------------------
-    *    [0, 1, 2, 3, ..., 9]  | [Weapon]
-    *    [10, 11, 12, ..., 19] | [Potion]
+    *          Item Code Allocation                      Item Codes In-Use
+    *    [int code range]      | [itemType]     [ints currently in use]  | [itemType]
+    *    ----------------------------------	-------------------------------------
+    *    [0, 1, 2, 3, ..., 9]  | [Weapon]	[0, 1, 2, 3, 4, 5]       | [Weapon]
+    *    [10, 11, 12, ..., 19] | [Potion]	[10, 11, 12, 13, 14, 15] | [Potion]
     */
     private double[] validCodes = {0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15};
     protected String name;

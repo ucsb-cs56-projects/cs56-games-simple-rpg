@@ -1,6 +1,3 @@
-/**
- *
- */
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
 import java.util.*;
@@ -10,13 +7,15 @@ import java.awt.geom.Area;
  * Represents the Player/MainCharacter
  *
  * @author Alvin Tan, Daniel Chojnacki
- */
+ * 
+*/
+
 public class MainCharacter extends Entity{
     private int xp;
     private int needXP;
     private int statPoints;
     private int gold;
-    private ArrayList<Weapon> wpns = new ArrayList<Weapon>();
+    private Inventory bag;
     private Weapon currentWpn;
 
     /**
@@ -42,8 +41,8 @@ public class MainCharacter extends Entity{
         maxDMG = (int) ((str * 2.3 + agi * 0.22 + intel * 0.2) + lvl * 0.8);
         needXP = (int) (Math.pow(2, lvl / 3) * 3 + 100);
         Weapon fist = new Weapon();
-        wpns.add(0, fist);
-        currentWpn = wpns.get(0);
+        bag.addItem(fist);
+        currentWpn = fist;
     }
 
 
@@ -57,7 +56,7 @@ public class MainCharacter extends Entity{
     /**
      * @param xp sets the main character's xp
      **/
-    public void setXp() {
+    public void setXp(int xp) {
 	this.xp = xp;
     }
 
@@ -217,25 +216,6 @@ public class MainCharacter extends Entity{
         dmg = (int) (dmg * .90);
 	hp = hp-=dmg;
         return dmg;
-    }
-
-    public void addWeapon(Weapon wp) {
-	wpns.add(wp);
-    }
-
-    public boolean weaponInInventory(Weapon wp) {
-        return wpns.contains(wp);
-    }
-
-    public boolean removeWeapon(Weapon wp) {
-	int wpIndex = wpns.indexOf(wp);
-	if (wpIndex != -1) {
-	    wpns.remove(wpIndex);
-	    return true;
-	}
-	else {
-	    return false;
-	}
     }
 
 }

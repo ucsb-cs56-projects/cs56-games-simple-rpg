@@ -23,6 +23,15 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 
 ![](http://i.imgur.com/rll8hnf.png)
 
+The second version of the game is GUI version. 
+
+![](http://imgur.com/a/KmG3d)
+
+Current GUI Game Implementations:
+- MainCharacter can move around screen using input from arrow keys
+- Shop can be accessed through a JButton. Currently the shop has very limited function.
+- After shop has been accessed, the MainCharacter no longer responds to arrow key input and the 'esc' key does not quit the game. At this point, you must manually close the JFrame to end the game.
+
 Project History
 ===============
 ```

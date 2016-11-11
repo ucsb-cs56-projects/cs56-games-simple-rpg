@@ -41,7 +41,8 @@ public class MainCharacter extends Entity{
         maxDMG = (int) ((str * 2.3 + agi * 0.22 + intel * 0.2) + lvl * 0.8);
         needXP = (int) (Math.pow(2, lvl / 3) * 3 + 100);
         Weapon fist = new Weapon();
-        bag.addItem(fist);
+	bag = new Inventory();
+	bag.addItem(fist);
         currentWpn = fist;
     }
 

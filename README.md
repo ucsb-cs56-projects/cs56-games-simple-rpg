@@ -25,7 +25,7 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 
 The second version of the game is GUI version. 
 
-![](http://imgur.com/a/KmG3d)
+![](http://i.imgur.com/hG1TpJb.gifv)
 
 Current GUI Game Implementations:
 - MainCharacter can move around screen using input from arrow keys

@@ -29,7 +29,7 @@ public class Inventory {
 	    if(index != -1)
 		return inv.get(index);
 	    else
-		return NULL;
+		return null;
     }
     
     public void removeItem(Item i) {

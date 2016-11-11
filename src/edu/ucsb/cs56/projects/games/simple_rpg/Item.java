@@ -10,7 +10,13 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
 public abstract class Item {
 
     public static final int MULTIPLIER = 5;
-
+    /*
+    *          Item Code Allocation 
+    *    [int code range]      | [itemType]
+    *    ----------------------------------
+    *    [0, 1, 2, 3, ..., 9]  | [Weapon]
+    *    [10, 11, 12, ..., 19] | [Potion]
+    */
     private double[] validCodes = {0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15};
     protected String name;
     protected int code, price;

@@ -18,7 +18,10 @@ public class Inventory {
     }
 
     public void addItem(Item i){
-	inv.add(i);
+	if(i instanceof Weapon)
+		inv.add(0,i);
+	else
+		 inv.add(i);
     }
 
     public void removeItem(Item i){

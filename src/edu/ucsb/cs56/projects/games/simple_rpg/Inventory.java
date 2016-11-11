@@ -23,11 +23,23 @@ public class Inventory {
 	else
 		 inv.add(i);
     }
-
-    public void removeItem(Item i){
+    
+    public Item getItem(Item i) {
+    	int index = inv.indexOf(i);
+	    if(index != -1)
+		return inv.get(index);
+	    else
+		return NULL;
+    }
+    
+    public void removeItem(Item i) {
 	int index = inv.indexOf(i);
 	if(index != -1)
 	   inv.remove(i);
     }
     
+    public boolean itemInInv(Item i) {
+	    return inv.contains(i);
+    }
+	
 }

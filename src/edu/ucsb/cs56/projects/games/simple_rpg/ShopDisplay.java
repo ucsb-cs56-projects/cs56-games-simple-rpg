@@ -61,7 +61,7 @@ public class ShopDisplay extends JFrame {
 		this.setVisible(true);
 	}
 
-        public ShopDisplay(final MainCharacter mc) {
+  public ShopDisplay(final MainCharacter mc) {
 		//Calls the constructor for the JFrame class, which ShopDisplay extends.
 		super("Shop");
 
@@ -87,9 +87,12 @@ public class ShopDisplay extends JFrame {
 		this.buy = new JButton("Buy");
 		buy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Item temp = (Item)itemSelect.getSelectedItem();
-				itemShop.buyItem(temp, mc);
-				itemSelect.updateUI();
+				Item toBuy = (Item)itemSelect.getSelectedItem();
+				boolean wasBought = itemShop.buyItem(toBuy, mc);
+				if(wasBought == true) {
+					itemSelect.removeItem(itemSelect.getSelectedItem());
+					itemSelect.updateUI();
+				}
 			}
 		});
 		//Adds the JComboBox and the JButton to the JFrame with respect

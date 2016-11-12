@@ -42,12 +42,15 @@ public class Shop {
 		return this.inventory;
 	}
 
-        public void buyItem(Item i, MainCharacter mc) {
+  public boolean buyItem(Item i, MainCharacter mc) {
 	    if ((mc.getGold() >= i.getPrice()) && inventory.itemInInv(i)) {
 	        mc.addItemToInv(i);
 	        mc.setGold(mc.getGold() - i.getPrice());
-		int iIndex = inventory.itemIndex(i);
-		inventory.removeItem(iIndex);
+					int iIndex = inventory.itemIndex(i);
+					inventory.removeItem(iIndex);
+					return true;
 	    }
+			else
+					return false;
 	}
 }

@@ -23,15 +23,22 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 
 ![](http://i.imgur.com/rll8hnf.png)
 
+The second version of the game is a GUI version. 
+
+![](http://i.imgur.com/hG1TpJb.gif)
+
+---------------------------------------------------
+
 Project History
 ===============
 ```
-
 YES | bronhuston | barasuishou | A simple rpg game
 — Edit
  W14 | bronhuston 5pm | barasuishou | A simple rpg game
 ```
 
+### CLI Version
+===============
 Features for the CLI version:
 - Ability to move
 - Basic turn-based battle
@@ -62,3 +69,11 @@ Enemy LV: 1 HP: 20/20 MP 15/15
 Options:
 1. Attack
 2. Run Away
+
+### GUI Version
+===============
+
+Current GUI Game Implementations:
+- MainCharacter can move around screen using input from arrow keys
+- Shop can be accessed through a JButton. Currently the shop has very limited function.
+- After shop has been accessed, the MainCharacter no longer responds to arrow key input and the 'esc' key does not quit the game. At this point, you must manually close the JFrame to end the game.

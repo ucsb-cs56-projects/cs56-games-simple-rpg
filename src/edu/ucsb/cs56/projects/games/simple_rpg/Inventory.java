@@ -17,13 +17,22 @@ public class Inventory {
 	inv = new ArrayList<Item>();
     }
 
-    public void addItem(Item i){
-	if(i instanceof Weapon)
-		inv.add(0,i);
-	else
-		 inv.add(i);
+    public ArrayList<Item> getInvArray() {
+      return inv;
     }
-    
+
+
+    public void addItem(Item i){
+	     if(i instanceof Weapon)
+		     inv.add(0,i);
+	     else
+		     inv.add(i);
+    }
+
+    public void addItem(Item i, int index){
+      inv.add(index, i);
+    }
+
     public Item getItem(Item i) {
     	int index = inv.indexOf(i);
 	    if(index != -1)
@@ -31,15 +40,25 @@ public class Inventory {
 	    else
 		return null;
     }
-    
-    public void removeItem(Item i) {
-	int index = inv.indexOf(i);
-	if(index != -1)
-	   inv.remove(i);
+
+    public void removeItem(int i){
+      int index = i;
+       if(index >= 0)
+        inv.remove(i);
+
     }
-    
+    public void removeItem(Item i) {
+	     int index = inv.indexOf(i);
+	      if(index != -1)
+	       inv.remove(i);
+    }
+
     public boolean itemInInv(Item i) {
 	    return inv.contains(i);
     }
-	
+
+    public int itemIndex(Item i) {
+      return inv.indexOf(i);
+    }
+
 }

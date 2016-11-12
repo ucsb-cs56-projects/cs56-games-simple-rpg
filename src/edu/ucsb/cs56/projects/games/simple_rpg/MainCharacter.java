@@ -7,7 +7,7 @@ import java.awt.geom.Area;
  * Represents the Player/MainCharacter
  *
  * @author Alvin Tan, Daniel Chojnacki
- * 
+ *
 */
 
 public class MainCharacter extends Entity{
@@ -46,6 +46,9 @@ public class MainCharacter extends Entity{
         currentWpn = fist;
     }
 
+    public void addItemToInv(Item i){
+      bag.addItem(i);
+    }
 
     /**
      * @return main character's xp

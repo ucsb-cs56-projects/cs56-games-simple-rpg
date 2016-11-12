@@ -4,7 +4,7 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
  * * * * * * * * * * * * *
  * @author Nick Perry    *
  * @version CS56-F16 1.0 *
- * * * * * * * * * * * * * 
+ * * * * * * * * * * * * *
 */
 
 public abstract class Item {
@@ -13,9 +13,9 @@ public abstract class Item {
     /*
     *          Item Code Allocation                      Item Codes In-Use
     *    [int code range]      | [itemType]     [ints currently in use]  | [itemType]
-    *    ----------------------------------	-------------------------------------
-    *    [0, 1, 2, 3, ..., 9]  | [Weapon]	[0, 1, 2, 3, 4, 5]       | [Weapon]
-    *    [10, 11, 12, ..., 19] | [Potion] 	[10, 11, 12, 13, 14, 15] | [Potion]
+    *    ----------------------------------	    -------------------------------------
+    *    [0, 1, 2, 3, ..., 9]  | [Weapon]	      [0, 1, 2, 3, 4, 5]       | [Weapon]
+    *    [10, 11, 12, ..., 19] | [Potion] 	    [10, 11, 12, 13, 14, 15] | [Potion]
     *    [20, 21, 22, ..., 29] | [Spell]        [20, 21, 22, 23, 14, 25] | [Spell]
     */
     private double[] validCodes = {0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15};
@@ -26,32 +26,32 @@ public abstract class Item {
     * No-arg constructor
     */
     public Item() {
-	code = 0;
-	name = "Nothing";
-	price = 0;
+	     code = 0;
+	      name = "Nothing";
+	       price = 0;
     }
-    
+
     /*
     * Constructor that takes an integer paramter (code)
     */
     public Item(int code) {
-	this.code = code;
-	this.name = retName();
-	this.price = retPrice();
+	     this.code = code;
+	      this.name = retName();
+	       this.price = retPrice();
     }
-	
+
     /*
-    * Getter function for the item code 
+    * Getter function for the item code
     */
     public int getCode() {
-	return this.code;
+	     return this.code;
     }
 
     /*
     * Getter function for the item name
     */
     public String getName() {
-	return this.name;
+	     return this.name;
     }
 
     /*
@@ -59,19 +59,19 @@ public abstract class Item {
     * the item based on the 'code' instance variable
     */
     private String retName() {
-	switch(this.code) {
-	    case 0:
-	        return "Fists";
-	    case 1:
-	        return "Wooden Club";
-	    case 2:
-	        return "Battle Axe";
-	    case 3:
-	        return "Warhammer";
-	    case 4:
-	        return "Sword";
-	    case 5:
-	        return "Unique weapon";
+	     switch(this.code) {
+	        case 0:
+	           return "Fists";
+	        case 1:
+	           return "Wooden Club";
+	        case 2:
+	           return "Battle Axe";
+	        case 3:
+	           return "Warhammer";
+	        case 4:
+	           return "Sword";
+	        case 5:
+	           return "Unique weapon";
 	    case 10:
 	        return "Empty Potion";
 	    case 11:
@@ -94,7 +94,7 @@ public abstract class Item {
     public int getPrice() {
 	return this.price;
     }
-    
+
     /*
     * Helper function that returns price of item
     * based on the 'code' instance variable
@@ -124,17 +124,16 @@ public abstract class Item {
 	}
 	return 0;
     }
-    
+
     /*
     * Function that takes an int param and determines if
     * it is a valid item code, returning a boolean value
     */
     protected boolean isValidItemCode(int code) {
-	for (int i = 0; i<validCodes.length; i++) {
-	    if(validCodes[i] == code)
-		return true;
-	}
-	return false;
+	     for (int i = 0; i<validCodes.length; i++) {
+	        if(validCodes[i] == code)
+		   return true;
+	    }
+	     return false;
     }
 }
-

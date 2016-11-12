@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Represents the abstract structure for the RPG's shop
  *
- * @author Vivek Patel, Daniel Chojnacki
+ * @author Vivek Patel, Daniel Chojnacki, Nick Perry
  * @version CS56-W15 03/05, 1.0
  */
 
@@ -20,7 +20,6 @@ public class Shop {
  	 */
 	public Shop() {
 		inventory = new Inventory();
-		inventory.addItem(null);
 		for (int i = 1; i <= 5; i++) {
 			Weapon w = new Weapon(i);
 			inventory.addItem(w);

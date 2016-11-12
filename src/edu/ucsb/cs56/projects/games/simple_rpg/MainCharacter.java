@@ -6,7 +6,7 @@ import java.awt.geom.Area;
 /**
  * Represents the Player/MainCharacter
  *
- * @author Alvin Tan, Daniel Chojnacki
+ * @author Alvin Tan, Daniel Chojnacki, Nick Perry
  *
 */
 

@@ -3,10 +3,10 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
 import java.util.ArrayList;
 
 /*
- *
- * @author Nick Perry
- * @version CS56-F16 1.0
- *
+ _________________________
+ | @author Nick Perry    |
+ | @version CS56-F16 1.0 |
+ -------------------------
  */
 
 public class Inventory {

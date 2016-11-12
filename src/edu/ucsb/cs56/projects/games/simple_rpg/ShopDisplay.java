@@ -9,7 +9,7 @@ import javax.swing.*;
  * Represents the display that shows the shop with weapon selection
  * and purchase options of items declared in the Shop class
  *
- * @author Vivek Patel
+ * @author Vivek Patel, Nick Perry
  * @version CS56-W15 03/08, 1.0
  */
 

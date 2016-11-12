@@ -1,15 +1,12 @@
-/**
- *
- */
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
 /**
  * Abstract class that every enemy shall inherit from
  *
- * @author Alvin Tan, Daniel Chojnacki
+ * @author Alvin Tan, Daniel Chojnacki, Nick Perry
  */
 public abstract class Enemy extends Entity{
-    protected Reward r;
+    protected Loot l;
 
     /**
      * Constructor that initializes the name/type of the enemy represented
@@ -17,8 +14,8 @@ public abstract class Enemy extends Entity{
      * @param s String to represent the name (ie. type) of enemy
      */
     protected Enemy(String s) {
-	super(s);
-        r = new Reward();
+	     super(s);
+        l = new Loot();
     }
 
     /**
@@ -42,5 +39,5 @@ public abstract class Enemy extends Entity{
      *
      * @return the reward that this enemy holds if it's dead otherwise, returns empty reward
      */
-    public abstract Reward giveReward();
+    public abstract Loot loot();
 }

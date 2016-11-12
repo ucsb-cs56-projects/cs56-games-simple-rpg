@@ -13,11 +13,11 @@ public class Spell extends Item {
     public static final int MAX_WATER_DMG = 35;
     public static final int MAX_WIND_DMG = 20;
     public static final int MAX_ELEC_DMG = 40;
-    
+
     private int waterDmg, fireDmg, windDmg, elecDmg;
 
     //no-arg constructor for Potion object
-    public Spell() {	
+    public Spell() {
 	super();
 	waterDmg = 0;
 	fireDmg = 0;
@@ -43,9 +43,9 @@ public class Spell extends Item {
     }
 
     private int genWaterDmg() {
-	if (this.getCode() == 21)
+	if (super.getCode() == 21)
 	    return MAX_WATER_DMG;
-	else if (this.getCode() == 25)
+	else if (super.getCode() == 25)
 	    return this.randWaterDmg();
 	else
 	    return 0;
@@ -59,7 +59,7 @@ public class Spell extends Item {
     private int genFireDmg() {
 	if (this.getCode() == 22)
 	    return MAX_FIRE_DMG;
-	else if (this.getCode() == 25)
+	else if (super.getCode() == 25)
 	    return this.randFireDmg();
 	else
 	    return 0;
@@ -71,9 +71,9 @@ public class Spell extends Item {
     }
 
     private int genWindDmg() {
-	if (this.getCode() == 23)
+	if (super.getCode() == 23)
 	    return MAX_WIND_DMG;
-	else if (this.getCode() == 25)
+	else if (super.getCode() == 25)
 	    return this.randWindDmg();
 	else
 	    return 0;
@@ -84,9 +84,9 @@ public class Spell extends Item {
     }
 
     public int genElecDmg() {
-	if (this.getCode() == 24)
+	if (super.getCode() == 24)
 	    return MAX_ELEC_DMG;
-	else if (this.getCode() == 25)
+	else if (super.getCode() == 25)
 	    return this.randElecDmg();
 	else
 	    return 0;
@@ -109,6 +109,6 @@ public class Spell extends Item {
     }
     
     public String toString() {
-	return this.getName() + " - " + this.getPrice() + " gold";
+	return super.getName() + " - " + super.getPrice() + " gold";
     }
 }

@@ -12,13 +12,13 @@ public class Potion extends Item {
     public static final int MAX_HP_EFFECT = 100;
     public static final int MAX_MP_EFFECT = 100;
     public static final int MAX_XP_EFFECT = 100;
-    
+
     private int hpEffect;
     private int mpEffect;
     private int xpEffect;
 
     //no-arg constructor for Potion object
-    public Potion() {	
+    public Potion() {
 	super();
 	this.hpEffect = 0;
 	this.mpEffect = 0;
@@ -42,9 +42,9 @@ public class Potion extends Item {
     }
 
     private int genHPEffect() {
-	if (this.getCode() == 11)
+	if (super.getCode() == 11)
 	    return MAX_HP_EFFECT;
-	else if (this.getCode() == 14)
+	else if (super.getCode() == 14)
 	    return this.randHPEffect();
 	else
 	    return 0;
@@ -56,9 +56,9 @@ public class Potion extends Item {
     }
 
     private int genMPEffect() {
-	if (this.getCode() == 12)
+	if (super.getCode() == 12)
 	    return MAX_MP_EFFECT;
-	else if (this.getCode() == 14)
+	else if (super.getCode() == 14)
 	    return this.randMPEffect();
 	else
 	    return 0;
@@ -70,9 +70,9 @@ public class Potion extends Item {
     }
 
     private int genXPEffect() {
-	if (this.getCode() == 13)
+	if (super.getCode() == 13)
 	    return MAX_XP_EFFECT;
-	else if (this.getCode() == 14)
+	else if (super.getCode() == 14)
 	    return this.randXPEffect();
 	else
 	    return 0;
@@ -89,10 +89,8 @@ public class Potion extends Item {
     private int randXPEffect() {
 	return (int)(Math.random() * MAX_XP_EFFECT);
     }
-    
+
     public String toString() {
-	return this.getName() + " - " + this.getPrice() + " gold";
+	return super.getName() + " - " + super.getPrice() + " gold";
     }
 }
-	
-	   

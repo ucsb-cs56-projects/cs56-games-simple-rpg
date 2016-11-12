@@ -23,7 +23,7 @@ public class GoblinFigure implements Shape {
 	gob = new Goblin();
     }
 
-    public GoblinFigure(Goblin g) {
+    public GoblinFigure(Goblin gob) {
 	gp = new GeneralPath();
 	this.gob = gob;
 	Ellipse2D.Double head = new Ellipse2D.Double(gob.getX() - 5,
@@ -56,14 +56,14 @@ public class GoblinFigure implements Shape {
 	gp.append(rightLeg, false);
 	gp.append(leftArm, false);
 	gp.append(rightArm, false);
-	
+
     }
 
     // Methods implemented below were copied from the
     // MainCharacterFigure class, they are identical.
     // | | | | | | | | | | | | | | | | | | | | | | |
     // V V V V V V V V V V V V V V V V V V V V V V V
-    
+
     public boolean contains(double x, double y) {
 	if (x >= (gob.getX() - 5) && x <= (gob.getX() + 5) && y >= gob.getY() && y <= (gob.getY() + 30)) {
 	    return true;

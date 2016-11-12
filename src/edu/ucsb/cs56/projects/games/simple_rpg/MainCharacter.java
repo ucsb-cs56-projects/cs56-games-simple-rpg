@@ -29,7 +29,7 @@ public class MainCharacter extends Entity{
 	intel = 1;
         statPoints = 5;
         xp = 0;
-        gold = 0;
+        gold = 50;
 	lvl = 1;
 	x = 0;
 	y = 0;
@@ -149,13 +149,13 @@ public class MainCharacter extends Entity{
      * @param e enemy defeated
      * @return true if successful and false otherwise
      */
-    public boolean retrieveReward(Enemy e) {
-        Reward r = e.giveReward();
-        if (r.getXp() == -1 || r.getGold() == -1) {
+    public boolean getLoot(Enemy e) {
+        Loot l = e.loot();
+        if (l.getXp() == -1 || l.getGold() == -1) {
             return false;
         } else {
-            xp += r.getXp();
-            gold += r.getGold();
+            xp += l.getXp();
+            gold += l.getGold();
             return true;
         }
     }

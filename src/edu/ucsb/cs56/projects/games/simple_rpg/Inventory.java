@@ -11,16 +11,30 @@ import java.util.ArrayList;
 
 public class Inventory {
 
+    public String name;
     private ArrayList<Item> inv;
 
     public Inventory() {
-	inv = new ArrayList<Item>();
+      this.name = "Inventory";
+      inv = new ArrayList<Item>();
+    }
+
+    public Inventory(String name) {
+      this.name = name;
+       inv = new ArrayList<Item>();
     }
 
     public ArrayList<Item> getInvArray() {
       return inv;
     }
 
+    public void setName(String name){
+      this.name = name;
+    }
+
+    public String getName() {
+      return name;
+    }
 
     public void addItem(Item i){
 	     if(i instanceof Weapon)

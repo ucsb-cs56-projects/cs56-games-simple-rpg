@@ -18,7 +18,7 @@ public abstract class Item {
     *    [10, 11, 12, ..., 19] | [Potion] 	    [10, 11, 12, 13, 14, 15] | [Potion]
     *    [20, 21, 22, ..., 29] | [Spell]        [20, 21, 22, 23, 14, 25] | [Spell]
     */
-    private double[] validCodes = {0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15};
+    private int[] validCodes = {0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15};
     protected String name;
     protected int code, price;
 

@@ -15,25 +15,24 @@ public class MainCharacter extends Entity{
     private int needXP;
     private int statPoints;
     private int gold;
-    private Inventory bag;
     private Weapon currentWpn;
 
     /**
      * Default Constructor. Creates a lvl 1 Main Character
      */
     public MainCharacter() {
-	super("Main Character");
-	agi = 1;
-	str = 1;
-	sta = 1;
-	intel = 1;
-        statPoints = 5;
-        xp = 0;
-        gold = 50;
-	lvl = 1;
-	x = 0;
-	y = 0;
-	hp = (int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
+	     super("Main Character");
+	      agi = 1;
+	       str = 1;
+	        sta = 1;
+	         intel = 1;
+           statPoints = 5;
+           xp = 0;
+           gold = 50;
+	          lvl = 1;
+	           x = 0;
+	            y = 0;
+	             hp = (int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
         mp = (int) ((10 + intel * 1.2) + lvl * 1.3);
         maxHP = (int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
         maxMP = (int) ((10 + intel * 1.2) + lvl * 1.3);
@@ -41,13 +40,13 @@ public class MainCharacter extends Entity{
         maxDMG = (int) ((str * 2.3 + agi * 0.22 + intel * 0.2) + lvl * 0.8);
         needXP = (int) (Math.pow(2, lvl / 3) * 3 + 100);
         Weapon fist = new Weapon();
-	bag = new Inventory();
-	bag.addItem(fist);
+	      inv = new Inventory("Bag");
+	      inv.addItem(fist);
         currentWpn = fist;
     }
 
     public void addItemToInv(Item i){
-      bag.addItem(i);
+      inv.addItem(i);
     }
 
     /**

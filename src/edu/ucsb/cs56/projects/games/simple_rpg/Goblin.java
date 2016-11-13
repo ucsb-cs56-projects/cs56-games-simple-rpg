@@ -11,12 +11,17 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
 public class Goblin extends Enemy {
 
     private Loot loot;
+    private Weapon currentWpn;
     /**
      * Default constructor. Creates a Goblin of lvl1-3 with random loot.
      */
     public Goblin() {
         super("Goblin");
         loot = new Loot();
+        Weapon fist = new Weapon();
+	      inv = new Inventory("Bag");
+	      inv.addItem(fist);
+        currentWpn = fist;
         agi = (int) (3 + lvl * 1.2);
         str = (int) (5 + lvl * 1.2);
         sta = (int) (1 + lvl * 1.2);

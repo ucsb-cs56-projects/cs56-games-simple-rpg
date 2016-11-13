@@ -18,6 +18,15 @@ public abstract class Enemy extends Entity{
         l = new Loot();
     }
 
+    /*
+    protected Item generateRandItem(int code){
+        if(code == 0){
+
+        }
+
+    }
+    */
+
     /**
      * abstract method to calculate true damage from raw damage.
      *

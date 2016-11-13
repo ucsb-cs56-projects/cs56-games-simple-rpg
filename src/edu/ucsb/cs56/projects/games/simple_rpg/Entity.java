@@ -14,6 +14,7 @@ public abstract class Entity {
     protected int maxHP, maxMP, minDMG, maxDMG;
     protected int agi, str, sta, intel;
     protected String name;
+    protected Inventory inv;
     protected int direction;
 
     /**

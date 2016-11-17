@@ -1,6 +1,3 @@
-/**
- *
- */
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
 import java.util.*;
@@ -9,33 +6,33 @@ import java.awt.geom.Area;
 /**
  * Represents the Player/MainCharacter
  *
- * @author Alvin Tan
- */
-public class MainCharacter {
-    private int hp, mp, xp, lvl, x, y;
-    private int maxHP, maxMP, needXP;
-    private int agi, str, sta, intel;
+ * @author Alvin Tan, Daniel Chojnacki, Nick Perry
+ *
+*/
+
+public class MainCharacter extends Entity{
+    private int xp;
+    private int needXP;
     private int statPoints;
-    private int minDMG, maxDMG;
     private int gold;
-    private ArrayList<Weapon> wpns = new ArrayList<Weapon>();
     private Weapon currentWpn;
 
     /**
      * Default Constructor. Creates a lvl 1 Main Character
      */
     public MainCharacter() {
-        agi = 1;
-        str = 1;
-        sta = 1;
-        intel = 1;
-        statPoints = 5;
-        xp = 0;
-        gold = 0;
-        lvl = 1;
-        x = 0;
-        y = 0;
-        hp = (int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
+	     super("Main Character");
+	      agi = 1;
+	       str = 1;
+	        sta = 1;
+	         intel = 1;
+           statPoints = 5;
+           xp = 0;
+           gold = 50;
+	          lvl = 1;
+	           x = 0;
+	            y = 0;
+	             hp = (int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
         mp = (int) ((10 + intel * 1.2) + lvl * 1.3);
         maxHP = (int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
         maxMP = (int) ((10 + intel * 1.2) + lvl * 1.3);
@@ -43,22 +40,13 @@ public class MainCharacter {
         maxDMG = (int) ((str * 2.3 + agi * 0.22 + intel * 0.2) + lvl * 0.8);
         needXP = (int) (Math.pow(2, lvl / 3) * 3 + 100);
         Weapon fist = new Weapon();
-        wpns.add(0, fist);
-        currentWpn = wpns.get(0);
+	      inv = new Inventory("Bag");
+	      inv.addItem(fist);
+        currentWpn = fist;
     }
 
-    /**
-     * @return main character's hp
-     */
-    public int getHp() {
-        return hp;
-    }
-
-    /**
-     * @return main character's mp
-     */
-    public int getMp() {
-        return mp;
+    public void addItemToInv(Item i){
+      inv.addItem(i);
     }
 
     /**
@@ -69,54 +57,10 @@ public class MainCharacter {
     }
 
     /**
-     * @return main character's lvl
-     */
-    public int getLvl() {
-        return lvl;
-    }
-
-    /**
-     * @return main character's x position
-     */
-    public int getX() {
-        return x;
-    }
-
-    /**
-     * @return main character's y position
-     */
-    public int getY() {
-        return y;
-    }
-	
-	/**
- 	 * @param x sets the character's x position
- 	 */ 
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	/**
-	 * @param y sets the character's y position
-	 */	
-	
-	public void setY(int y) {
-		this.y = y;
-	}
-
-    /**
-     * @return main character's max HP
-     */
-    public int getMaxHP() {
-        return maxHP;
-    }
-
-    /**
-     * @return main character's max MP
-     */
-    public int getMaxMP() {
-        return maxMP;
+     * @param xp sets the main character's xp
+     **/
+    public void setXp(int xp) {
+	this.xp = xp;
     }
 
     /**
@@ -127,13 +71,6 @@ public class MainCharacter {
     }
 
     /**
-     * @return main character's agility
-     */
-    public int getAgi() {
-        return agi;
-    }
-
-    /**
      * @return main character's strength
      */
     public int getStr() {
@@ -141,24 +78,17 @@ public class MainCharacter {
     }
 
     /**
-     * @return main character's stamina
-     */
-    public int getSta() {
-        return sta;
-    }
-
-    /**
-     * @return main character's intelligence
-     */
-    public int getIntel() {
-        return intel;
-    }
-
-    /**
      * @return how much gold the main character has
      */
     public int getGold() {
         return gold;
+    }
+
+    /**
+     * @param gold set the amount of gold the main character has
+     **/
+    public void setGold(int gold) {
+	this.gold = gold;
     }
 
     /**
@@ -173,7 +103,7 @@ public class MainCharacter {
      */
     public void incrementAgi() {
         if (statPoints > 0) {
-            agi++;
+	    agi++;
             statPoints--;
             updateStats();
         }
@@ -184,7 +114,7 @@ public class MainCharacter {
      */
     public void incrementStr() {
         if (statPoints > 0) {
-            str++;
+	    str++;
             statPoints--;
             updateStats();
         }
@@ -195,7 +125,7 @@ public class MainCharacter {
      */
     public void incrementSta() {
         if (statPoints > 0) {
-            sta++;
+	    sta++;
             statPoints--;
             updateStats();
         }
@@ -206,86 +136,9 @@ public class MainCharacter {
      */
     public void incrementIntel() {
         if (statPoints > 0) {
-            intel++;
+	    intel++;
             statPoints--;
             updateStats();
-        }
-    }
-
-    /**
-     * checks if MainCharacter is dead (i.e. has no hp left).
-     *
-     * @return true if dead and false if not dead
-     */
-    public boolean isDead() {
-        return (hp <= 0);
-    }
-
-    /**
-     * Attempts to move the main character left.
-     *
-     * @param map int[][] that represents the map
-     * @return true if successful and false otherwise
-     */
-    public boolean moveLeft(int[][] map) {
-        if (x <= 0) {
-            return false;
-        } else if (map[y][x - 1] != 0) {
-            return false;
-        } else {
-            x = x - 1;
-            return true;
-        }
-    }
-
-    /**
-     * Attempts to move the main character right.
-     *
-     * @param map int[][] that represents the map
-     * @return true if successful and false otherwise
-     */
-    public boolean moveRight(int[][] map) {
-        if (x >= 4) {
-            return false;
-        } else if (map[y][x + 1] != 0) {
-            return false;
-        } else {
-            x = x + 1;
-            return true;
-        }
-    }
-
-    /**
-     * Attempts to move the main character up.
-     *
-     * @param map int[][] that represents the map
-     * @return true if successful and false otherwise
-     */
-    public boolean moveUp(int[][] map) {
-        if (y <= 0) {
-            return false;
-        } else if (map[y - 1][x] != 0) {
-            return false;
-        } else {
-            y = y - 1;
-            return true;
-        }
-    }
-
-    /**
-     * Attempts to move the main character down.
-     *
-     * @param map int[][] that represents the map
-     * @return true if successful and false otherwise
-     */
-    public boolean moveDown(int[][] map) {
-        if (y >= 2) {
-            return false;
-        } else if (map[y + 1][x] != 0) {
-            return false;
-        } else {
-            y = y + 1;
-            return true;
         }
     }
 
@@ -295,13 +148,13 @@ public class MainCharacter {
      * @param e enemy defeated
      * @return true if successful and false otherwise
      */
-    public boolean retrieveReward(Enemy e) {
-        Reward r = e.giveReward();
-        if (r.getXp() == -1 || r.getGold() == -1) {
+    public boolean getLoot(Enemy e) {
+        Loot l = e.loot();
+        if (l.getXp() == -1 || l.getGold() == -1) {
             return false;
         } else {
-            xp += r.getXp();
-            gold += r.getGold();
+            xp += l.getXp();
+            gold += l.getGold();
             return true;
         }
     }
@@ -313,7 +166,7 @@ public class MainCharacter {
      */
     public boolean levelUp() {
         if (xp >= needXP) {
-            lvl++;
+	    lvl++;
             needXP = (int) (Math.pow(2, lvl / 3) * 3 + 100);
             statPoints += 2;
             return true;
@@ -326,11 +179,11 @@ public class MainCharacter {
      * private method to update stats after using a stat point
      */
     private void updateStats() {
-        maxHP = (int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
-        maxMP = (int) ((10 + intel * 1.2) + lvl * 1.3);
+        maxHP =(int) ((15 + sta * 1.2 + str * 0.15) + lvl * 3.4);
+	maxMP = (int) ((10 + intel * 1.2) + lvl * 1.3);
         minDMG = (int) ((str * 2 + agi * 0.15) + lvl * 0.8);
         maxDMG = (int) ((str * 2.3 + agi * 0.22) + lvl * 0.8);
-        hp = maxHP;
+	hp = maxHP;
     }
 
     /**
@@ -364,7 +217,7 @@ public class MainCharacter {
      */
     public int attacked(int dmg) {
         dmg = (int) (dmg * .90);
-        hp -= dmg;
+	hp = hp-=dmg;
         return dmg;
     }
 

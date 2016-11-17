@@ -1,6 +1,3 @@
-/**
- *
- */
 package edu.ucsb.cs56.projects.games.simple_rpg;
 
 /**
@@ -9,13 +6,13 @@ package edu.ucsb.cs56.projects.games.simple_rpg;
  *
  * @author Alvin Tan
  */
-public class Reward {
+public class Loot {
     private int xp, gold;
 
     /**
      * Default constructor, makes a Reward with 0xp and 0gold.
      */
-    public Reward() {
+    public Loot() {
         xp = 0;
         gold = 0;
     }
@@ -26,7 +23,7 @@ public class Reward {
      * @param e xp
      * @param g gold
      */
-    public Reward(int e, int g) {
+    public Loot(int e, int g) {
         xp = e;
         gold = g;
     }

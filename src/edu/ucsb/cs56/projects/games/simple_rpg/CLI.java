@@ -149,7 +149,7 @@ public class CLI {
                             }
                             if (en.isDead()) {
                                 System.out.println("You've defeated the enemy!");
-                                mc.retrieveReward(en);
+                                mc.getLoot(en);
                                 tb.printReward(en);
                                 return true;
                             }
@@ -204,7 +204,7 @@ public class CLI {
                             }
                             if (en.isDead()) {
                                 System.out.println("You've defeated the enemy!");
-                                mc.retrieveReward(en);
+                                mc.getLoot(en);
                                 tb.printReward(en);
                                 return true;
                             }

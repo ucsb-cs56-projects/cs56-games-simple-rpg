@@ -67,8 +67,8 @@ public class CLIOutput {
      * @param e Enemy
      */
     public void printReward(Enemy e) {
-        System.out.println("You gained " + e.giveReward().getXp() + " XP!");
-        System.out.println("You got " + e.giveReward().getGold() + " gold!");
+        System.out.println("You gained " + e.loot().getXp() + " XP!");
+        System.out.println("You got " + e.loot().getGold() + " gold!");
 	System.out.println("~~~End Results~~~");
         System.out.println();
     }

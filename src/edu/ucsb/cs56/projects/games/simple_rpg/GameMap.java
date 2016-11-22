@@ -18,6 +18,10 @@ public class GameMap {
     //with 20x20 tiles and a 800x800 resolution
     //therefore we have 40 horizontal tiles and 30 vertical
 	    //there is also an 800x200 grey status bar
+    
+    /**
+     * create a default GameMap
+     */
     public GameMap() {
 	ourMap = new Tile[30][40];
 	for (int i = 0; i < 8; i++) {
@@ -37,12 +41,19 @@ public class GameMap {
 	}
     }
 
-    // a getter function for our gameMap
+    /**
+     * a getter function for our gameMap
+     * @return a Tile[][] of our map
+     */
     public Tile[][] getOurMap() {
 	return ourMap;
     }
-    
-    // this is to implement various kinds of maps
+
+    /**
+     * this is to implement various kinds of maps
+     * the GameMap will be created based on which level we are on
+     * @param level is the number of the level we are on
+     */
     public GameMap (int level) {
 	ourMap = new Tile[30][40];
 	for (int i = 0; i < 40; i++) {
@@ -59,7 +70,12 @@ public class GameMap {
 	}
     }
 
-    // this function is to add rock tiles to our gameMap variable
+    /**
+     * this function is used to add rock tiles to our gameMap variable
+     * @param x the x coordinate of the northwest corner of our rock
+     * @param y the y coordinate of the northwest corner of our rock
+     * @param size the width and length of our rock
+     */
     public void addRock(int x, int y, int size) {
 	if ((size <= 3) && (size > 0)) {
 	    for (int i = 0; i < size; i++) {

@@ -41,9 +41,7 @@ public class ShopDisplay extends JFrame {
 
 		//Initializes the itemSelect instance var to a new JComboBox instance
 		//and fills it with ArrayList of item objects in Shop inventory
-		itemSelect = new JComboBox(itemShop.getInventory()
-																			 .getInvArray()
-																			 .toArray());
+		itemSelect = new JComboBox(itemShop.getInventory().getInvArray().toArray());
 
 		//Initializes the buy instance var to a new JButton instance
 		this.buy = new JButton("Buy");

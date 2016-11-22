@@ -25,6 +25,7 @@ public class Game {
         mc = new MainCharacter();
         //initialize a level with a game map of all grass tiles
         gameLevel = new Level();
+	//set the integer that tells us which level we are on
 	currentMap = gameLevel.levelNum;
     }
 
@@ -35,6 +36,9 @@ public class Game {
         return gameLevel.getLevelMap().getOurMap();
     }
 
+    /**
+     * @return the current Level
+     */
     public Level getGameLevel() {
 	return gameLevel;
     }

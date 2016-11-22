@@ -30,7 +30,9 @@ public class Shop {
 		}
 	}
 
-
+       /**
+        * @param i the Item we will remove from our Shop
+        */
 	public void buyItem(Item i) {
 			inventory.removeItem(i);
 	}
@@ -42,7 +44,11 @@ public class Shop {
 		return this.inventory;
 	}
 
-  public boolean buyItem(Item i, MainCharacter mc) {
+        /**
+         * @param i the Item from our Shop we would like our MainCharacter to buy
+         * @param mc our MainCharacter
+         */
+        public boolean buyItem(Item i, MainCharacter mc) {
 	    if ((mc.getGold() >= i.getPrice()) && inventory.itemInInv(i)) {
 	        mc.addItemToInv(i);
 	        mc.setGold(mc.getGold() - i.getPrice());

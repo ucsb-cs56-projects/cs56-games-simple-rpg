@@ -45,10 +45,16 @@ public class MainCharacter extends Entity{
         currentWpn = fist;
     }
 
+    /**
+     * @param i the Item we would like to add to our Inventory
+     */
     public void addItemToInv(Item i){
       inv.addItem(i);
     }
 
+    /**
+     * @param swapTo the weapon from our inventory we would like to switch our current weapon to
+     */
     public void swapCurrentWeapon(Weapon swapTo) {
 	for (int i = 0; i < inv.getInvArray().size(); i++) {
 	    if (swapTo == inv.getInvArray().get(i)) {

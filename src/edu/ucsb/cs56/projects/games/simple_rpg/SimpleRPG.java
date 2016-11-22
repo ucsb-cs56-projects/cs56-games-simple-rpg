@@ -37,6 +37,8 @@ public class SimpleRPG {
         // Create a JPanel to display the game
 	// note that the Display must be declared final so that its variables can be used in the shop
         final Display disp = new Display();
+	
+	// add a JButton to open the shop
 	JButton shop = new JButton("Go to shop");
 	shop.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -44,6 +46,8 @@ public class SimpleRPG {
 			shopWindow.setVisible(true);
 		}
 	});
+
+	// add a JButton to open the main character's inventory
 	JButton inv = new JButton("Set Weapon");
 	inv.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {

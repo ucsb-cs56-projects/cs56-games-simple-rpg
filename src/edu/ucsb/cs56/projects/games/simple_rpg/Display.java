@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.*;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -16,22 +17,23 @@ import javax.swing.JPanel;
  */
 public class Display extends JPanel {
 
-	public static final int RAND_X_COORD = (int)(170 + Math.random() * 630);
-	public static final int RAND_Y_COORD = (int)(5 + Math.random() * 565);
-
 	Game gm;
 	boolean isSpawned = false;
 	boolean firstSpawn = true;
-	int dxMC = 0;
-	int dyMC = 0;
-	int dxGob = 0;
-	int dyGob = 0;
+        boolean ambushPlayer = true;
+        // the coordinates for our main character
+        // index 0 is for our x component
+        // index 1 is for our y component
+	int[] dMC = {200,200};
+        int[] dGob = {400,400};
+        Goblin gobl;
     /**
      * Default Constructor. Adds a KeyListener.
      */
     public Display() {
         //We have a display, so now we need the actual game
         gm = new Game();
+	gobl = new Goblin();
         this.addKeyListener(new PlayerListener());
     }
 
@@ -43,7 +45,7 @@ public class Display extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 	GeneralPath gp;
-	GoblinFigure gf = new GoblinFigure(gm.gob);
+	GoblinFigure gf = new GoblinFigure(gobl);
 	MainCharacterFigure mcf = new MainCharacterFigure(gm.mc);
         Color g2Color = g2.getColor();
         Tile[][] map = gm.getCurrentMap();
@@ -84,15 +86,20 @@ public class Display extends JPanel {
         g2.drawString("EXP", 10, 700);
 	g2.drawString("LEVEL " + gm.currentMap, 10, 750);
 	g2.setColor(Color.BLACK);
-	mcf.mc.setX(400 + dxMC);
-	mcf.mc.setY(565 + dyMC);
+	mcf.mc.setX(dMC[0]);
+	mcf.mc.setY(dMC[1]);
 	g2.draw(mcf);
 	spawn();
 	if(isSpawned == true) {
+	    if (ambushPlayer) {
+		  ambushMove();
+	    }
+	    else {
 		  randMove();
+	    }
 		  g2.setColor(Color.RED);
-			gf.gob.setX(RAND_X_COORD + dxGob);
-			gf.gob.setY(RAND_Y_COORD + dyGob);
+			gf.gob.setX(dGob[0]);
+			gf.gob.setY(dGob[1]);
 			g2.draw(gf);
   }
 }
@@ -107,26 +114,47 @@ private void randMove() {
 	int rand = (int)(1 + Math.random() * 4);
 	switch (rand) {
 		case 1:
-			if (dyGob >= -560) {
-				dyGob -= 4;
+			if (dGob[1] >= 5) {
+				dGob[1] -= 4;
 			}
 			break;
 		case 2:
-			if (dyGob <= 0) {
-				dyGob += 4;
+			if (dGob[1] <= 560) {
+				dGob[1] += 4;
 			}
 			break;
 		case 3:
-			if (dxGob <= 230) {
-				dxGob += 4;
+			if (dGob[0] <= 625) {
+				dGob[0] += 4;
 			}
 			break;
 		case 4:
-			if (dxGob >= -230) {
-				dxGob -= 4;
+			if (dGob[0] >= 175) {
+				dGob[0] -= 4;
 			}
 			break;
 	}
+}
+
+private void ambushMove() {
+    if ( (Math.abs(dGob[0]-dMC[0]) > 0) || (Math.abs(dGob[1]-dMC[1]) > 0) ) {
+	if ( Math.abs(dGob[0]-dMC[0]) > Math.abs(dGob[1]-dMC[1]) ) {
+	    if (dGob[0] > dMC[0]) {
+		dGob[0] -= 4;
+	    }
+	    else {
+		dGob[0] += 4;
+	    }
+	}
+	else {
+	    if (dGob[1] > dMC[1]) {
+		dGob[1] -= 4;
+	    }
+	    else {
+		dGob[1] += 4;
+	    }
+	}
+    }
 }
 
     public class PlayerListener implements KeyListener {
@@ -142,23 +170,23 @@ private void randMove() {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 System.exit(0);
             } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-							if (dyMC >= -560) {
-								dyMC -= 4;
+							if (dMC[1] >= 5) {
+								dMC[1] -= 4;
 							}
 							repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-								if (dyMC <= 0) {
-									dyMC += 4;
+								if (dMC[1] <= 560) {
+									dMC[1] += 4;
 								}
 								repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-								if (dxMC <= 230) {
-									dxMC += 4;
+								if (dMC[0] <= 625) {
+									dMC[0] += 4;
 								}
 								repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-								if (dxMC >= -230) {
-									dxMC -= 4;
+								if (dMC[0] >= 175) {
+									dMC[0] -= 4;
 								}
 								repaint();
             }

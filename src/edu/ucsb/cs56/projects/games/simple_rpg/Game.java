@@ -14,8 +14,7 @@ public class Game {
 
     //instance variables
     MainCharacter mc;
-    Goblin gob;
-    GameMap gameMap;
+    Level gameLevel;
     static int currentMap;
 
     /**
@@ -24,16 +23,20 @@ public class Game {
     public Game() {
         //We have a game and a display, now we need the backend
         mc = new MainCharacter();
-        //initialize a map with all grass tiles
-        gob = new Goblin();
-        gameMap = new GameMap();
-	currentMap = 1;
+        //initialize a level with a game map of all grass tiles
+        gameLevel = new Level();
+	currentMap = gameLevel.levelNum;
     }
 
     /**
      * @return the current map
      */
     public Tile[][] getCurrentMap() {
-        return gameMap.getOurMap();
+        return gameLevel.getLevelMap().getOurMap();
     }
+
+    public Level getGameLevel() {
+	return gameLevel;
+    }
+    
 }

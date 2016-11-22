@@ -34,6 +34,13 @@ public abstract class Entity {
     }
 
     /**
+     * @return the inventory
+     */
+    public Inventory getInventory() {
+	return inv;
+    }
+
+    /**
      * @param hp sets the entity's hp
      **/
     public void setHp(int hp) {

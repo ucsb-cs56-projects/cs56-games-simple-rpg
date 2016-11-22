@@ -80,8 +80,8 @@ public class ShopDisplay extends JFrame {
 		//Initializes the weaponSelect instance var to a new JComboBox instance
 		//and fills it with ArrayList of Weapon objects in Shop inventory
 		itemSelect = new JComboBox(itemShop.getInventory()
-																			 .getInvArray()
-																		   .toArray());
+					   .getInvArray()
+					   .toArray());
 
 		//Initializes the buy instance var to a new JButton instance
 		this.buy = new JButton("Buy");
@@ -101,4 +101,46 @@ public class ShopDisplay extends JFrame {
 		this.add(buy);
 		this.setVisible(true);
 	}
+
+  public ShopDisplay(final Display disp) {
+		//Calls the constructor for the JFrame class, which ShopDisplay extends.
+		super("Shop");
+
+		//Initializes the weaponShop instance var to new Shop instance
+		itemShop = new Shop();
+		setSize(400, 200);
+
+		//Initializes the shopLayout instance var to a new FlowLayout instance
+		shopLayout = new FlowLayout();
+
+		//Sets the LayoutManager of this JFrame to FlowLayout and
+		//sets the JFrame's default close operation
+		this.setLayout(shopLayout);
+		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+
+		//Initializes the weaponSelect instance var to a new JComboBox instance
+		//and fills it with ArrayList of Weapon objects in Shop inventory
+		itemSelect = new JComboBox(itemShop.getInventory()
+					   .getInvArray()
+					   .toArray());
+
+		//Initializes the buy instance var to a new JButton instance
+		this.buy = new JButton("Buy");
+		buy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item toBuy = (Item)itemSelect.getSelectedItem();
+				boolean wasBought = itemShop.buyItem(toBuy, disp.gm.mc);
+				if(wasBought == true) {
+					itemSelect.removeItem(itemSelect.getSelectedItem());
+					itemSelect.updateUI();
+				}
+			}
+		});
+		//Adds the JComboBox and the JButton to the JFrame with respect
+		//to the FlowLayout
+		this.add(itemSelect);
+		this.add(buy);
+		this.setVisible(true);
+	}
+
 }

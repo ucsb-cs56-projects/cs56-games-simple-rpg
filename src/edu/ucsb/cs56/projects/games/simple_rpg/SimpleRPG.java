@@ -23,7 +23,7 @@ public class SimpleRPG {
         JFrame frame = new JFrame("Simple RPG");
 
         // Set Size of window
-        frame.setSize(920, 800);
+        frame.setSize(910, 850);
         //frame.setUndecorated(true);
 
         // Always do this so that the red X (or red circle) works
@@ -44,12 +44,20 @@ public class SimpleRPG {
 			shopWindow.setVisible(true);
 		}
 	});
+	JButton inv = new JButton("Set Weapon");
+	inv.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    InventoryDisplay invWindow = new InventoryDisplay(disp.gm.mc);
+		        invWindow.setVisible(true);
+		}
+	});
         // allow it to be focusable so that it can read input
         disp.setFocusable(true);
 
         // add Everything to the JFrame
         frame.add(disp, BorderLayout.CENTER);
 	frame.add(shop, BorderLayout.EAST);
+	frame.add(inv, BorderLayout.SOUTH);
 
         // Make the window visible
         frame.setVisible(true);

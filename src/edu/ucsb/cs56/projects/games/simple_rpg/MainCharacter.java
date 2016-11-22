@@ -49,6 +49,14 @@ public class MainCharacter extends Entity{
       inv.addItem(i);
     }
 
+    public void swapCurrentWeapon(Weapon swapTo) {
+	for (int i = 0; i < inv.getInvArray().size(); i++) {
+	    if (swapTo == inv.getInvArray().get(i)) {
+		currentWpn = (Weapon) inv.getInvArray().get(i);
+	    }
+	}
+    }
+
     /**
      * @return main character's xp
      */

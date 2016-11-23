@@ -48,11 +48,11 @@ public class Display extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 	GeneralPath gp;
-	
+
 	// create our GobinFigure and MainCharacterFigure
 	GoblinFigure gf = new GoblinFigure(gobl);
 	MainCharacterFigure mcf = new MainCharacterFigure(gm.mc);
-	
+
         Color g2Color = g2.getColor();
 
 	//draw the map for our Display
@@ -82,11 +82,11 @@ public class Display extends JPanel {
 	g2.setColor(Color.GRAY);
 	g2.fillRect(0, 600, 800, 200);
 	g2.setColor(Color.RED);
-        g2.fill3DRect(30, 620, 150 * (gm.mc.getHp()/gm.mc.getMaxHP()), 20, true); // our HP bar
+        g2.fill3DRect(30, 620, 150 * (gm.mc.getHP()/gm.mc.getMaxHP()), 20, true); // our HP bar
         g2.setColor(Color.BLUE);
-        g2.fill3DRect(30, 660, 150 * (gm.mc.getMp()/gm.mc.getMaxMP()), 20, true); // our MP bar
+        g2.fill3DRect(30, 660, 150 * (gm.mc.getMP()/gm.mc.getMaxMP()), 20, true); // our MP bar
         g2.setColor(Color.ORANGE);
-        g2.fill3DRect(30, 700, gm.mc.getXp(), 20, true); // our EXP bar
+        g2.fill3DRect(30, 700, gm.mc.getXP(), 20, true); // our EXP bar
         g2.setColor(Color.BLACK);
         g2.drawString("Press Esc to Exit", 0, 10);
         g2.drawString("HP", 10, 620);
@@ -94,7 +94,7 @@ public class Display extends JPanel {
         g2.drawString("EXP", 10, 700);
 	g2.drawString("LEVEL " + gm.currentMap, 10, 750); // display which level we are on (currently, we can only go to level 0)
 	g2.setColor(Color.BLACK);
-	
+
 	// set our MainCharacter's coordinates (based on the instance variables above)
 	mcf.mc.setX(dMC[0]);
 	mcf.mc.setY(dMC[1]);

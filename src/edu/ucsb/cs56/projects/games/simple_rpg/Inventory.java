@@ -116,4 +116,12 @@ public class Inventory {
       return inv.indexOf(i);
     }
 
+    public String toString() {
+      String str = this.name + " contains ";
+      for (int i = 0; i < inv.size(); i++){
+         str += inv.get(i) + " ";
+      }
+      return str;
+    }
+
 }

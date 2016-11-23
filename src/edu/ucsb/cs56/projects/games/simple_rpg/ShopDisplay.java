@@ -17,6 +17,7 @@ public class ShopDisplay extends JFrame {
 
 	private JComboBox itemSelect;
 	private JButton buy;
+	private Trader trdr;
 	private Shop itemShop;
 	private FlowLayout shopLayout;
 
@@ -28,7 +29,8 @@ public class ShopDisplay extends JFrame {
 		super("Shop");
 
 		//Initializes the weaponShop instance var to new Shop instance
-		itemShop = new Shop();
+		trdr = new Trader(2);
+		itemShop = trdr.getTradeShop();
 		setSize(400, 200);
 
 		//Initializes the shopLayout instance var to a new FlowLayout instance
@@ -64,7 +66,8 @@ public class ShopDisplay extends JFrame {
 		super("Shop");
 
 		//Initializes the weaponShop instance var to new Shop instance
-		itemShop = new Shop();
+		trdr = new Trader(2);
+		itemShop = trdr.getTradeShop();
 		setSize(400, 200);
 
 		//Initializes the shopLayout instance var to a new FlowLayout instance
@@ -78,8 +81,8 @@ public class ShopDisplay extends JFrame {
 		//Initializes the weaponSelect instance var to a new JComboBox instance
 		//and fills it with ArrayList of Weapon objects in Shop inventory
 		itemSelect = new JComboBox(itemShop.getInventory()
-					   .getInvArray()
-					   .toArray());
+					   													 .getInvArray()
+					   											 		 .toArray());
 
 		//Initializes the buy instance var to a new JButton instance
 		this.buy = new JButton("Buy");
@@ -105,7 +108,8 @@ public class ShopDisplay extends JFrame {
 		super("Shop");
 
 		//Initializes the weaponShop instance var to new Shop instance
-		itemShop = new Shop();
+		trdr = new Trader(2);
+		itemShop = trdr.getTradeShop();
 		setSize(400, 200);
 
 		//Initializes the shopLayout instance var to a new FlowLayout instance

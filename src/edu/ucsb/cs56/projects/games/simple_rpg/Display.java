@@ -18,17 +18,20 @@ import javax.swing.JPanel;
 public class Display extends JPanel {
 
 	Game gm;
-	boolean isSpawned = false;
-	boolean firstSpawn = true;
-        boolean ambushPlayer = true;
+	boolean goblIsSpawned = false;
+	boolean trdrIsSpawned = false;
+	boolean ambushPlayer = true;
+	boolean mcOverlap = false;
         // the coordinates for our main character
         // index 0 is for our x component
         // index 1 is for our y component
-	int[] dMC = {208,532};
+				int[] dMC = {208,532};
         // the coordinates for our goblin
         int[] dGob = {592,36};
+				int[] dTrdr = {300, 300};
         // our goblin
         Goblin gobl;
+				Trader trdr;
     /**
      * Default Constructor. Adds a KeyListener.
      */
@@ -37,6 +40,7 @@ public class Display extends JPanel {
         gm = new Game();
 	//We create a new Goblin
 	gobl = new Goblin();
+	trdr = new Trader(2);
         this.addKeyListener(new PlayerListener());
     }
 
@@ -52,6 +56,7 @@ public class Display extends JPanel {
 	// create our GobinFigure and MainCharacterFigure
 	GoblinFigure gf = new GoblinFigure(gobl);
 	MainCharacterFigure mcf = new MainCharacterFigure(gm.mc);
+	TraderFigure trf = new TraderFigure(trdr);
 
         Color g2Color = g2.getColor();
 
@@ -103,57 +108,74 @@ public class Display extends JPanel {
 	g2.draw(mcf);
 
 	// either spawn or move our Goblin
-	spawn();
-	if(isSpawned == true) {
-	    if (ambushPlayer) {
+	spawnGoblin();
+	if(goblIsSpawned) {
 		  ambushMove();
-	    }
-	    else {
-		  randMove();
-	    }
 		  g2.setColor(Color.RED);
 		  // set our Goblin's coordinates
 			gf.gob.setX(dGob[0]);
 			gf.gob.setY(dGob[1]);
 			g2.draw(gf);
 	}
-    }
+
+	spawnTrader();
+	if(trdrIsSpawned) {
+		  randMove();
+			updateMCOverlap();
+		  g2.setColor(Color.WHITE);
+		  // set our Trader's coordinates
+			trf.trdr.setX(dTrdr[0]);
+			trf.trdr.setY(dTrdr[1]);
+			g2.draw(trf);
+	}
+}
 
     /**
-     * To spawn our goblin
+     * To spawn our Goblin
      */
-    private void spawn() {
-	int rand = (int)(1 + Math.random() * 10);
-	if (rand <= 3)
-		isSpawned = true;
+    private void spawnGoblin() {
+			int rand = (int)(1 + Math.random() * 10);
+			if (rand <= 3)
+				goblIsSpawned = true;
     }
 
+		private void spawnTrader() {
+			int rand = (int)(1 + Math.random() * 10);
+			if (rand <= 1)
+				trdrIsSpawned = true;
+		}
+
+		private void updateMCOverlap() {
+			if(Math.abs(gm.mc.getX()-trdr.getX()) <= 4 || Math.abs(gm.mc.getY()-trdr.getY()) <= 4){
+					 mcOverlap = true;
+				 }
+		}
+
     /**
-     * Could be used to randomly move the Goblin around on the screen
+     * Used to randomly move the Trader around on the screen
      * every time the Display is redrawn
-     * (not currently in use)
      */
     private void randMove() {
 	int rand = (int)(1 + Math.random() * 4);
 	switch (rand) {
 		case 1:
-			if (dGob[1] >= 5) {
-				dGob[1] -= 4;
+			if (dTrdr[1] >= 5) {
+				dTrdr[1] -= 4;
 			}
 			break;
 		case 2:
-			if (dGob[1] <= 560) {
-				dGob[1] += 4;
+			if (dTrdr[1] <= 560) {
+				dTrdr[1] += 4;
 			}
 			break;
 		case 3:
-			if (dGob[0] <= 625) {
-				dGob[0] += 4;
+			if (dTrdr[0] <= 625) {
+				dTrdr[0] += 4;
 			}
 			break;
 		case 4:
-			if (dGob[0] >= 175) {
-				dGob[0] -= 4;
+			if (dTrdr[0] >= 175) {
+				dTrdr[0] -= 4;
 			}
 			break;
 	}

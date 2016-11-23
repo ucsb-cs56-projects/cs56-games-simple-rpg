@@ -12,7 +12,6 @@ import java.util.*;
 
 public class Shop {
 
-	//private ArrayList<Weapon> inventory;
 	private Inventory inventory;
 	/**
  	 * No-arg constructor for Shop class
@@ -20,16 +19,16 @@ public class Shop {
  	 */
 	public Shop() {
 		inventory = new Inventory();
-  /*
-		for (int i = 1; i <= 5; i++) {
+
+		for (int i = 1; i <= 4; i++) {
 			Weapon w = new Weapon(i);
 			inventory.addItem(w);
 		}
-		for (int i = 11; i <= 15; i++) {
+		for (int i = 11; i <= 13; i++) {
 			Potion p = new Potion(i);
 			inventory.addItem(p);
 		}
-		*/
+
 	}
 
 	public Shop(Inventory inventory){

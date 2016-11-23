@@ -70,16 +70,15 @@ public class ShopTester {
   public void testGetInventory(){
     Shop sh = new Shop();
     Inventory inventory = new Inventory();
-    /*
-    for (int i = 1; i <= 5; i++) {
+
+    for (int i = 1; i <= 4; i++) {
 			Weapon w = new Weapon(i);
 			inventory.addItem(w);
 		}
-		for (int i = 11; i <= 15; i++) {
+		for (int i = 11; i <= 13; i++) {
 			Potion p = new Potion(i);
 			inventory.addItem(p);
 		}
-    */
     Inventory shopInv = sh.getInventory();
     assertEquals(inventory.toString(),
                  shopInv.toString());

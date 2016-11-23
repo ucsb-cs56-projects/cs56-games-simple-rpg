@@ -46,13 +46,6 @@ public class MainCharacter extends Entity{
     }
 
     /**
-     * @param i the Item we would like to add to our Inventory
-     */
-    public void addItemToInv(Item i){
-      inv.addItem(i);
-    }
-
-    /**
      * @param swapTo the weapon from our inventory we would like to switch our current weapon to
      */
     public void swapCurrentWeapon(Weapon swapTo) {
@@ -63,17 +56,20 @@ public class MainCharacter extends Entity{
 	}
     }
 
+    public Weapon getCurrentWeapon(){
+      return currentWpn;
+    }
     /**
      * @return main character's xp
      */
-    public int getXp() {
+    public int getXP() {
         return xp;
     }
 
     /**
      * @param xp sets the main character's xp
      **/
-    public void setXp(int xp) {
+    public void setXP(int xp) {
 	this.xp = xp;
     }
 
@@ -87,6 +83,7 @@ public class MainCharacter extends Entity{
     /**
      * @return main character's strength
      */
+    @Override
     public int getStr() {
         return str + currentWpn.getStrBonus();
     }
@@ -110,6 +107,13 @@ public class MainCharacter extends Entity{
      */
     public int getStatPoints() {
         return statPoints;
+    }
+
+    /**
+     * @param statPoints set the amount of statPoints the main character has
+     **/
+    public void setStatPoints(int statPoints) {
+    this.statPoints = statPoints;
     }
 
     /**

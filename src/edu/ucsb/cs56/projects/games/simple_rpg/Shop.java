@@ -20,6 +20,7 @@ public class Shop {
  	 */
 	public Shop() {
 		inventory = new Inventory();
+  /*
 		for (int i = 1; i <= 5; i++) {
 			Weapon w = new Weapon(i);
 			inventory.addItem(w);
@@ -28,11 +29,20 @@ public class Shop {
 			Potion p = new Potion(i);
 			inventory.addItem(p);
 		}
+		*/
 	}
 
-       /**
-        * @param i the Item we will remove from our Shop
-        */
+	public Shop(Inventory inventory){
+		this.inventory = inventory;
+	}
+
+	public void addItem(Item i){
+			inventory.addItem(i);
+	}
+
+	/**
+	* @param i the Item we will remove from our Shop
+  */
 	public void buyItem(Item i) {
 			inventory.removeItem(i);
 	}

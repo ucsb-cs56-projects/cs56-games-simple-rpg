@@ -168,10 +168,10 @@ public class MainCharacter extends Entity{
      */
     public boolean getLoot(Enemy e) {
         Loot l = e.loot();
-        if (l.getXp() == -1 || l.getGold() == -1) {
+        if (l.getXP() == -1 || l.getGold() == -1) {
             return false;
         } else {
-            xp += l.getXp();
+            xp += l.getXP();
             gold += l.getGold();
             return true;
         }
@@ -235,7 +235,7 @@ public class MainCharacter extends Entity{
      */
     public int attacked(int dmg) {
         dmg = (int) (dmg * .90);
-	hp = hp-=dmg;
+	      hp = hp-=dmg;
         return dmg;
     }
 

@@ -17,6 +17,7 @@
 		<pathelement location="bin"/>
 		<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" />
 	</path>
+	
 	<target name="init" description="move files from src to bin. (excluding *.java)">
 		<mkdir dir="bin"/>
 		<copy includeemptydirs="false" todir="bin">
@@ -25,6 +26,7 @@
 			</fileset>
 		</copy>
 	</target>
+	
 	<target name="clean" description="removes files and cleans directory">
 		<delete dir="bin" quiet="true" />
 		<delete dir="javadoc" quiet="true" />
@@ -32,6 +34,7 @@
 		<delete dir="temp" quiet="true" />
 		<delete dir="dist" quiet="true" />
 	</target>
+	
 	<target depends="init" name="build" description="builds project">
 		<echo message="${ant.project.name}: ${ant.file}"/>
 		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" includeantruntime="false">
@@ -39,17 +42,20 @@
 			<classpath refid="Simple RPG.classpath"/>
 		</javac>
 	</target>
+	
 	<target depends="build" name="runcli" description="Starts command line implementation">
 		<java classname="${CLI}" failonerror="true" fork="yes">
 			<classpath refid="Simple RPG.classpath"/>
 		</java>
 		<echo>Use: java -cp edu.ucsb.cs56.projects.games.simple_rpg.SimpleCLI</echo>
 	</target>
+	
 	<target depends="build" name="run" description="Starts Game">
 		<java classname="${main}" failonerror="true" fork="yes">
 			<classpath refid="Simple RPG.classpath"/>
 		</java>
 	</target>
+	
 	<target depends="build" name="javadoc" description="creates Javadoc">
 		<delete dir="javadoc" quiet="true" />
 		<javadoc  destdir="javadoc" author="true" version="true" use="true" >
@@ -68,6 +74,7 @@
 		<chmod dir="${javadocDest}" perm="755"  type="file" includes="**/*" />
 		<echo>Javadoc deployed to ${javadocURL}</echo>
 	</target>
+	
 	<target depends="build" name="test" description="runs jUnit Tests">
 
 		<junit haltonerror="no" haltonfailure="no">
@@ -85,6 +92,7 @@
 			<formatter type="plain" usefile="false" />
 		</junit>
 	</target>
+	
 	<target depends="build" name="jar" description="makes JAR file">
 		<mkdir dir="dist" />
 		<jar destfile="dist/${ant.project.name}.jar" basedir="bin">
@@ -93,6 +101,7 @@
 			</manifest>
 		</jar>
 	</target>
+	
 	<target depends="jar,javadoc,download" name="publish" description="publishes everything">
 		<mkdir dir="${webRoot}" />
 		<delete dir="${webRoot}/browse" />
@@ -112,6 +121,7 @@
 			  perm="755" type="both" includes="**/*"/>
 		<echo>Project published to ${webBaseURL}</echo>
 	</target>
+	
 	<target name="download" description="makes downloadable files">
 		<!-- delete everything under the "temp" and "download" subdirectories -->
 		<delete quiet="true">

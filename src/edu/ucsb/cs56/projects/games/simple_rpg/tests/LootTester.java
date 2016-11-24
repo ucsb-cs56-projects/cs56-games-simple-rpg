@@ -1,9 +1,8 @@
 package edu.ucsb.cs56.projects.games.simple_rpg.tests;
 
-
 import static org.junit.Assert.*;
 
-import edu.ucsb.cs56.projects.games.simple_rpg.*;
+import edu.ucsb.cs56.projects.games.simple_rpg.Loot;
 import org.junit.Test;
 
 /**

@@ -2,7 +2,11 @@ package edu.ucsb.cs56.projects.games.simple_rpg.tests;
 
 import static org.junit.Assert.*;
 
-import edu.ucsb.cs56.projects.games.simple_rpg.*;
+import edu.ucsb.cs56.projects.games.simple_rpg.MainCharacter;
+import edu.ucsb.cs56.projects.games.simple_rpg.Goblin;
+import edu.ucsb.cs56.projects.games.simple_rpg.Weapon;
+import edu.ucsb.cs56.projects.games.simple_rpg.Potion;
+import edu.ucsb.cs56.projects.games.simple_rpg.Inventory;
 import org.junit.Test;
 
 /**

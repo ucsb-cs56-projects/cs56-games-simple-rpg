@@ -22,6 +22,7 @@ public class Display extends JPanel {
 	boolean trdrIsSpawned = false;
 	boolean ambushPlayer = true;
 	boolean mcOverlap = false;
+	boolean escape = false;
         // the coordinates for our main character
         // index 0 is for our x component
         // index 1 is for our y component
@@ -217,6 +218,7 @@ public class Display extends JPanel {
         public void keyPressed(KeyEvent e) {
             // TODO Auto-generated method stub
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+								escape = true;
                 System.exit(0);
             } else if (e.getKeyCode() == KeyEvent.VK_UP) {
 							if (dMC[1] >= 5) {

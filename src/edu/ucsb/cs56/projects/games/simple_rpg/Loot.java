@@ -31,14 +31,14 @@ public class Loot {
     /**
      * @return the xp
      */
-    public int getXp() {
+    public int getXP() {
         return xp;
     }
 
     /**
      * @param xp the xp to set
      */
-    public void setExp(int xp) {
+    public void setXP(int xp) {
         if (xp >= 0) {
             this.xp = xp;
         }

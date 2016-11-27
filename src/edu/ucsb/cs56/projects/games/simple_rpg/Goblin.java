@@ -33,7 +33,7 @@ public class Goblin extends Enemy {
         maxHP = (int) ((10 + sta + str * 0.2) + lvl * 2.7);
         mp = (int) ((intel * 1.7) + lvl * 1.7);
         maxMP = (int) ((intel * 1.7) + lvl * 1.7);
-        loot.setExp((int) ((4 * Math.random() + 4) + lvl * 1.3));
+        loot.setXP((int) ((4 * Math.random() + 4) + lvl * 1.3));
         loot.setGold((int) ((5 * Math.random() + 2) + lvl * 1.3));
         minDMG = (int) ((str + agi * 0.1) + lvl * 1.4);
         maxDMG = (int) ((str * 1.1 + agi * 0.2) + lvl * 1.6);

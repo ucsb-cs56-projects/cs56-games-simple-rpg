@@ -12,7 +12,6 @@ import java.util.*;
 
 public class Shop {
 
-	//private ArrayList<Weapon> inventory;
 	private Inventory inventory;
 	/**
  	 * No-arg constructor for Shop class
@@ -20,17 +19,29 @@ public class Shop {
  	 */
 	public Shop() {
 		inventory = new Inventory();
-		for (int i = 1; i <= 5; i++) {
+
+		for (int i = 1; i <= 4; i++) {
 			Weapon w = new Weapon(i);
 			inventory.addItem(w);
 		}
-		for (int i = 11; i <= 15; i++) {
+		for (int i = 11; i <= 13; i++) {
 			Potion p = new Potion(i);
 			inventory.addItem(p);
 		}
+
 	}
 
+	public Shop(Inventory inventory){
+		this.inventory = inventory;
+	}
 
+	public void addItem(Item i){
+			inventory.addItem(i);
+	}
+
+	/**
+	* @param i the Item we will remove from our Shop
+  */
 	public void buyItem(Item i) {
 			inventory.removeItem(i);
 	}
@@ -42,7 +53,11 @@ public class Shop {
 		return this.inventory;
 	}
 
-  public boolean buyItem(Item i, MainCharacter mc) {
+        /**
+         * @param i the Item from our Shop we would like our MainCharacter to buy
+         * @param mc our MainCharacter
+         */
+        public boolean buyItem(Item i, MainCharacter mc) {
 	    if ((mc.getGold() >= i.getPrice()) && inventory.itemInInv(i)) {
 	        mc.addItemToInv(i);
 	        mc.setGold(mc.getGold() - i.getPrice());

@@ -29,28 +29,42 @@ public abstract class Entity {
     /**
      * @return the hp
      */
-    public int getHp() {
+    public int getHP() {
         return hp;
+    }
+
+    /**
+     * @return the inventory
+     */
+    public Inventory getInventory() {
+	return inv;
+    }
+
+    /**
+     * @param i the Item we would like to add to our Inventory
+     */
+    public void addItemToInv(Item i){
+      inv.addItem(i);
     }
 
     /**
      * @param hp sets the entity's hp
      **/
-    public void setHp(int hp) {
+    public void setHP(int hp) {
 	this.hp = hp;
     }
 
     /**
      * @return the mp
      */
-    public int getMp() {
+    public int getMP() {
         return mp;
     }
 
     /**
      * @param mp sets the entity's mp
      **/
-    public void setMp(int mp) {
+    public void setMP(int mp) {
 	this.mp = mp;
     }
 

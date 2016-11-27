@@ -45,21 +45,31 @@ public class MainCharacter extends Entity{
         currentWpn = fist;
     }
 
-    public void addItemToInv(Item i){
-      inv.addItem(i);
+    /**
+     * @param swapTo the weapon from our inventory we would like to switch our current weapon to
+     */
+    public void swapCurrentWeapon(Weapon swapTo) {
+	for (int i = 0; i < inv.getInvArray().size(); i++) {
+	    if (swapTo == inv.getInvArray().get(i)) {
+		currentWpn = (Weapon) inv.getInvArray().get(i);
+	    }
+	}
     }
 
+    public Weapon getCurrentWeapon(){
+      return currentWpn;
+    }
     /**
      * @return main character's xp
      */
-    public int getXp() {
+    public int getXP() {
         return xp;
     }
 
     /**
      * @param xp sets the main character's xp
      **/
-    public void setXp(int xp) {
+    public void setXP(int xp) {
 	this.xp = xp;
     }
 
@@ -73,6 +83,7 @@ public class MainCharacter extends Entity{
     /**
      * @return main character's strength
      */
+    @Override
     public int getStr() {
         return str + currentWpn.getStrBonus();
     }
@@ -96,6 +107,13 @@ public class MainCharacter extends Entity{
      */
     public int getStatPoints() {
         return statPoints;
+    }
+
+    /**
+     * @param statPoints set the amount of statPoints the main character has
+     **/
+    public void setStatPoints(int statPoints) {
+    this.statPoints = statPoints;
     }
 
     /**
@@ -150,10 +168,10 @@ public class MainCharacter extends Entity{
      */
     public boolean getLoot(Enemy e) {
         Loot l = e.loot();
-        if (l.getXp() == -1 || l.getGold() == -1) {
+        if (l.getXP() == -1 || l.getGold() == -1) {
             return false;
         } else {
-            xp += l.getXp();
+            xp += l.getXP();
             gold += l.getGold();
             return true;
         }
@@ -217,7 +235,7 @@ public class MainCharacter extends Entity{
      */
     public int attacked(int dmg) {
         dmg = (int) (dmg * .90);
-	hp = hp-=dmg;
+	      hp = hp-=dmg;
         return dmg;
     }
 

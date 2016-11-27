@@ -27,7 +27,7 @@ public abstract class Item {
     */
     public Item() {
 	     code = 0;
-	      name = "Nothing";
+	      name = "Fists";
 	       price = 0;
     }
 

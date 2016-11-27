@@ -23,7 +23,8 @@ public class CLIOutput {
     }
 
     /**
-     * Prints the commands the Main Character
+     * Prints the commands the Main Character
+
      * can choose from when in a Battle
      */
     public void printBattleOptions() {
@@ -41,8 +42,8 @@ public class CLIOutput {
     public void printMCStatus(MainCharacter mc) {
         System.out.println("~~~Info~~~");	 
         System.out.println("MainCharacter LV: " + mc.getLvl());
-        System.out.println("HP: " + mc.getHp() + "/" + mc.getMaxHP() + " MP: " + mc.getMp() + "/"
-                + mc.getMaxMP() + " XP: " + mc.getXp() + "/" + mc.getNeedXP());
+        System.out.println("HP: " + mc.getHP() + "/" + mc.getMaxHP() + " MP: " + mc.getMP() + "/"
+                + mc.getMaxMP() + " XP: " + mc.getXP() + "/" + mc.getNeedXP());
         System.out.println("Gold: " + mc.getGold());
         System.out.println("Current Location: (" + mc.getX() + "," + mc.getY() + ")");
         System.out.println();
@@ -56,7 +57,7 @@ public class CLIOutput {
      */
     public void printEStatus(Enemy e) {
         System.out.println(e.getName() + " LV: " + e.getLvl());
-        System.out.println("HP: " + e.getHp() + "/" + e.getMaxHP() + " MP: " + e.getMp() + "/"
+        System.out.println("HP: " + e.getHP() + "/" + e.getMaxHP() + " MP: " + e.getMP() + "/"
                 + e.getMaxMP());
         System.out.println();
     }
@@ -67,7 +68,7 @@ public class CLIOutput {
      * @param e Enemy
      */
     public void printReward(Enemy e) {
-        System.out.println("You gained " + e.loot().getXp() + " XP!");
+        System.out.println("You gained " + e.loot().getXP() + " XP!");
         System.out.println("You got " + e.loot().getGold() + " gold!");
 	System.out.println("~~~End Results~~~");
         System.out.println();

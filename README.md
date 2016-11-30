@@ -25,7 +25,7 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 
 The second version of the game is a GUI version. 
 
-![](http://i.imgur.com/LLXEvGm.gifv)
+![](http://i.imgur.com/LLXEvGm.gif)
 
 ---------------------------------------------------
 

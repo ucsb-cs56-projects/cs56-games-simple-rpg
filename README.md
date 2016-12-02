@@ -19,7 +19,8 @@ This project is still is work in progress and at this point could evolve into a 
 4. The Shop can be accessed through a JButton. Currently the shop has very limited function. Clicking the Shop button will display the message: "You must be closer to the Trader to acces the Shop menu."
 5. A "Set Weapon" Button exists that allows the user to update the MainCharacter's current weapon from the inventory.
 
-Current Game Limitation: After the Shop or the Set Weapon has been accessed, the MainCharacter no longer responds to arrow key input and the 'esc' key does not quit the game. At this point, you must manually close the JFrame to end the game.
+Current Game Limitation: 
+After the Shop or the Set Weapon has been accessed, the MainCharacter no longer responds to arrow key input and the 'esc' key does not quit the game. At this point, you must manually close the JFrame to end the game.
 
 What to Work On Next: The next steps to improve the game include:
 1. Fixing the existing game logic to allow for uninterrupted gameplay after accessing the Shop or the MainCharacter's inventory.

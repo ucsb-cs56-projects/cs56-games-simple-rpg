@@ -1,14 +1,17 @@
 #### F16 Final Remarks
 ======================
 Most of the changes made during F16 refactored code under the hood in an effort to allow for future flexibility to changes in the code. A couple changes include updating the class structure of certain essential game elements(Entities and Items):
+
 1. Class structure of in-game players:
 
-                Entity
+                 Entity
                    |
       MainCharacter -- Enemy
                          |
                        Goblin
+                       
 2. Class structure of in-game items:
+                
                  Item
                    |
       Weapon -- Potion -- Spell

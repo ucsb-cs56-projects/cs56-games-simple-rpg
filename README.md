@@ -93,7 +93,7 @@ Current GUI Game Implementations:
 ======================
 Most of the changes made during F16 refactored code under the hood in an effort to allow for future flexibility to changes in the code. A couple important changes included updating the class structure of certain essential game elements (Entities and Items):
 
-1. Class structure of in-game players:
+1. Class structure of in-game entities:
 ```
                -- Entity -- 
               |            |

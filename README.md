@@ -35,7 +35,7 @@ What to Work On Next: The next steps to improve the game include:
 2. Adding GUI Implementations for a Start menu display as well as a Battle display.
 3. Further improve game logic and design, adding appropriate JUnit tests.
 
-
+=====================
 
 cs56-games-simple-rpg
 (W15) TBD: It looks like a promising game; the code base looks navigatable but trying to run it produces a really strange window that seems to randomly place blue colored squares on the main green square regardless of what key is pressed and can only be escaped from. It looks fairly extensible but has a bad bug currently and Im having difficulties running it(Paz Zait-Givon)

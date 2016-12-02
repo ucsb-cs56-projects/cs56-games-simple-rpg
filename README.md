@@ -4,10 +4,10 @@ Most of the changes made during F16 refactored code under the hood in an effort 
 
 1. Class structure of in-game players:
 
-                 Entity
-                   |
+                Entity
+                  |
       MainCharacter -- Enemy
-                         |
+                         
                        Goblin
                        
 2. Class structure of in-game items:

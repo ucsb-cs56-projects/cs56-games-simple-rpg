@@ -120,10 +120,12 @@ This project is still a work in progress and at this point could evolve in a var
 Current Game Limitation:  
 
 - After the Shop or the Set Weapon has been accessed, the MainCharacter no longer responds to arrow key input and the 'esc' key does not quit the game. At this point, you must manually close the JFrame to end the game.
+- The classes used for battles are currently unused.
 
 What to Work On Next: The next steps to improve the game include:
 
 1. Fixing the existing game logic to allow for uninterrupted gameplay after accessing the Shop or the MainCharacter's inventory.
 2. Adding GUI Implementations for a Start menu display as well as a Battle display.
 3. Further improve game logic and design, adding appropriate JUnit tests.
-
+4. Make the various Enemy classes more polymorphic.
+5. Some restructuring may be needed in certain classes (such as the Display class and its KeyListener class)

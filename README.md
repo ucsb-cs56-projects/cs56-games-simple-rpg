@@ -19,6 +19,7 @@ Most of the changes made during F16 refactored code under the hood in an effort 
 ```      
    
 This project is still a work in progress and at this point could evolve into a variety of unique ways. Currently the game functions of the GUI include:
+
 1. The MainCharacter can move around the screen using input from arrow keys
 2. An enemy Goblin is displayed and advances towards the MainCharacter
 3. A neutral Trader entity is displayed and randomly moves around the game map. You must be within a close radius of the Trader to access the Shop.
@@ -26,14 +27,12 @@ This project is still a work in progress and at this point could evolve into a v
 5. A "Set Weapon" Button exists that allows the user to update the MainCharacter's current weapon from the inventory.
 
 Current Game Limitation: 
-After the Shop or the Set Weapon has been accessed, the MainCharacter no longer responds to arrow key input and the 'esc' key does not quit the game. At this point, you must manually close the JFrame to end the game.
+ -- After the Shop or the Set Weapon has been accessed, the MainCharacter no longer responds to arrow key input and the 'esc' key does not quit the game. At this point, you must manually close the JFrame to end the game.
 
 What to Work On Next: The next steps to improve the game include:
 
 1. Fixing the existing game logic to allow for uninterrupted gameplay after accessing the Shop or the MainCharacter's inventory.
-
 2. Adding GUI Implementations for a Start menu display as well as a Battle display.
-
 3. Further improve game logic and design, adding appropriate JUnit tests.
 
 

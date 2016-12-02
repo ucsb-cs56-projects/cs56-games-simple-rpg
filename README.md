@@ -3,20 +3,21 @@
 Most of the changes made during F16 refactored code under the hood in an effort to allow for future flexibility to changes in the code. A couple changes include updating the class structure of certain essential game elements(Entities and Items):
 
 1. Class structure of in-game players:
-
+```
                 Entity
                   |
       MainCharacter -- Enemy
                          |
-                       
                        Goblin
-                       
+```                     
+
 2. Class structure of in-game items:
-                
+```                
                  Item
                    |
       Weapon -- Potion -- Spell
-      
+```      
+   
 This project is still a work in progress and at this point could evolve into a variety of unique ways. Currently the game functions of the GUI include:
 1. The MainCharacter can move around the screen using input from arrow keys
 2. An enemy Goblin is displayed and advances towards the MainCharacter

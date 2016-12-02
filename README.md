@@ -40,6 +40,7 @@ YES | bronhuston | barasuishou | A simple rpg game
 ### CLI Version
 ===============
 Features for the CLI version:
+
 - Ability to move
 - Basic turn-based battle
 - Random encounters
@@ -47,10 +48,12 @@ Features for the CLI version:
 A sample playthrough might look like this:
 
 Output:
-Main Character HP: 100/100 MP: 100/100 XP: 0/100
-Current Location: (0,0)
+
+- Main Character HP: 100/100 MP: 100/100 XP: 0/100
+- Current Location: (0,0)
 
 Options:
+
 1. Move Left
 2. Move Right
 3. Move Up
@@ -58,13 +61,15 @@ Options:
 5. Quit
 
 Input:
-2
+
+- 2
 
 Output:
-You have encountered an enemy.
-Main Character LV: 1 HP: 100/100 MP: 100/100 XP: 0/100
-Current Location: (1,0)
-Enemy LV: 1 HP: 20/20 MP 15/15
+
+- You have encountered an enemy.
+- Main Character LV: 1 HP: 100/100 MP: 100/100 XP: 0/100
+- Current Location: (1,0)
+- Enemy LV: 1 HP: 20/20 MP 15/15
 
 Options:
 

@@ -6,7 +6,7 @@ import java.awt.*;
 
 /**
  *
- * Creates the graphical figure that represents the Golbin object
+ * Creates the graphical figure that represents the Goblin object
  *
  * @author Nick Perry
  * @version CS56-F16 11/9, 1.0

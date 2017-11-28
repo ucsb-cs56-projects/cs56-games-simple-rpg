@@ -15,7 +15,7 @@
 	<property name="main" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleRPG"/>
 	<path id="Simple RPG.classpath">
 		<pathelement location="bin"/>
-		<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" />
+		<pathelement location="/home/andrewlai/java/junit-4.12.jar" />
 	</path>
 	<target name="init" description="move files from src to bin. (excluding *.java)">
 		<mkdir dir="bin"/>
@@ -45,7 +45,7 @@
 		</java>
 		<echo>Use: java -cp edu.ucsb.cs56.projects.games.simple_rpg.SimpleCLI</echo>
 	</target>
-	<target depends="build" name="run" description="Starts Game">
+	<target depends="build" name="run" description="Starts gui implementation">
 		<java classname="${main}" failonerror="true" fork="yes">
 			<classpath refid="Simple RPG.classpath"/>
 		</java>
@@ -55,7 +55,7 @@
 		<javadoc  destdir="javadoc" author="true" version="true" use="true" >
 			<fileset dir="src" includes="**/*.java"/>
 			<classpath>
-				<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+				<pathelement location="/home/andrewlai/java/junit-4.12.jar"/>
 			</classpath>
 		</javadoc>
 		<!-- delete the old javadoc -->
@@ -72,7 +72,7 @@
 
 		<junit haltonerror="no" haltonfailure="no">
 			<classpath>
-				<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+				<pathelement location="/home/andrewlai/java/junit-4.12.jar"/>
 				<pathelement location="bin"/>
 			</classpath>
 

@@ -60,7 +60,7 @@ public class SimpleRPG {
 
         class LoopDisplay extends java.util.TimerTask {
             public void run() {
-                disp.repaint();
+                disp.repaint(); // all of the game logic is handled right here
                 
                 if (!isRunning)
                     timer.cancel();

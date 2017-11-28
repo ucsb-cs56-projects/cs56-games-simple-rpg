@@ -8,6 +8,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import java.util.*;
+
 /**
  * Contains Main() for the full game.
  *
@@ -50,6 +52,24 @@ public class SimpleRPG {
         // add Everything to the JFrame
         frame.add(disp, BorderLayout.CENTER);
 	frame.add(shop, BorderLayout.EAST);
+
+
+        // testing game loop (GAME TIMER)
+        final java.util.Timer timer = new java.util.Timer();
+        final boolean isRunning = true;
+        final int fps = 24; // because the human eye can't see higher than this
+
+        class LoopDisplay extends java.util.TimerTask {
+            public void run() {
+                disp.repaint();
+                
+                if (!isRunning)
+                    timer.cancel();
+            }
+        }
+
+        timer.schedule(new LoopDisplay(), 0, 1000/fps);
+
 
         // Make the window visible
         frame.setVisible(true);

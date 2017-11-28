@@ -94,40 +94,40 @@ public class Display extends JPanel {
 			gf.gob.setX(RAND_X_COORD + dxGob);
 			gf.gob.setY(RAND_Y_COORD + dyGob);
 			g2.draw(gf);
-  }
-}
+      }
+    }
 
-private void spawn() {
-	int rand = (int)(1 + Math.random() * 10);
-	if (rand <= 3)
-		isSpawned = true;
-}
+    private void spawn() {
+	    int rand = (int)(1 + Math.random() * 10);
+	    if (rand <= 3)
+		    isSpawned = true;
+    }
 
-private void randMove() {
-	int rand = (int)(1 + Math.random() * 4);
-	switch (rand) {
-		case 1:
-			if (dyGob >= -560) {
-				dyGob -= 4;
-			}
-			break;
-		case 2:
-			if (dyGob <= 0) {
-				dyGob += 4;
-			}
-			break;
-		case 3:
-			if (dxGob <= 230) {
-				dxGob += 4;
-			}
-			break;
-		case 4:
-			if (dxGob >= -230) {
-				dxGob -= 4;
-			}
-			break;
-	}
-}
+    private void randMove() {
+	    int rand = (int)(1 + Math.random() * 4);
+	    switch (rand) {
+		    case 1:
+			    if (dyGob >= -560) {
+				    dyGob -= 4;
+			    }
+			    break;
+		    case 2:
+			    if (dyGob <= 0) {
+				    dyGob += 4;
+			    }
+			    break;
+		    case 3:
+			    if (dxGob <= 230) {
+				    dxGob += 4;
+			    }
+			    break;
+		    case 4:
+			    if (dxGob >= -230) {
+				    dxGob -= 4;
+			    }
+			    break;
+	    }
+    }
 
     public class PlayerListener implements KeyListener {
 
@@ -145,22 +145,22 @@ private void randMove() {
 							if (dyMC >= -560) {
 								dyMC -= 4;
 							}
-							repaint();
+							//repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 								if (dyMC <= 0) {
 									dyMC += 4;
 								}
-								repaint();
+								//repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 								if (dxMC <= 230) {
 									dxMC += 4;
 								}
-								repaint();
+								//repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 								if (dxMC >= -230) {
 									dxMC -= 4;
 								}
-								repaint();
+								//repaint();
             }
   			}
 

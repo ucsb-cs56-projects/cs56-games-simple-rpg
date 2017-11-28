@@ -23,21 +23,34 @@ public class Display extends JPanel {
 	//public static final int RAND_Y_COORD = (int)(5 + Math.random() * 565);
 
     // TODO: fix location handling using class data
-    public static final int RAND_X_COORD = 300;
-    public static final int RAND_Y_COORD = 100;
+    public static final int playerSpawnCoordX = 400;
+    public static final int playerSpawnCoordY = 565;
+
+    public static final int goblinSpawnCoordX = 300;
+    public static final int goblinSpawnCoordY = 100;
+
+    public static final int cowardSpawnCoordX = 300;
+    public static final int cowardSpawnCoordY = 500;
 
 	Game gm;
 	boolean isSpawned = false;
 	boolean firstSpawn = true;
-	int dxMC = 0;
-	int dyMC = 0;
-	int dxGob = 0;
-	int dyGob = 0;
+
+    // hacky location handling
+    // currently, has main character, a goblin, and a coward
+	int dxMC = 0, dyMC = 0, dxGob = 0, dyGob = 0, dxCow = 0, dyCow = 0;
 
     // determines how fast anything moves
     // ideally this should be determined by stats
-    int spdMC = 5;
-    int spdGob = 2;
+    int spdMC = 6;
+    int spdGob = 3;
+    int spdCow = 2;
+
+    // wall or edge locations
+    int topEdge = -560;
+    int botEdge = 0;
+    int leftEdge = -230;
+    int rightEdge = 230;
 
     /**
      * Default Constructor. Adds a KeyListener.
@@ -57,6 +70,7 @@ public class Display extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
 	GeneralPath gp;
 	GoblinFigure gf = new GoblinFigure(gm.gob);
+    GoblinFigure cf = new GoblinFigure(gm.cow);
 	MainCharacterFigure mcf = new MainCharacterFigure(gm.mc);
         Color g2Color = g2.getColor();
         Tile[][] map = gm.getCurrentMap();
@@ -97,19 +111,24 @@ public class Display extends JPanel {
         g2.drawString("EXP", 10, 700);
 	g2.drawString("LEVEL " + gm.currentMap, 10, 750);
 	g2.setColor(Color.BLACK);
-	mcf.mc.setX(400 + dxMC);
-	mcf.mc.setY(565 + dyMC);
+	mcf.mc.setX(playerSpawnCoordX + dxMC);
+	mcf.mc.setY(playerSpawnCoordY + dyMC);
 	g2.draw(mcf);
 
     // uhhhhhh why is the enemy behavior determined in display
 	spawn();
 	if(isSpawned == true) {
 		  determineLocations(); // determine locations of gob and player every loop
-          enemyMove(); // determines goblin behavior
+          enemyMove(); // determines enemy behavior
+            
 		  g2.setColor(Color.RED);
-			gf.gob.setX(RAND_X_COORD + dxGob);
-			gf.gob.setY(RAND_Y_COORD + dyGob);
+			gf.gob.setX(goblinSpawnCoordX + dxGob);
+			gf.gob.setY(goblinSpawnCoordY + dyGob);
 			g2.draw(gf);
+          g2.setColor(Color.YELLOW);
+            cf.gob.setX(cowardSpawnCoordX + dxCow);
+			cf.gob.setY(cowardSpawnCoordY + dyCow);
+			g2.draw(cf);
       }
     }
 
@@ -123,37 +142,31 @@ public class Display extends JPanel {
 	    int rand = (int)(1 + Math.random() * 4);
 	    switch (rand) {
 		    case 1:
-			    if (dyGob >= -560) {
-				    dyGob -= spdGob;
-			    }
+			    if (dyGob >= topEdge) { dyGob -= spdGob; }
 			    break;
 		    case 2:
-			    if (dyGob <= 0) {
-				    dyGob += spdGob;
-			    }
+                if (dyGob <= botEdge) { dyGob += spdGob; }
 			    break;
 		    case 3:
-			    if (dxGob <= 230) {
-				    dxGob += spdGob;
-			    }
+			    if (dxGob >= leftEdge) { dxGob -= spdGob; }
 			    break;
 		    case 4:
-			    if (dxGob >= -230) {
-				    dxGob -= spdGob;
-			    }
+			    if (dxGob <= rightEdge) { dxGob += spdGob; }
+                
 			    break;
 	    }
     }
 
-    // location values of mc and ONE SINGLE GOBLIN
+    // location values
     // this is a batshit implementation but the classes themselves don't store the actual locations
-    // literally will break as soon as there is more than one goblin
-    int xLocMC, yLocMC, xLocGob, yLocGob;
+    int xLocMC, yLocMC, xLocGob, yLocGob, xLocCow, yLocCow;
     private void determineLocations() {
-        xLocMC = (400 + dxMC);
-        yLocMC = (565 + dyMC);
-        xLocGob = (RAND_X_COORD + dxGob);
-        yLocGob = (RAND_Y_COORD + dyGob);
+        xLocMC = (playerSpawnCoordX + dxMC);
+        yLocMC = (playerSpawnCoordY + dyMC);
+        xLocGob = (goblinSpawnCoordX + dxGob);
+        yLocGob = (goblinSpawnCoordY + dyGob);
+        xLocCow = (cowardSpawnCoordX + dxCow);
+        yLocCow = (cowardSpawnCoordY + dyCow);
     }
 
     private double calcDistance(int xd, int yd) {
@@ -163,6 +176,12 @@ public class Display extends JPanel {
     // determine enemy movement state
     // called once per game loop
     private void enemyMove() {
+        goblinMove();
+        cowardMove();
+    }
+
+    // normal goblin behavior
+    private void goblinMove() {
         int xDist = xLocMC - xLocGob;
         int yDist = yLocMC - yLocGob;
 
@@ -173,26 +192,70 @@ public class Display extends JPanel {
         // collisionDistance = how close the player needs to be to collide with the goblin
         int followDistance = 200, collisionDistance = 10;
 
-        // move toward player if within following range
+        // if within following range
         if (d < followDistance && d > collisionDistance) {
             // set sign for speed based on where player is in relation to goblin
-            int xsg = (xDist < 0) ? -1 : 1;
-            int ysg = (yDist < 0) ? -1 : 1;
-            if (calcDistance((xDist+xsg), yDist) > calcDistance(xDist, (yDist+ysg)))
-                dxGob += xsg*spdGob;
+            int xDir = (xDist < 0) ? -1 : 1;
+            int yDir = (yDist < 0) ? -1 : 1;
+
+            // move TOWARD player if within follow distance
+            if (calcDistance((xDist+xDir), yDist) > calcDistance(xDist, (yDist+yDir)))
+                dxGob += xDir*spdGob;
             else
-                dyGob += ysg*spdGob;
+                dyGob += yDir*spdGob;
+
         // handle collisions
         } else if (d < collisionDistance) {
-            // TODO: if collide, begin battle
-
-        // move randomly otherwise
+            gm.mc.attacked(2);
+        // out of range
         } else { randMove(); }
+    }
 
-        // collision testing
-        
-        
+    // cowardly goblin behavior
+    private void cowardMove() {
+        int pxDist = xLocMC - xLocCow, pyDist = yLocMC - yLocCow;
+        int gxDist = xLocGob - xLocCow, gyDist = yLocGob - yLocCow;
+        int pd = (int) calcDistance(pxDist, pyDist); // distance between coward and player
+        int gd = (int) calcDistance(gxDist, gyDist); // distance between coward and other goblin
 
+        //int exDist = Math.min(Math.abs(xLocCow - leftEdge), Math.abs(rightEdge - xLocCow));
+        //int eyDist = Math.min(Math.abs(yLocCow - topEdge), Math.abs(botEdge - yLocCow));
+        //int ed = Math.min(exDist, eyDist); // distance between coward and closest edge
+
+        // followDistance = how close the player needs to be before coward begins moving towards player
+        // scaredDistance = how close the player needs to be before coward GOES FAST
+        // collisionDistance = how close the player needs to be to collide with the coward
+        int followDistance = 150, scaredDistance = 50, collisionDistance = 10;
+
+        int xDir, yDir; // used for direction calculation; sets sign based on location
+
+        // if within following range of player
+        if (pd < followDistance && gd >= followDistance) {
+            xDir = (pxDist < 0) ? -1 : 1;
+            yDir = (pyDist < 0) ? -1 : 1;
+            if (pd < scaredDistance) { xDir += 1; yDir += 1; } // run faster if player is close by
+
+            // move AWAY from player
+            if (calcDistance((pxDist+xDir), pyDist) < calcDistance(pxDist, (pyDist+yDir)))
+                dxCow -= xDir*spdCow;
+            else 
+                dyCow -= yDir*spdCow;
+
+        // if within following range of both player and other goblin
+        } else if (pd < followDistance && gd < followDistance) {
+            xDir = (gxDist < 0) ? -1 : 1;
+            yDir = (gyDist < 0) ? -1 : 1;
+            if (pd < scaredDistance) { xDir += 1; yDir += 1; } // run faster if player is close by
+
+            // move TOWARD from other goblin
+            if (calcDistance((gxDist+xDir), gyDist) > calcDistance(gxDist, (gyDist+yDir)))
+                dxCow += xDir*spdCow;
+            else 
+                dyCow += yDir*spdCow;
+        // handle collisions
+        } else if (pd < collisionDistance) {
+            //gm.mc.setXp(gm.mc.getXp() + 10);
+        }
     }
 
     public class PlayerListener implements KeyListener {
@@ -207,16 +270,16 @@ public class Display extends JPanel {
             int keyCode = e.getKeyCode();
             switch(keyCode) {
                 case KeyEvent.VK_UP:
-                    if (dyMC >= -560) { dyMC -= spdMC; }
+                    if (dyMC >= topEdge) { dyMC -= spdMC; }
                     break;
                 case KeyEvent.VK_DOWN:
-                    if (dyMC <= 0) { dyMC += spdMC; }
+                    if (dyMC <= botEdge) { dyMC += spdMC; }
                     break;
                 case KeyEvent.VK_LEFT:
-                    if (dxMC >= -230) { dxMC -= spdMC; }
+                    if (dxMC >= leftEdge) { dxMC -= spdMC; }
                     break;
                 case KeyEvent.VK_RIGHT:
-                    if (dxMC <= 230) { dxMC += spdMC; }
+                    if (dxMC <= rightEdge) { dxMC += spdMC; }
                     break;
                 case KeyEvent.VK_ESCAPE:
                     System.exit(0);

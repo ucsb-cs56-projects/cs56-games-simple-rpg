@@ -14,7 +14,7 @@ public class Game {
 
     //instance variables
     MainCharacter mc;
-    Goblin gob;
+    Goblin gob, cow; // normal goblin, cowardly goblin
     GameMap gameMap;
     static int currentMap;
 
@@ -26,6 +26,7 @@ public class Game {
         mc = new MainCharacter();
         //initialize a map with all grass tiles
         gob = new Goblin();
+        cow = new Goblin();
         gameMap = new GameMap();
 	currentMap = 1;
     }

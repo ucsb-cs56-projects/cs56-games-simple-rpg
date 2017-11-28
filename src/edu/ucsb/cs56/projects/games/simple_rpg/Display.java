@@ -9,6 +9,8 @@ import java.awt.geom.*;
 
 import javax.swing.JPanel;
 
+import java.util.Timer;
+
 /**
  * Custom JPanel, to represent the game display
  *
@@ -16,8 +18,13 @@ import javax.swing.JPanel;
  */
 public class Display extends JPanel {
 
-	public static final int RAND_X_COORD = (int)(170 + Math.random() * 630);
-	public static final int RAND_Y_COORD = (int)(5 + Math.random() * 565);
+    // making the spawns in arbitrary locations based on hardcoded numbers is idiotic
+	//public static final int RAND_X_COORD = (int)(170 + Math.random() * 630);
+	//public static final int RAND_Y_COORD = (int)(5 + Math.random() * 565);
+
+    // TODO: fix location handling using class data
+    public static final int RAND_X_COORD = 300;
+    public static final int RAND_Y_COORD = 100;
 
 	Game gm;
 	boolean isSpawned = false;
@@ -26,6 +33,12 @@ public class Display extends JPanel {
 	int dyMC = 0;
 	int dxGob = 0;
 	int dyGob = 0;
+
+    // determines how fast anything moves
+    // ideally this should be determined by stats
+    int spdMC = 5;
+    int spdGob = 2;
+
     /**
      * Default Constructor. Adds a KeyListener.
      */
@@ -87,9 +100,12 @@ public class Display extends JPanel {
 	mcf.mc.setX(400 + dxMC);
 	mcf.mc.setY(565 + dyMC);
 	g2.draw(mcf);
+
+    // uhhhhhh why is the enemy behavior determined in display
 	spawn();
 	if(isSpawned == true) {
-		  randMove();
+		  determineLocations(); // determine locations of gob and player every loop
+          enemyMove(); // determines goblin behavior
 		  g2.setColor(Color.RED);
 			gf.gob.setX(RAND_X_COORD + dxGob);
 			gf.gob.setY(RAND_Y_COORD + dyGob);
@@ -108,25 +124,75 @@ public class Display extends JPanel {
 	    switch (rand) {
 		    case 1:
 			    if (dyGob >= -560) {
-				    dyGob -= 4;
+				    dyGob -= spdGob;
 			    }
 			    break;
 		    case 2:
 			    if (dyGob <= 0) {
-				    dyGob += 4;
+				    dyGob += spdGob;
 			    }
 			    break;
 		    case 3:
 			    if (dxGob <= 230) {
-				    dxGob += 4;
+				    dxGob += spdGob;
 			    }
 			    break;
 		    case 4:
 			    if (dxGob >= -230) {
-				    dxGob -= 4;
+				    dxGob -= spdGob;
 			    }
 			    break;
 	    }
+    }
+
+    // location values of mc and ONE SINGLE GOBLIN
+    // this is a batshit implementation but the classes themselves don't store the actual locations
+    // literally will break as soon as there is more than one goblin
+    int xLocMC, yLocMC, xLocGob, yLocGob;
+    private void determineLocations() {
+        xLocMC = (400 + dxMC);
+        yLocMC = (565 + dyMC);
+        xLocGob = (RAND_X_COORD + dxGob);
+        yLocGob = (RAND_Y_COORD + dyGob);
+    }
+
+    private double calcDistance(int xd, int yd) {
+        return Math.sqrt((xd*xd) + (yd*yd));
+    }
+        
+    // determine enemy movement state
+    // called once per game loop
+    private void enemyMove() {
+        int xDist = xLocMC - xLocGob;
+        int yDist = yLocMC - yLocGob;
+
+        // distance between gob and player
+        int d = (int) calcDistance(xDist, yDist);
+
+        // followDistance = how close the player needs to be before goblin begins moving towards player
+        // collisionDistance = how close the player needs to be to collide with the goblin
+        int followDistance = 200, collisionDistance = 10;
+
+        // move toward player if within following range
+        if (d < followDistance && d > collisionDistance) {
+            // set sign for speed based on where player is in relation to goblin
+            int xsg = (xDist < 0) ? -1 : 1;
+            int ysg = (yDist < 0) ? -1 : 1;
+            if (calcDistance((xDist+xsg), yDist) > calcDistance(xDist, (yDist+ysg)))
+                dxGob += xsg*spdGob;
+            else
+                dyGob += ysg*spdGob;
+        // handle collisions
+        } else if (d < collisionDistance) {
+            // TODO: if collide, begin battle
+
+        // move randomly otherwise
+        } else { randMove(); }
+
+        // collision testing
+        
+        
+
     }
 
     public class PlayerListener implements KeyListener {
@@ -143,22 +209,22 @@ public class Display extends JPanel {
                 System.exit(0);
             } else if (e.getKeyCode() == KeyEvent.VK_UP) {
 							if (dyMC >= -560) {
-								dyMC -= 4;
+								dyMC -= spdMC;
 							}
 							//repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 								if (dyMC <= 0) {
-									dyMC += 4;
+									dyMC += spdMC;
 								}
 								//repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 								if (dxMC <= 230) {
-									dxMC += 4;
+									dxMC += spdMC;
 								}
 								//repaint();
             	} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 								if (dxMC >= -230) {
-									dxMC -= 4;
+									dxMC -= spdMC;
 								}
 								//repaint();
             }

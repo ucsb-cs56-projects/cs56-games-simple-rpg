@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import java.util.*;
+import java.util.Timer;
 
 /**
  * Contains Main() for the full game.
@@ -53,11 +53,10 @@ public class SimpleRPG {
         frame.add(disp, BorderLayout.CENTER);
 	frame.add(shop, BorderLayout.EAST);
 
-
-        // testing game loop (GAME TIMER)
+        // game loop/timer; this is main game logic loop
         final java.util.Timer timer = new java.util.Timer();
         final boolean isRunning = true;
-        final int fps = 24; // because the human eye can't see higher than this
+        final int fps = 30; // tfw the human eye can only see 24 fps
 
         class LoopDisplay extends java.util.TimerTask {
             public void run() {

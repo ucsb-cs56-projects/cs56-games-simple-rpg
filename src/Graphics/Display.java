@@ -13,15 +13,12 @@ import java.awt.geom.*;
 import javax.swing.KeyStroke;
 
 import javax.swing.JPanel;
-<<<<<<< HEAD:src/Graphics/Display.java
 import javax.swing.Action;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
-=======
 
 import java.util.Timer;
 
->>>>>>> master:src/edu/ucsb/cs56/projects/games/simple_rpg/Display.java
 /**
  * Custom JPanel, to represent the game display
  *
@@ -148,7 +145,6 @@ public class Display extends JPanel {
         
     }
 
-<<<<<<< HEAD:src/Graphics/Display.java
 private void randMove() {
 	int rand = (int)(1 + Math.random() * 4);
 	switch (rand) {
@@ -174,6 +170,7 @@ private void randMove() {
 			break;
 	}
 }
+
 private void initializeKeyBindings(){
     this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "UP");
     this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "DOWN");
@@ -185,7 +182,7 @@ private void initializeKeyBindings(){
     this.getActionMap().put("LEFT", new MoveAction("LEFT"));
     this.getActionMap().put("RIGHT", new MoveAction("RIGHT"));
     this.getActionMap().put("ESCAPE", new EndAction());
-=======
+}
     private void spawn() {
 	    int rand = (int)(1 + Math.random() * 10);
 	    if (rand <= 3)
@@ -344,54 +341,8 @@ private void initializeKeyBindings(){
                 break;
 	    }
     }
->>>>>>> master:src/edu/ucsb/cs56/projects/games/simple_rpg/Display.java
 
-
-<<<<<<< HEAD:src/Graphics/Display.java
-} 
-
-private class EndAction extends AbstractAction{
-    
-    @Override
-    public void actionPerformed(ActionEvent e){
-        System.exit(0);
-    }
-}
-private class MoveAction extends AbstractAction{
-    String direction;
-    MoveAction(String direction)
-    {
-        this.direction = direction;
-    }
-    @Override
-    public void actionPerformed(ActionEvent e){
-        
-        if (direction.equals("UP")) {
-            if (dyMC >= -560) {
-                dyMC -= 4;
-		}
-            repaint();
-        } 
-        else if (direction.equals("DOWN")) {
-            if (dyMC <= 0) {
-		dyMC += 4;
-            }
-            repaint();
-        } 
-        else if (direction.equals("RIGHT")) {
-            if (dxMC <= 230) {
-		dxMC += 4;
-            }
-            repaint();
-        } 
-        else if (direction.equals("LEFT")) {
-            if (dxMC >= -230) {
-		dxMC -= 4;
-=======
-        /* (non-Javadoc)
-         * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
-         */
-
+    public class PlayerListener implements KeyListener {
         //Controls the MainCharacterFigure's movement based on user input from the arrow keys
         @Override
         public void keyPressed(KeyEvent e) {
@@ -429,11 +380,44 @@ private class MoveAction extends AbstractAction{
             @Override
             public void keyTyped (KeyEvent e){
                 return;
->>>>>>> master:src/edu/ucsb/cs56/projects/games/simple_rpg/Display.java
             }
-            repaint();
-        }
     }
 
-}
-}
+    private class EndAction extends AbstractAction{
+        
+        @Override
+        public void actionPerformed(ActionEvent e){
+            System.exit(0);
+        }
+    }
+    private class MoveAction extends AbstractAction{
+        String direction;
+        MoveAction(String direction)
+        {
+            this.direction = direction;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e){
+            if (direction.equals("UP")) {
+                if (yLocMC >= topEdge) { dyMC -= spdMC; }
+            } 
+            else if (direction.equals("DOWN")) {
+                if (yLocMC <= botEdge) { dyMC += spdMC; }
+            } 
+            else if (direction.equals("RIGHT")) {
+                if (xLocMC <= rightEdge) { dxMC += spdMC; }
+            }
+            else if (direction.equals("LEFT")) {
+                if (xLocMC >= leftEdge) { dxMC -= spdMC; }
+            }
+            
+        }
+        
+    }
+
+} 
+
+
+
+
+

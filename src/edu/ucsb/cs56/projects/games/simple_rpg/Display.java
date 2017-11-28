@@ -200,51 +200,43 @@ public class Display extends JPanel {
         /* (non-Javadoc)
          * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
          */
-        @Override
 
         //Controls the MainCharacterFigure's movement based on user input from the arrow keys
+        @Override
         public void keyPressed(KeyEvent e) {
-            // TODO Auto-generated method stub
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                System.exit(0);
-            } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-							if (dyMC >= -560) {
-								dyMC -= spdMC;
-							}
-							//repaint();
-            	} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-								if (dyMC <= 0) {
-									dyMC += spdMC;
-								}
-								//repaint();
-            	} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-								if (dxMC <= 230) {
-									dxMC += spdMC;
-								}
-								//repaint();
-            	} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-								if (dxMC >= -230) {
-									dxMC -= spdMC;
-								}
-								//repaint();
+            int keyCode = e.getKeyCode();
+            switch(keyCode) {
+                case KeyEvent.VK_UP:
+                    if (dyMC >= -560) { dyMC -= spdMC; }
+                    break;
+                case KeyEvent.VK_DOWN:
+                    if (dyMC <= 0) { dyMC += spdMC; }
+                    break;
+                case KeyEvent.VK_LEFT:
+                    if (dxMC >= -230) { dxMC -= spdMC; }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if (dxMC <= 230) { dxMC += spdMC; }
+                    break;
+                case KeyEvent.VK_ESCAPE:
+                    System.exit(0);
+                default:
+                    break;
             }
-  			}
+        }
 
 		/* (non-Javadoc)
          * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 		 */
-            @Override
-            public void keyReleased (KeyEvent e){
-                // TODO Auto-generated method stub
-                return;
-            }
+        @Override
+        public void keyReleased (KeyEvent e){
+        }
 
 		/* (non-Javadoc)
 		 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 		 */
             @Override
             public void keyTyped (KeyEvent e){
-                // TODO Auto-generated method stub
                 return;
             }
 

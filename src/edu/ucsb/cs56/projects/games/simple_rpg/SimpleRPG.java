@@ -40,6 +40,7 @@ public class SimpleRPG {
 	// note that the Display must be declared final so that its variables can be used in the shop
         final Display disp = new Display();
 	JButton shop = new JButton("Go to shop");
+        shop.setFocusable(false);
 	shop.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 		    ShopDisplay shopWindow = new ShopDisplay(disp.gm.mc);

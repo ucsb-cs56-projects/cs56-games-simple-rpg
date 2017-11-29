@@ -62,7 +62,6 @@ public class Display extends JPanel {
         //We have a display, so now we need the actual game
         gm = new Game();
         this.initializeKeyBindings();
-	    //this.addKeyListener(new PlayerListener());
     }
 
     /* (non-Javadoc)
@@ -334,18 +333,18 @@ private class MoveAction extends AbstractAction{
     }
     @Override
     public void actionPerformed(ActionEvent e){
-        
-        if (direction.equals("UP")) {
-            if (yLocMC >= topEdge) { dyMC -= spdMC; }
+        // handle edge collisions
+        if (yLocMC >= topEdge && direction.equals("UP")) {
+            dyMC -= spdMC;
         } 
-        else if (direction.equals("DOWN")) {
-            if (yLocMC <= botEdge) { dyMC += spdMC; }
+        else if (yLocMC <= botEdge && direction.equals("DOWN")) {
+            dyMC += spdMC;
         } 
-        else if (direction.equals("LEFT")) {
-            if (xLocMC >= leftEdge) { dxMC -= spdMC; }
+        else if (xLocMC >= leftEdge && direction.equals("LEFT")) {
+            dxMC -= spdMC;
         } 
-        else if (direction.equals("RIGHT")) {
-            if (xLocMC <= rightEdge) { dxMC += spdMC; }
+        else if (xLocMC <= rightEdge && direction.equals("RIGHT")) {
+            dxMC += spdMC;
         }
     }
 

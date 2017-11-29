@@ -4,7 +4,6 @@ import Characters.Enemy;
 import Characters.Entity;
 import Items.Inventory;
 import Items.Item;
-import Items.Loot;
 import Items.Weapon;
 import java.util.*;
 import java.awt.geom.Area;

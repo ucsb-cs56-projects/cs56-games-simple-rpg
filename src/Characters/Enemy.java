@@ -1,7 +1,5 @@
 package Characters;
 
-import Items.Loot;
-
 /**
  * Abstract class that every enemy shall inherit from
  *

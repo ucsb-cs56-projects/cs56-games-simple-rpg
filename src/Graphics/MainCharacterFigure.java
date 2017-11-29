@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class MainCharacterFigure implements Shape {
 
-	private GeneralPath gp;
+	private final GeneralPath gp;
 	public MainCharacter mc;
 	
 	/**
@@ -45,7 +45,8 @@ public class MainCharacterFigure implements Shape {
 		gp.append(leftArm, false);
 		gp.append(rightArm, false);
 	}
-
+        
+        @Override
 	public boolean contains(double x, double y) {
 		if (x >= (mc.getX() - 5) && x <= (mc.getX() + 5) && y >= mc.getY() && y <= (mc.getY() + 30)) {
 			return true;
@@ -53,7 +54,7 @@ public class MainCharacterFigure implements Shape {
 		return false;
 	}
 	
-	
+	@Override
 	public boolean contains(double x, double y, double w, double h) {
 		if (x >= (mc.getX() - 5) && (x + w) <= (mc.getX() +5) && y >= (mc.getY() - 5) && (y + h) <= (mc.getY() + 5)) {
 			return true;
@@ -61,6 +62,7 @@ public class MainCharacterFigure implements Shape {
 		return false;
 	}
 	
+        @Override
 	public boolean contains(Point2D p) {
 		if (p.getX() >= (mc.getX() - 5) && p.getX() <= (mc.getX() + 5) && p.getY() >= (mc.getY() - 5) && p.getY() <= (mc.getY() + 5)) {
 			return true;
@@ -68,34 +70,36 @@ public class MainCharacterFigure implements Shape {
 		return false;
 	}
 	
+        @Override
 	public boolean contains(Rectangle2D r) {
 		return gp.contains(r);
 	}
 	
+        @Override
 	public Rectangle getBounds() { 
 		return gp.getBounds(); 
 	}
-    
+    @Override
     public Rectangle2D getBounds2D() { 
 		return gp.getBounds2D(); 
 	}
 
-	
+    @Override
     public PathIterator getPathIterator(AffineTransform at) { 
 		return gp.getPathIterator(at); 
 	}
     
-
+    @Override
     public PathIterator getPathIterator(AffineTransform at, double flatness) { 
 		return gp.getPathIterator(at, flatness); 
 	}
 
-	
+    @Override
     public boolean intersects(double x, double y, double w, double h) { 
 		return gp.intersects(x, y, w, h);
 	}
 
-
+    @Override
     public boolean intersects(Rectangle2D r) { 
 		return gp.intersects(r); 
 	}

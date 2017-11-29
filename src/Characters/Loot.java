@@ -1,4 +1,4 @@
-package Items;
+package Characters;
 
 /**
  * To represent a "reward" that can be received by the MainCharacter

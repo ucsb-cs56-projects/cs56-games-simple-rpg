@@ -1,7 +1,7 @@
 cs56-games-simple-rpg
 (W15) TBD: It looks like a promising game; the code base looks navigatable but trying to run it produces a really strange window that seems to randomly place blue colored squares on the main green square regardless of what key is pressed and can only be escaped from. It looks fairly extensible but has a bad bug currently and Im having difficulties running it(Paz Zait-Givon)
 
-// Andrew Lai
+// Andrew Lai // David Sun
 
 Running the Game
 =====================
@@ -25,10 +25,13 @@ The first version of the game is a CLI version, with a non-functional GUI implem
 
 ![](http://i.imgur.com/rll8hnf.png)
 
-The second version of the game is a GUI version. 
+The second version of the game is a GUI version. (OLD, 2016)
 
 ![](http://i.imgur.com/hG1TpJb.gif)
 
+The updated GUI version now features multiple enemies with unique behavior and pathfinding.
+
+![](https://i.imgur.com/t2g3ij7.gif)
 ---------------------------------------------------
 
 Project History

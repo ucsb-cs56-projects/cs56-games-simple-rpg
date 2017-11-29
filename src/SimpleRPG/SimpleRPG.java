@@ -2,20 +2,20 @@
  *
  */
 package SimpleRPG;
-import Graphics.Display;
-import Graphics.ShopDisplay;
+import Graphics.*;
 import java.awt.BorderLayout;
-import java.awt.*; //Testing purposes
 import java.awt.event.*;
 
 import javax.swing.*;
+
+import java.util.Timer;
 
 /**
  * Contains Main() for the full game.
  *
  * @author Alvin Tan
  */
-public class SimpleRPG{
+public class SimpleRPG {
 
     /**
      * @param args
@@ -54,10 +54,25 @@ public class SimpleRPG{
         frame.add(disp, BorderLayout.CENTER);
 	frame.add(shop, BorderLayout.EAST);
 
+        // game loop/timer; this is main game logic loop
+        final java.util.Timer timer = new java.util.Timer();
+        final boolean isRunning = true;
+        final int fps = 30; // tfw the human eye can only see 24 fps
+
+        class LoopDisplay extends java.util.TimerTask {
+            public void run() {
+                disp.repaint(); // all of the game logic is handled right here
+                
+                if (!isRunning)
+                    timer.cancel();
+            }
+        }
+
+        timer.schedule(new LoopDisplay(), 0, 1000/fps);
+
+
         // Make the window visible
         frame.setVisible(true);
-        disp.repaint();
     }
-    
 
 }

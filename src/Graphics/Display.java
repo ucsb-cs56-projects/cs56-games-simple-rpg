@@ -62,6 +62,7 @@ public class Display extends JPanel {
         //We have a display, so now we need the actual game
         gm = new Game();
         this.initializeKeyBindings();
+	    //this.addKeyListener(new PlayerListener());
     }
 
     /* (non-Javadoc)
@@ -222,7 +223,14 @@ public class Display extends JPanel {
             if (gd > (followDistance - 50)) { // if away from other goblin
                 xDir = (pxDist < 0) ? -1 : 1;
                 yDir = (pyDist < 0) ? -1 : 1;
-                if (pd < scaredDistance) { xDir *= 3; yDir *= 3; } // run faster if player is close by
+                // run faster if player near
+                if (pd < scaredDistance) { 
+                    xDir *= 3; 
+                    yDir *= 3; 
+                } else {
+                    xDir *= 2; 
+                    yDir *= 2; 
+                }
 
                 // move AWAY from player
                 if (calcDistance((pxDist+xDir), pyDist) < calcDistance(pxDist, (pyDist+yDir)))
@@ -328,28 +336,16 @@ private class MoveAction extends AbstractAction{
     public void actionPerformed(ActionEvent e){
         
         if (direction.equals("UP")) {
-            if (dyMC >= -560) {
-                dyMC -= 4;
-		}
-            repaint();
+            if (yLocMC >= topEdge) { dyMC -= spdMC; }
         } 
         else if (direction.equals("DOWN")) {
-            if (dyMC <= 0) {
-		dyMC += 4;
-            }
-            repaint();
-        } 
-        else if (direction.equals("RIGHT")) {
-            if (dxMC <= 230) {
-		dxMC += 4;
-            }
-            repaint();
+            if (yLocMC <= botEdge) { dyMC += spdMC; }
         } 
         else if (direction.equals("LEFT")) {
-            if (dxMC >= -230) {
-		dxMC -= 4;
-            }
-            repaint();
+            if (xLocMC >= leftEdge) { dxMC -= spdMC; }
+        } 
+        else if (direction.equals("RIGHT")) {
+            if (xLocMC <= rightEdge) { dxMC += spdMC; }
         }
     }
 

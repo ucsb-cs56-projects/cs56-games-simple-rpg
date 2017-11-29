@@ -55,6 +55,10 @@ public class Display extends JPanel {
     int leftEdge = 170;
     int rightEdge = 630;
 
+    // true if player is within range of goblin
+    // used to set color of goblin
+    boolean detected = false;
+
     /**
      * Default Constructor. Adds a KeyListener.
      */
@@ -123,17 +127,24 @@ public class Display extends JPanel {
         // uhhhhhh why is the enemy behavior determined in display
 	    spawn();
 	    if(isSpawned == true) {
-		      determineLocations(); // determine locations of gob and player every loop
-              enemyMove(); // determines enemy behavior
-                
-		      g2.setColor(Color.RED);
-			    gf.gob.setX(goblinSpawnCoordX + dxGob);
-			    gf.gob.setY(goblinSpawnCoordY + dyGob);
-			    g2.draw(gf);
-              g2.setColor(Color.YELLOW);
-                cf.gob.setX(cowardSpawnCoordX + dxCow);
-			    cf.gob.setY(cowardSpawnCoordY + dyCow);
-			    g2.draw(cf);
+	        determineLocations(); // determine locations of gob and player every loop
+            enemyMove(); // determines enemy behavior
+          
+            // redraw goblin
+            // change color if player is within range
+            if (detected)
+	            g2.setColor(Color.RED);
+            else
+                g2.setColor(Color.BLUE);
+		    gf.gob.setX(goblinSpawnCoordX + dxGob);
+		    gf.gob.setY(goblinSpawnCoordY + dyGob);
+		    g2.draw(gf);
+
+            // redraw coward
+            g2.setColor(Color.MAGENTA);
+            cf.gob.setX(cowardSpawnCoordX + dxCow);
+		    cf.gob.setY(cowardSpawnCoordY + dyCow);
+		    g2.draw(cf);
         }
         
     }
@@ -169,6 +180,7 @@ public class Display extends JPanel {
 
     // normal goblin behavior
     private void goblinMove() {
+        detected = false;
         int xDist = xLocMC - xLocGob;
         int yDist = yLocMC - yLocGob;
 
@@ -181,6 +193,8 @@ public class Display extends JPanel {
 
         // if within following range
         if (d < followDistance && d > collisionDistance) {
+            detected = true;            
+
             // set sign for speed based on where player is in relation to goblin; moves faster if player is close by
             int xDir = (xDist < 0) ? -3 : 3;
             int yDir = (yDist < 0) ? -3 : 3;
@@ -194,6 +208,7 @@ public class Display extends JPanel {
         // handle collisions
         } else if (d < collisionDistance) {
             //TODO: implement recent damage/invulnerability timer
+            detected = true; // can create new boolean for this state?
             gm.mc.attacked(2);
         // out of range
         } else { goblinRandomMove(); }

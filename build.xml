@@ -11,8 +11,8 @@
 	<property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56/S12/issues/${ticketnum}" />
 	<property name="javadocDest" value="${webRoot}/javadoc" />
 	<property name="javadocURL" value="${webBaseURL}/javadoc" />
-	<property name="CLI" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleCLI"/>
-	<property name="main" value="edu.ucsb.cs56.projects.games.simple_rpg.SimpleRPG"/>
+	<property name="CLI" value="SimpleRPG.SimpleCLI"/>
+	<property name="main" value="SimpleRPG.SimpleRPG"/>
 	<path id="Simple RPG.classpath">
 		<pathelement location="bin"/>
 		<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" />

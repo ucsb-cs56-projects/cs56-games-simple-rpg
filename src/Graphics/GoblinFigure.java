@@ -64,7 +64,7 @@ public class GoblinFigure implements Shape {
     // MainCharacterFigure class, they are identical.
     // | | | | | | | | | | | | | | | | | | | | | | |
     // V V V V V V V V V V V V V V V V V V V V V V V
-
+    @Override
     public boolean contains(double x, double y) {
 	if (x >= (gob.getX() - 5) && x <= (gob.getX() + 5) && y >= gob.getY() && y <= (gob.getY() + 30)) {
 	    return true;
@@ -72,49 +72,49 @@ public class GoblinFigure implements Shape {
 	return false;
     }
 
-
+    @Override
     public boolean contains(double x, double y, double w, double h) {
 	if (x >= (gob.getX() - 5) && (x + w) <= (gob.getX() +5) && y >= (gob.getY() - 5) && (y + h) <= (gob.getY() + 5)) {
 	    return true;
 	}
 	return false;
     }
-
+    @Override
     public boolean contains(Point2D p) {
 	if (p.getX() >= (gob.getX() - 5) && p.getX() <= (gob.getX() + 5) && p.getY() >= (gob.getY() - 5) && p.getY() <= (gob.getY() + 5)) {
 	    return true;
 	}
 	return false;
     }
-
+    @Override
     public boolean contains(Rectangle2D r) {
 	return gp.contains(r);
     }
-
+    @Override
     public Rectangle getBounds() {
 	return gp.getBounds();
     }
-
+    @Override
     public Rectangle2D getBounds2D() {
 	return gp.getBounds2D();
     }
 
-
+    @Override
     public PathIterator getPathIterator(AffineTransform at) {
 	return gp.getPathIterator(at);
     }
 
-
+    @Override
     public PathIterator getPathIterator(AffineTransform at, double flatness) {
 	return gp.getPathIterator(at, flatness);
     }
 
-
+    @Override
     public boolean intersects(double x, double y, double w, double h) {
 	return gp.intersects(x, y, w, h);
     }
 
-
+    @Override
     public boolean intersects(Rectangle2D r) {
 	return gp.intersects(r);
     }

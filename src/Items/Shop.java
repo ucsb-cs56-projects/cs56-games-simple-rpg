@@ -32,8 +32,8 @@ public class Shop {
 	}
 
 
-	public void buyItem(Item i) {
-			inventory.removeItem(i);
+	public void buyItem(Item i){
+		inventory.removeItem(i);
 	}
 
 	/**

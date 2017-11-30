@@ -5,7 +5,6 @@ package Characters;
 
 import Characters.Enemy;
 import Items.Inventory;
-import Items.Loot;
 import Items.Weapon;
 
 /**

@@ -3,7 +3,6 @@
  */
 package Characters;
 
-import Characters.Enemy;
 import Items.Inventory;
 import Items.Weapon;
 

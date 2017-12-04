@@ -1,7 +1,5 @@
 package Items;
 
-import Items.Item;
-
 /**
  * @author Vivek Patel, Nick Perry
  * @version CS56-W15 03/05, 1.0

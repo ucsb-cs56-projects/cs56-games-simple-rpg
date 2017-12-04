@@ -1,7 +1,5 @@
 package Items;
 
-import Items.Item;
-
 /**
    -------------------------
    | @author Nick Perry    |

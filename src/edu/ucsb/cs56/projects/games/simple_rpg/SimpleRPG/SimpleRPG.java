@@ -2,6 +2,8 @@
  *
  */
 package SimpleRPG;
+import Graphics.ShopDisplay;
+import Graphics.Display;
 import Graphics.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
@@ -25,7 +27,7 @@ public class SimpleRPG {
         JFrame frame = new JFrame("Simple RPG");
 
         // Set Size of window
-        frame.setSize(920, 800);
+        frame.setSize(920, 820);
         //frame.setUndecorated(true);
 
         // Always do this so that the red X (or red circle) works

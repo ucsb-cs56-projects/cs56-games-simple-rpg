@@ -1,7 +1,5 @@
 package Characters;
 
-import Characters.Enemy;
-import Characters.Entity;
 import Items.Inventory;
 import Items.Item;
 import Items.Weapon;

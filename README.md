@@ -82,3 +82,11 @@ Current GUI Game Implementations:
 - MainCharacter can move around screen using input from arrow keys
 - Shop can be accessed through a JButton. Currently the shop has very limited function.
 - After shop has been accessed, the MainCharacter no longer responds to arrow key input and the 'esc' key does not quit the game. At this point, you must manually close the JFrame to end the game.
+
+### F17 Final Remarks
+=====================
+The code is pretty disorganized. All of the new GUI stuff? That takes place inside the "Graphics" folder, specifically inside Display.java. The game loop itself is actually inside SimpleRPG.java, which is located in the SimpleRPG folder. This is because the previous group of students that worked on this didn't really have a working "game," per se, they had a UI that didn't interact with any of the command line version of the game at all.
+
+The main problem is that all the multiple enemy behaviors all take place (hardcoded) inside Display.java. You're going to have to fix that, if you want to make the code extendable - the behaviors themselves should be understandable to extend and implement. Also, the GUI still needs fixing. It's rather ugly LMAO
+
+There is a lot of room to implement the design patterns outlined by the course here. Each enemy has its own behavior, its own variables, its own view on life - however, they're all determined in one place. More importantly, the location tracking in the game is not specific to the classes, but to the _hardcoded instances of those classes spawned by Display.java_. These are major issues that need to be fixed in order to create additional types of enemies.
